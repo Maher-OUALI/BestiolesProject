@@ -15,7 +15,8 @@ class Milieu : public UImg
 {
 
 private :
-   static const T          white[];
+   //static const T          white[];
+   //static const T          black[];
 
    int                     width, height;
    std::vector<Bestiole>   listeBestioles;

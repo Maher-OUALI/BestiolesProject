@@ -3,8 +3,12 @@
 #include <cstdlib>
 #include <ctime>
 
+#include <cmath>
+#include "colors.h"
 
-const T    Milieu::white[] = { (T)255, (T)255, (T)255 };
+
+// const T    Milieu::white[] = { (T)255, (T)255, (T)255 };
+// const T    Milieu::black[] = { (T)0, (T)0, (T)0 };
 
 
 Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
@@ -29,12 +33,15 @@ Milieu::~Milieu( void )
 void Milieu::step( void )
 {
 
-   cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
+   cimg_forXY( *this, x, y ) fillC( x, y, 0, Colors::white[0], Colors::white[1], Colors::white[2] );
    for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
    {
 
       it->action( *this );
       it->draw( *this );
+
+      
+      draw_circle( width/2, height/2, 40., Colors::black );
 
    } // for
 

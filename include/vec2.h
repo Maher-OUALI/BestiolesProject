@@ -24,6 +24,8 @@
  ******************************************************************************/
 
 #include <cmath>
+#include <iostream>
+#include <string> 
 
 namespace math {
 
@@ -77,6 +79,8 @@ class vector2
 			return *this = vector2(x[0] * c - x[1] * s, x[0] * s + x[1] * c);
 		}
 
+		
+
 		inline double operator [] (int idx) const
 		{ return x[idx]; }
 
@@ -115,10 +119,33 @@ class vector2
 
 		friend double operator * (const vector2 & a, const vector2 & b)
 		{ return a.dot(b); }
+
+		double deg ()
+		{ return std::atan2(x[1], x[0])* (180.0/M_PI);}
+
+
+		static double angle(const vector2 v1,const vector2 v2)
+		{
+			
+			double vector_dot, mult_abs;
+			mult_abs =   v1.length()*v2.length();
+			vector_dot=v1.dot(v2);
+			return acos(vector_dot/mult_abs)* (180.0/M_PI);
+		}
+
+
 	private:
 		double x[2];
 };
 
+}
+
+
+
+std::ostream& operator<<(std::ostream& os, const math::vector2& vec)
+{
+    os <<"(" <<vec[0] << ',' << vec[1] << ')' ;
+    return os;
 }
 
 #endif
