@@ -12,10 +12,16 @@ class EnvConfig
 {
 
 
-static double vcarlos;
-static double vjorge;
+
 
 public:
+static double vcarlos;
+static double vjorge;
+static double sCollisionDieProb;
+static bool sDebugVision;
+static bool sDebugCollsion;
+
+
 
 static size_t ReadConfFile(const char* fname);
 

@@ -4,6 +4,9 @@
 
 double EnvConfig::vcarlos=0;
 double EnvConfig::vjorge=0;
+double EnvConfig::sCollisionDieProb=0;
+bool EnvConfig::sDebugVision=false;
+bool EnvConfig::sDebugCollsion=false;
 
 
 
@@ -37,7 +40,7 @@ size_t EnvConfig::ReadVar(FILE* file,std::string &name,double &retval)
       { 
          retval = std::stod (std::string(var_vstring));
          name=var_name;
-         printf("The global variable %s has value: %0.2f\n", var_name,retval); 
+         
          return 0;
       }
       return -1;
@@ -45,15 +48,25 @@ size_t EnvConfig::ReadVar(FILE* file,std::string &name,double &retval)
 
 void EnvConfig::assignVar(const std::string name,const double value)
 {
-   if (!strcmp(name.c_str(),"Pepe"))
+   if (!strcmp(name.c_str(),"COLLISION_DIE_PROB"))
    {
-      vcarlos=value;
+      sCollisionDieProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
    }
 
-   if (!strcmp(name.c_str(),"Jorge"))
+   if (!strcmp(name.c_str(),"DEBUG_VISION"))
    {
-      vjorge=value;
+      sDebugVision=(bool)value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
    }
+
+   if (!strcmp(name.c_str(),"DEBUG_COLLISION"))
+   {
+      sDebugCollsion=(bool)value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
+
+
   
   
 }

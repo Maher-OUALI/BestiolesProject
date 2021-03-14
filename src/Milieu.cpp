@@ -34,30 +34,42 @@ void Milieu::step( void )
 {
 
    cimg_forXY( *this, x, y ) fillC( x, y, 0, Colors::white[0], Colors::white[1], Colors::white[2] );
-   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
+   for ( std::vector<Bestiole*>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
    {
 
-      it->action( *this );
-      it->draw( *this );
+      (*it)->action( *this );
+      (*it)->draw( *this );
 
       
-      draw_circle( width/2, height/2, 40., Colors::black );
+      //draw_circle( width/2, height/2, 40., Colors::black );
 
    } // for
+
+   applyDeath();
 
 }
 
 
-int Milieu::nbVoisins( const Bestiole & b )
+int Milieu::nbVoisins( Bestiole const * b )
 {
 
    int         nb = 0;
 
 
-   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
-      if ( !(b == *it) && b.jeTeVois(*it) )
+   for ( std::vector<Bestiole*>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
+      if ( !(b == (*it)) && b->jeTeVois(**it) )
          ++nb;
 
    return nb;
 
+}
+
+bool shouldDie(Bestiole *b)
+{
+   return b->markedToDie;
+}
+
+void Milieu::applyDeath()
+{
+   listeBestioles.erase(std::remove_if(listeBestioles.begin(), listeBestioles.end(), shouldDie), listeBestioles.end());
 }

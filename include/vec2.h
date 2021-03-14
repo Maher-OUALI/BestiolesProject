@@ -1,5 +1,5 @@
-#ifndef __VECTOR2_HPP__
-#define __VECTOR2_HPP__
+#ifndef __VECTOR2_H__
+#define __VECTOR2_H__
 
 /******************************************************************************
  *
@@ -120,11 +120,11 @@ class vector2
 		friend double operator * (const vector2 & a, const vector2 & b)
 		{ return a.dot(b); }
 
-		double deg ()
+		double angleDeg ()
 		{ return std::atan2(x[1], x[0])* (180.0/M_PI);}
 
 
-		static double angle(const vector2 v1,const vector2 v2)
+		static double angleBetween(const vector2 v1,const vector2 v2)
 		{
 			
 			double vector_dot, mult_abs;
@@ -133,19 +133,29 @@ class vector2
 			return acos(vector_dot/mult_abs)* (180.0/M_PI);
 		}
 
+		static double distance(const vector2 v1,const vector2 v2)
+		{
+			
+			return (v2-v1).length();
+		}
+
+		//friend std::ostream& operator<<(std::ostream& os, const math::vector2& vec);
+
 
 	private:
 		double x[2];
 };
 
+double constrainAngle(double x);
+
+double rad2Deg(double x);
+
+double deg2Rad(double x);
+
 }
 
+std::ostream& operator<<(std::ostream& os, const math::vector2& vec);
 
 
-std::ostream& operator<<(std::ostream& os, const math::vector2& vec)
-{
-    os <<"(" <<vec[0] << ',' << vec[1] << ')' ;
-    return os;
-}
 
 #endif
