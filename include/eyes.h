@@ -8,7 +8,7 @@ class Eyes:Sensor
 
     
 public:
-    Eyes()
+    Eyes(double angle, double distance, double detectionCapacity)
     {
         
     }

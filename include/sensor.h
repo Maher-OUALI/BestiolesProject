@@ -10,6 +10,10 @@ class Sensor
 {
 protected:
     Bestiole* owner;
+    double angle;
+    double distance;
+    double detectionCapacity;
+
     
 public:
     Sensor()
