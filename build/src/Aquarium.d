@@ -1,9 +1,10 @@
 build/src/Aquarium.o: src/Aquarium.cpp include/Aquarium.h include/CImg.h \
  include/Milieu.h include/UImg.h include/Bestiole.h include/vec2.h \
- include/sensor.h include/behaviour.h include/Config.h \
- include/bestioleFactory.h include/spinnerBehaviour.h \
- include/dumbBehaviour.h include/braindeadBehaviour.h include/eyes.h \
- include/Milieu.h
+ include/sensor.h include/Behaviour/behaviour.h include/vec2.h \
+ include/Config.h include/bestioleFactory.h \
+ include/Behaviour/spinnerBehaviour.h include/Behaviour/behaviour.h \
+ include/Behaviour/dumbBehaviour.h include/Behaviour/braindeadBehaviour.h \
+ include/eyes.h include/Milieu.h
 
 include/Aquarium.h:
 
@@ -19,17 +20,21 @@ include/vec2.h:
 
 include/sensor.h:
 
-include/behaviour.h:
+include/Behaviour/behaviour.h:
+
+include/vec2.h:
 
 include/Config.h:
 
 include/bestioleFactory.h:
 
-include/spinnerBehaviour.h:
+include/Behaviour/spinnerBehaviour.h:
 
-include/dumbBehaviour.h:
+include/Behaviour/behaviour.h:
 
-include/braindeadBehaviour.h:
+include/Behaviour/dumbBehaviour.h:
+
+include/Behaviour/braindeadBehaviour.h:
 
 include/eyes.h:
 

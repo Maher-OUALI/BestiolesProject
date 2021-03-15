@@ -1,8 +1,10 @@
 build/src/bestioleFactory.o: src/bestioleFactory.cpp \
  include/bestioleFactory.h include/Bestiole.h include/UImg.h \
- include/CImg.h include/vec2.h include/sensor.h include/behaviour.h \
- include/Config.h include/spinnerBehaviour.h include/dumbBehaviour.h \
- include/braindeadBehaviour.h include/eyes.h include/Milieu.h
+ include/CImg.h include/vec2.h include/sensor.h \
+ include/Behaviour/behaviour.h include/vec2.h include/Config.h \
+ include/Behaviour/spinnerBehaviour.h include/Behaviour/behaviour.h \
+ include/Behaviour/dumbBehaviour.h include/Behaviour/braindeadBehaviour.h \
+ include/eyes.h include/Milieu.h
 
 include/bestioleFactory.h:
 
@@ -16,15 +18,19 @@ include/vec2.h:
 
 include/sensor.h:
 
-include/behaviour.h:
+include/Behaviour/behaviour.h:
+
+include/vec2.h:
 
 include/Config.h:
 
-include/spinnerBehaviour.h:
+include/Behaviour/spinnerBehaviour.h:
 
-include/dumbBehaviour.h:
+include/Behaviour/behaviour.h:
 
-include/braindeadBehaviour.h:
+include/Behaviour/dumbBehaviour.h:
+
+include/Behaviour/braindeadBehaviour.h:
 
 include/eyes.h:
 

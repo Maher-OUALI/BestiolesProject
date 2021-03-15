@@ -18,13 +18,13 @@ shared_ptr<Bestiole> BestioleFactory::createBestiole(enum_Behavior selected_beha
     return result;
 }
 
-shared_ptr<Bestiole> BestioleFactory::createBestioleClone(const Bestiole & b)
+Bestiole* BestioleFactory::createBestioleClone(const Bestiole & b)
 {
     
     std::shared_ptr<Bestiole> result =std::shared_ptr<Bestiole>( new Bestiole(b ));
     milieu_->addMember(result);
 
-    return result;
+    return result.get();
 }
 
 Behaviour* BestioleFactory::createBehaviour(enum_Behavior selected_behaviour)

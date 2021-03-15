@@ -3,8 +3,8 @@ PROJECT := $(notdir $(CURDIR))
 EXCECUTABLE = main
 
 # Directories specification
-SRCDIRS := src
-INCDIRS := include
+SRCDIRS := src src/Behaviour
+INCDIRS := include include/Behaviour
 BUILDDIR := build
 
 # @note: to add another source extension, add to herer AND make sure to

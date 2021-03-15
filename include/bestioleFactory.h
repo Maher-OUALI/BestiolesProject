@@ -19,7 +19,7 @@ class BestioleFactory
    public:
      // BestioleFactory(){}
    static   std::shared_ptr<Bestiole> createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor);
-   static shared_ptr<Bestiole> createBestioleClone(const Bestiole & b);
+   static Bestiole* createBestioleClone(const Bestiole & b);
    static Milieu *milieu_;
 
 
