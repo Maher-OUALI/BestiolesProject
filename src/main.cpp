@@ -60,17 +60,17 @@ int main()
    b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+40,ecosysteme.getMilieu().getHeight()/2.0);
    b2->setOrientationDeg(180.0);
 
-   // if (b1.jeTeVois(b2))
-   // {
-   //    cout<<"B1 can see B2"<<std::endl;
-   // }
+   //if (b1->jeTeVois(*b2))
+   //{
+   //   cout<<"B1 can see B2"<<std::endl;
+   //}
    // else{
    //       cout<<"B1 CANNOT see B2"<<std::endl;
    // }
-   //  if (b2.jeTeVois(b1))
+   //if (b2->jeTeVois(*b1))
    // {
-   //    cout<<"B2 can see B1"<<std::endl;
-   // }
+   //   cout<<"B2 can see B1"<<std::endl;
+   //}
    // else{
    //       cout<<"B2 CANNOT see B1"<<std::endl;
    // }

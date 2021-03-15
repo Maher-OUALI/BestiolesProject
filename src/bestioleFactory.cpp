@@ -23,7 +23,7 @@ Sensor* BestioleFactory::createSensor(enum_Sensor selected_sensor)
 {
 
     Sensor* sensor;
-    if(selected_sensor==enum_Sensor::Eyes) sensor= (Sensor*)(new Eyes()) ;
+    if(selected_sensor==enum_Sensor::Eyes) sensor= (Sensor*)(new Eyes(0,0,0)) ;
 
     return sensor;
 }
