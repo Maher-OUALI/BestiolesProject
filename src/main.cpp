@@ -52,41 +52,16 @@ int main()
    //BestioleFactory factory=BestioleFactory(&ecosysteme.getMilieu());
 
 
-   shared_ptr<Bestiole> b1=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::Eyes);
+   Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::Eyes);
    b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0,ecosysteme.getMilieu().getHeight()/2.0);
    b1->setOrientationDeg(0.0);
    
 
-   shared_ptr<Bestiole> b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Eyes);
+   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Eyes);
    b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+40,ecosysteme.getMilieu().getHeight()/2.0);
    b2->setOrientationDeg(180.0);
 
-   // if (b1.jeTeVois(b2))
-   // {
-   //    cout<<"B1 can see B2"<<std::endl;
-   // }
-   // else{
-   //       cout<<"B1 CANNOT see B2"<<std::endl;
-   // }
-   //  if (b2.jeTeVois(b1))
-   // {
-   //    cout<<"B2 can see B1"<<std::endl;
-   // }
-   // else{
-   //       cout<<"B2 CANNOT see B1"<<std::endl;
-   // }
-
-   // if (b1.ocurredCollision(b2))
-   // {
-   //    cout<<"B1 collided with B2"<<std::endl;
-   // }
-   // else{
-   //       cout<<"B1 is not in collision with B2"<<std::endl;
-   // }
-
-
-   //ecosysteme.getMilieu().addMember(b1);
-   //ecosysteme.getMilieu().addMember(b2);
+   
 
    //for ( int i = 1; i <= 20; ++i )
    //   ecosysteme.getMilieu().addMember( Bestiole() );
