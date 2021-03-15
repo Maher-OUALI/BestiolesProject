@@ -1,6 +1,7 @@
 #include "kamikazeBehaviour.h"
 #include "Bestiole.h"
 #include "Milieu.h"
+#include <cmath>
 
 
 KamikazeBehaviour* KamikazeBehaviour::clone(Bestiole* ownr)
@@ -11,12 +12,24 @@ KamikazeBehaviour* KamikazeBehaviour::clone(Bestiole* ownr)
 
 void KamikazeBehaviour::calculateDir(Milieu & monMilieu)
 {
-    Bestiole & nearest_bestiole;
+    //initialize
+    double min_dist=1000000;
+    math::vector2 pos=math::vector2(-1,-1);
     for ( std::vector<shared_ptr<Bestiole>>::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it ){
-        if (**it.getIdentite() == owner.getIdentite()){
-            
+        //bestiole different from itself
+        if (**it.getIdentite() != owner.getIdentite()){
+            //check if bestiole can see target
+            if(owner.jeTeVois(**it)){
+                //update nearest bestiole position to the owner
+                if(math::vector2::distance(owner.getPosition(),it->getPosition()) < min_dist){
+                    pos = it->getPosition();
+                }
+            }
         }
     }
-     
-    angle_rad=(owner->getOrientationRad()+math::deg2Rad(10)) ;
+    if(pos==math::vector2(-1,-1)){
+        angle_rad=owner.getOrientationRad();
+    }else{
+        angle_rad=math::atan2((owner.getPosition()-pos)[0], (owner.getPosition()-pos)[1]);
+    }
 }
