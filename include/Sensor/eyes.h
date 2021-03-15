@@ -8,6 +8,7 @@ class Eyes:Sensor
 {
 
     private:
+    double detection_capacity;
     double fov_deg;
     double max_dist;
 public:
@@ -15,6 +16,7 @@ public:
     {
         fov_deg=45;
         max_dist=20;
+        detection_capacity=1;
     }
     bool canSense(const Bestiole &b2) override;
 
