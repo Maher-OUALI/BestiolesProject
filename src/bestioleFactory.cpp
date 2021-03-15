@@ -13,6 +13,8 @@ shared_ptr<Bestiole> BestioleFactory::createBestiole(enum_Behavior selected_beha
     std::shared_ptr<Bestiole> result =std::shared_ptr<Bestiole>( new Bestiole(sensor,behav ));
     milieu_->addMember(result);
 
+    //ilan branch
+
     return result;
 }
 
