@@ -244,21 +244,22 @@ void Bestiole::draw( UImg & support )
    support.draw_ellipse( pos[0], pos[1], AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., couleur );
    support.draw_circle( relativePos[0], relativePos[1], AFF_SIZE/2., couleur );
 
-
+   DrawVisionCone(support,*this,orientation,relativePos);
    
 
 }
 
 void Bestiole::DrawVisionCone(UImg & support,const Bestiole & b,double orientation, math::vector2 relativePos)
 {
-   double triangleSIze=50.0;
+   if(EnvConfig::sDrawSensors)
+   {double triangleSIze=50.0;
    math::vector2 triangPoint1=math::vector2(1,1)*triangleSIze;
    math::vector2 triangPoint2=math::vector2(1,-1)*triangleSIze;
    
    triangPoint1=triangPoint1.rot(math::rad2Deg(-orientation))+relativePos;
    triangPoint2=triangPoint2.rot(math::rad2Deg(-orientation))+relativePos;
    support.draw_triangle(relativePos[0],relativePos[1],triangPoint1[0],triangPoint1[1],triangPoint2[0],triangPoint2[1],couleur,0.3);
-
+}
 }
 
 

@@ -20,6 +20,7 @@ static double vjorge;
 static double sCollisionDieProb;
 static bool sDebugVision;
 static bool sDebugCollsion;
+static bool sDrawSensors;
 
 
 

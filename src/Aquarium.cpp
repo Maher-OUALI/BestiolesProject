@@ -51,6 +51,11 @@ void Aquarium::run( void )
             cout<<"Pressed SPACE..."<<endl;
             BestioleFactory::createBestioleClone(*(flotte->getBestiolesList()[0]));
          }
+         if(is_keyV())
+         {
+            cout<<"Pressed V..."<<endl;
+            EnvConfig::sDrawSensors=!EnvConfig::sDrawSensors;
+         }
       }
       else if(!is_key() )
       {
