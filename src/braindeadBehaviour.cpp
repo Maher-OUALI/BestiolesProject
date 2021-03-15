@@ -15,8 +15,8 @@ void BraindeadBehaviour::calculateDir(Milieu & monMilieu)
     angle_rad = owner->getOrientationRad() ;
     speed=0.0;
 
-    for ( std::vector<Bestiole*>::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it )
-    if (*it!=owner)
+    for ( std::vector<shared_ptr<Bestiole>>::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it )
+    if ((*it).get()!=owner)
     {
         if(owner->jeTeVois(**it) ){
             

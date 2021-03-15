@@ -29,8 +29,8 @@ Bestiole::Bestiole(  Sensor* const sensor ,Behaviour* const behaviour )
    pos=cumulPos=math::vector2();
    orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
    //vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
-   vitesse = MAX_VITESSE;
-   armour=1.0;
+   base_vitesse = MAX_VITESSE;
+   base_armour=1.0;
 
    couleur = new T[ 3 ];
    couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
@@ -49,6 +49,7 @@ Bestiole::Bestiole( const Bestiole & b )
 {
 
    initState();
+   stillInCollsion=True; //we start at same position so collision will be obius.
 
    identite = ++next;
 
@@ -61,8 +62,13 @@ Bestiole::Bestiole( const Bestiole & b )
 
    //cumulX = cumulY = 0.;
    cumulPos=math::vector2();
-   orientation = b.orientation;
-   vitesse = b.vitesse;
+   orientation = b.orientation+math::deg2Rad(90);
+
+   //stats copy
+   base_vitesse = b.base_vitesse;
+   base_armour = b.base_armour;
+
+
    couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
 
@@ -148,7 +154,7 @@ Bestiole::~Bestiole( void )
    delete sensor_;
    delete behaviour_;
 
-   cout << "destructing "<<*this << endl;
+   cout << "Calling destructor on  "<<*this << endl;
 
 }
 
@@ -176,10 +182,10 @@ void Bestiole::setCoords( double x, double y )
 
 void Bestiole::bouge( int xLim, int yLim )
 {
-
+   double final_speed=getFinalSpeed();
    double         nx, ny;
-   double         dx = cos( orientation )*vitesse*behaviour_->speed;
-   double         dy = -sin( orientation )*vitesse*behaviour_->speed;
+   double         dx = cos( orientation )*final_speed;
+   double         dy = -sin( orientation )*final_speed;
    int            cx, cy;
 
 
@@ -238,6 +244,21 @@ void Bestiole::draw( UImg & support )
    support.draw_ellipse( pos[0], pos[1], AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., couleur );
    support.draw_circle( relativePos[0], relativePos[1], AFF_SIZE/2., couleur );
 
+
+   
+
+}
+
+void Bestiole::DrawVisionCone(UImg & support,const Bestiole & b,double orientation, math::vector2 relativePos)
+{
+   double triangleSIze=50.0;
+   math::vector2 triangPoint1=math::vector2(1,1)*triangleSIze;
+   math::vector2 triangPoint2=math::vector2(1,-1)*triangleSIze;
+   
+   triangPoint1=triangPoint1.rot(math::rad2Deg(-orientation))+relativePos;
+   triangPoint2=triangPoint2.rot(math::rad2Deg(-orientation))+relativePos;
+   support.draw_triangle(relativePos[0],relativePos[1],triangPoint1[0],triangPoint1[1],triangPoint2[0],triangPoint2[1],couleur,0.3);
+
 }
 
 
@@ -281,7 +302,7 @@ bool Bestiole::ocurredCollision(const Bestiole & b)
 
 void Bestiole::checkCollisions(Milieu & monMilieu )
 {
-   for ( std::vector<Bestiole*>::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it )
+   for ( std::vector<shared_ptr<Bestiole>>::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it )
       if ( ocurredCollision(**it) )
          {
             
@@ -298,11 +319,11 @@ void Bestiole::checkCollisions(Milieu & monMilieu )
 
 double Bestiole::getFinalSpeed()
 {
-   return vitesse;
+   return base_vitesse*behaviour_->speed;
 }
 double Bestiole::getFinalArmor()
 {
-   return armour;
+   return base_armour;
 }
 
 

@@ -1,7 +1,7 @@
 #include "Aquarium.h"
 
 #include "Milieu.h"
-
+#include "bestioleFactory.h"
 
 Aquarium::Aquarium( int width, int height, int _delay ) : CImgDisplay(), delay( _delay )
 {
@@ -32,7 +32,7 @@ Aquarium::~Aquarium( void )
 
 void Aquarium::run( void )
 {
-
+   bool stillPressing=false;
    cout << "running Aquarium" << endl;
 
    while ( ! is_closed() )
@@ -40,10 +40,21 @@ void Aquarium::run( void )
 
       // cout << "iteration de la simulation" << endl;
 
-      if ( is_key() ) {
+      if ( is_key() && !stillPressing) {
+         stillPressing=true;
          cout << "Vous avez presse la touche " << static_cast<unsigned char>( key() );
          cout << " (" << key() << ")" << endl;
          if ( is_keyESC() ) close();
+
+         if(is_keySPACE())
+         {
+            cout<<"Pressed SPACE..."<<endl;
+            BestioleFactory::createBestioleClone(*(flotte->getBestiolesList()[0]));
+         }
+      }
+      else if(!is_key() )
+      {
+         stillPressing=false;
       }
 
       flotte->step();

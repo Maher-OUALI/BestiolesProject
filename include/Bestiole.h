@@ -54,8 +54,10 @@ private :
    math::vector2 cumulPos;
 
    double            orientation;
-   double            vitesse;
-   double            armour;
+
+   //Base stats
+   double            base_vitesse;
+   double            base_armour;
 
    T               * couleur;
 
@@ -75,7 +77,7 @@ private :
 public :                                           // Forme canonique :
    Bestiole(   Sensor* const sensor ,Behaviour* const behaviour);                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
-   Bestiole( Bestiole && b );                 // Move constructor
+   //Bestiole( Bestiole && b );                 // Move constructor
    ~Bestiole( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
@@ -88,7 +90,7 @@ public :                                           // Forme canonique :
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
 
-   Bestiole& operator=( Bestiole&& b);
+   //Bestiole& operator=( Bestiole&& b);
 
    void setOrientationDeg(double angle);
    double getOrientationRad(){return orientation;}
@@ -108,6 +110,10 @@ public :                                           // Forme canonique :
 
    double getFinalSpeed();
    double getFinalArmor();
+
+
+   //Temporary
+   void DrawVisionCone(UImg & support,const Bestiole & b,double orientation, math::vector2 relativePos);
 
 };
 
