@@ -97,6 +97,8 @@ public :                                           // Forme canonique :
 
    math::vector2 getPosition()const {return pos;}
    double getAngleDeg(){return orientation/M_PI*180;}
+   T* getColeur(){return couleur;}
+
 
    void initState();
 

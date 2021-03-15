@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <CImg.h>
+#include "Config.h"
 
 using namespace std;
 using namespace cimg_library;

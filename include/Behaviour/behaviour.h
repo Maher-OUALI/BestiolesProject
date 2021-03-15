@@ -1,20 +1,17 @@
 #ifndef _BEHAVIOUR_H_
 #define _BEHAVIOUR_H_
 
-#include "vec2.h"
-#include "Config.h"
+#include "component.h"
 
 
-class Milieu;
 
-class Bestiole;
 
-class Behaviour
+class Behaviour: public Component
 {
     friend Bestiole;
     
     protected :
-         Bestiole* owner;
+
          double angle_rad;
          double speed;
 
@@ -25,10 +22,10 @@ class Behaviour
             angle_rad=0.0;
         }
 
-        void setOwner(Bestiole* ownr){owner= ownr;}
-        virtual void calculateDir(Milieu & monMilieu)= 0;
 
-        virtual Behaviour* clone(Bestiole* ownr)= 0;
+        virtual void calculateDir(Milieu & monMilieu)= 0;
+        virtual Behaviour* clone(Bestiole* ownr)=0;
+
 
         virtual ~Behaviour(){}
 };

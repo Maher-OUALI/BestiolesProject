@@ -1,15 +1,14 @@
 #ifndef _SENSOR_H_
 #define _SENSOR_H_
+#include "UImg.h"
+
+#include "component.h"
 
 
 
-
-class Bestiole;
-
-class Sensor
+class Sensor:public Component
 {
-protected:
-    Bestiole* owner;
+
     
 public:
     Sensor()
@@ -17,12 +16,10 @@ public:
         
     }
     virtual bool canSense(const Bestiole &b2)=0;
-
-    virtual Sensor* clone(Bestiole* ownr);
-
-    void setOwner(Bestiole* ownr){owner= ownr;}
+    virtual Sensor* clone(Bestiole* ownr)=0;
 
     virtual ~Sensor();
+
 
 
 };

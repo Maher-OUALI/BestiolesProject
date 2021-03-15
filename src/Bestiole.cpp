@@ -238,29 +238,18 @@ void Bestiole::draw( UImg & support )
    //double         xt = pos[0] + cos( orientation )*AFF_SIZE/2.1;
    //double         yt = pos[1] - sin( orientation )*AFF_SIZE/2.1;
    math::vector2 relativePos=math::vector2().setCircle(AFF_SIZE/2.1,-orientation/M_PI*180.);
-   relativePos=(pos+relativePos);
+   math::vector2 headPos=(pos+relativePos);
 
 
    support.draw_ellipse( pos[0], pos[1], AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., couleur );
-   support.draw_circle( relativePos[0], relativePos[1], AFF_SIZE/2., couleur );
+   support.draw_circle( headPos[0], headPos[1], AFF_SIZE/2., couleur );
 
-   DrawVisionCone(support,*this,orientation,relativePos);
+   sensor_->Draw(support);
    
 
 }
 
-void Bestiole::DrawVisionCone(UImg & support,const Bestiole & b,double orientation, math::vector2 relativePos)
-{
-   if(EnvConfig::sDrawSensors)
-   {double triangleSIze=50.0;
-   math::vector2 triangPoint1=math::vector2(1,1)*triangleSIze;
-   math::vector2 triangPoint2=math::vector2(1,-1)*triangleSIze;
-   
-   triangPoint1=triangPoint1.rot(math::rad2Deg(-orientation))+relativePos;
-   triangPoint2=triangPoint2.rot(math::rad2Deg(-orientation))+relativePos;
-   support.draw_triangle(relativePos[0],relativePos[1],triangPoint1[0],triangPoint1[1],triangPoint2[0],triangPoint2[1],couleur,0.3);
-}
-}
+
 
 
 bool operator==( const Bestiole & b1, const Bestiole & b2 )
