@@ -1,7 +1,7 @@
 #ifndef _DUMB_BEHAVIOUR_H_
 #define _DUMB_BEHAVIOUR_H_
 
-#include "behaviour.h"
+#include "Behaviour.h"
 
 
 

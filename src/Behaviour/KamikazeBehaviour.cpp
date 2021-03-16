@@ -1,4 +1,4 @@
-#include "kamikazeBehaviour.h"
+#include "KamikazeBehaviour.h"
 #include "Bestiole.h"
 #include "Milieu.h"
 #include <cmath>

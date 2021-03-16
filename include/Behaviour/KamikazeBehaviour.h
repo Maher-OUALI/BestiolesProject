@@ -1,7 +1,7 @@
 #ifndef _KAMIKAZE_BEHAVIOUR_H_
 #define _KAMIKAZE_BEHAVIOUR_H_
 
-#include "behaviour.h"
+#include "Behaviour.h"
 
 
 

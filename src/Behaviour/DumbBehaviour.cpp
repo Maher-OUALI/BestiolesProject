@@ -1,4 +1,4 @@
-#include "dumbBehaviour.h"
+#include "DumbBehaviour.h"
 #include "Bestiole.h"
 #include "Milieu.h"
 

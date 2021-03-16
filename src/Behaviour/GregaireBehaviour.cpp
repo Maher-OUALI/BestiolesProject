@@ -1,4 +1,4 @@
-#include "gregaireBehaviour.h"
+#include "GregaireBehaviour.h"
 #include "Bestiole.h"
 #include "Milieu.h"
 #include <cmath>

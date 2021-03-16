@@ -1,7 +1,7 @@
 #ifndef _SPINNER_BEHAVIOUR_H_
 #define _SPINNER_BEHAVIOUR_H_
 
-#include "behaviour.h"
+#include "Behaviour.h"
 
 
 

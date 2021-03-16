@@ -7,7 +7,7 @@
 #include <iostream>
 #include "vec2.h"
 #include "sensor.h"
-#include "behaviour.h"
+#include "Behaviour.h"
 
 using namespace std;
 
