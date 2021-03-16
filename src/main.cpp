@@ -7,7 +7,7 @@
 #include <string>     // std::string, std::stof
 
 #include <map>
-//#include "randomGen.h"
+#include "randomGen.h"
 #include "Config.h"
 
 #include "vec2.h"
@@ -23,12 +23,15 @@ using namespace std;
 
 
 
-enum MyEnum { AA=0 , BB=1  };// Deleete
+
+
+template MyEnum MyRandomGen::getRandomType<MyEnum>(std::vector<MyEnum>,std::vector<double>);
+
 
 int main()
 {
    // for(int n=0; n<50; ++n)
-   //    //getRandomType<MyEnum>(std::vector<MyEnum>({AA,BB}),std::vector<int>({1,4}));
+   MyRandomGen::getRandomType<MyEnum>(std::vector<MyEnum>({AA,BB}),std::vector<double>({1.0,2.0}));
    //    std::cout<<"Random generator: "<<Random::IsTrueRandom(0.7)<<std::endl;
 
    // math::vector2 vec1=math::vector2(0,1);
@@ -50,6 +53,7 @@ int main()
    BestioleFactory::milieu_=&ecosysteme.getMilieu();
 
    //BestioleFactory factory=BestioleFactory(&ecosysteme.getMilieu());
+
 
 
    Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::CompositeSensor);

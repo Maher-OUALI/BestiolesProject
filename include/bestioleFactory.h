@@ -4,14 +4,13 @@
 #include <memory>
 
 #include "Bestiole.h"
+
 #include "spinnerBehaviour.h"
 #include "dumbBehaviour.h"
 #include "braindeadBehaviour.h"
 #include "eyes.h"
 #include "ears.h"
 #include "compositeSensor.h"
-
-
 #include "Milieu.h"
 
 
