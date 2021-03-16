@@ -1,4 +1,11 @@
 #include "bestioleFactory.h"
+
+#include "spinnerBehaviour.h"
+#include "dumbBehaviour.h"
+#include "braindeadBehaviour.h"
+#include "psychoBehaviour.h"
+#include "eyes.h"
+
 #include <memory>
 
 
@@ -34,6 +41,7 @@ Behaviour* BestioleFactory::createBehaviour(enum_Behavior selected_behaviour)
     if(selected_behaviour==enum_Behavior::Dumb) beh= (Behaviour*)(new DumbBehaviour()) ;
     if(selected_behaviour==enum_Behavior::Spinner) beh= (Behaviour*)(new SpinnerBehaviour()) ;
     if(selected_behaviour==enum_Behavior::Braindead) beh= (Behaviour*)(new BraindeadBehaviour()) ;
+    if(selected_behaviour==enum_Behavior::Psycho) beh= (Behaviour*)(new PsychoBehaviour()) ;
     return beh;
 }
 

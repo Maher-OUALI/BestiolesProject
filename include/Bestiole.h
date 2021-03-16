@@ -17,7 +17,8 @@ enum  class enum_Behavior
 {
    Dumb,
    Spinner,
-   Braindead
+   Braindead,
+   Psycho
 };
 
 enum  class enum_Sensor

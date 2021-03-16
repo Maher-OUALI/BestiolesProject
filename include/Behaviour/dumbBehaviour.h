@@ -5,7 +5,7 @@
 
 
 
-class DumbBehaviour:Behaviour
+class DumbBehaviour:public Behaviour
 {
     // private:
     // Bestiole* owner;

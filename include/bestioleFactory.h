@@ -4,10 +4,7 @@
 #include <memory>
 
 #include "Bestiole.h"
-#include "spinnerBehaviour.h"
-#include "dumbBehaviour.h"
-#include "braindeadBehaviour.h"
-#include "eyes.h"
+
 
 #include "Milieu.h"
 
