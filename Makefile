@@ -1,6 +1,6 @@
 PROJECT := $(notdir $(CURDIR))
 #EXCECUTABLE = $(BUILDDIR)/$(PROJECT)
-EXCECUTABLE = main
+EXCECUTABLE = build/main
 
 # Directories specification
 SRCDIRS := src src/Behaviour src/Sensor src/Accesorie

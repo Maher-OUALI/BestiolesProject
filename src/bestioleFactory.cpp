@@ -5,6 +5,7 @@
 #include "braindeadBehaviour.h"
 #include "psychoBehaviour.h"
 #include "eyes.h"
+#include "ears.h"
 
 #include <memory>
 
