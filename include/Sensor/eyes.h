@@ -4,7 +4,7 @@
 #include "sensor.h"
 
 
-class Eyes:Sensor
+class Eyes: public Sensor
 {
 
     private:
