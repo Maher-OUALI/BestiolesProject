@@ -4,7 +4,7 @@
 #include "sensor.h"
 
 
-class Ears:Sensor
+class Ears: public Sensor
 {
 
     private:
