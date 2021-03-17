@@ -22,6 +22,7 @@ class BestioleFactory
      // BestioleFactory(){}
    static   Bestiole* createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor);
    static Bestiole* createBestioleClone(const Bestiole & b);
+   //,bool register_best=false
    static Milieu *milieu_;
 
 

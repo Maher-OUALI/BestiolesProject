@@ -6,6 +6,8 @@
 #include <cmath>
 #include "colors.h"
 
+#include "bestioleFactory.h"
+
 
 // const T    Milieu::white[] = { (T)255, (T)255, (T)255 };
 // const T    Milieu::black[] = { (T)0, (T)0, (T)0 };
@@ -34,11 +36,12 @@ void Milieu::step( void )
 {
 
    cimg_forXY( *this, x, y ) fillC( x, y, 0, Colors::white[0], Colors::white[1], Colors::white[2] );
-   for ( std::vector<shared_ptr<Bestiole>>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
+   size_t old_size = listeBestioles.size();
+   for ( int i=0;i<old_size;i++)
    {
 
-      (*it)->action( *this );
-      (*it)->draw( *this );
+      listeBestioles[i]->action( *this );
+      listeBestioles[i]->draw( *this );
 
       
       //draw_circle( width/2, height/2, 40., Colors::black );
@@ -73,3 +76,9 @@ void Milieu::applyDeath()
 {
    listeBestioles.erase(std::remove_if(listeBestioles.begin(), listeBestioles.end(), shouldDie), listeBestioles.end());
 }
+
+
+// void Milieu::applyClone()
+// {
+//    listeBestioles.erase(std::remove_if(listeBestioles.begin(), listeBestioles.end(), shouldDie), listeBestioles.end());
+// }

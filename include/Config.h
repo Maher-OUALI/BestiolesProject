@@ -17,10 +17,18 @@ class EnvConfig
 public:
 static double vcarlos;
 static double vjorge;
+
+
 static double sCollisionDieProb;
 static bool sDebugVision;
 static bool sDebugCollsion;
 static bool sDrawSensors;
+
+static double sCloneProb;
+static double sDieProb;
+
+
+static double sPsychoChangeBProb;
 
 
 

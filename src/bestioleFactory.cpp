@@ -14,7 +14,7 @@ Milieu* BestioleFactory::milieu_=0;
 
 
 
-Bestiole*BestioleFactory::createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor)
+Bestiole* BestioleFactory::createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor)
 {
     Behaviour* behav=createBehaviour( selected_behaviour);
     Sensor* sensor= createSensor(selected_sensor);

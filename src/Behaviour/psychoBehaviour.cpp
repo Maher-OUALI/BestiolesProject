@@ -24,7 +24,7 @@ void PsychoBehaviour::setOwner(Bestiole* ownr)
 
 void PsychoBehaviour::calculateDir(Milieu & monMilieu)
 {
-    if(MyRandomGen::IsTrueRandom(0.1))
+    if(MyRandomGen::IsTrueRandom(EnvConfig::sPsychoChangeBProb))
     {
         cout<<"Changing behaviour"<<endl;
 

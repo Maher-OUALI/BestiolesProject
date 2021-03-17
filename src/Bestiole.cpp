@@ -6,6 +6,7 @@
 #include <cmath>
 #include "Config.h"
 #include "randomGen.h"
+#include "bestioleFactory.h"
 
 
 const double      Bestiole::AFF_SIZE = 8.;
@@ -220,6 +221,11 @@ void Bestiole::bouge( int xLim, int yLim )
 void Bestiole::action( Milieu & monMilieu )
 {
    checkCollisions(monMilieu);
+
+   if(MyRandomGen::IsTrueRandom(EnvConfig::sDieProb)) markedToDie=True;
+   if(MyRandomGen::IsTrueRandom(EnvConfig::sCloneProb)) BestioleFactory::createBestioleClone(*this);
+
+
    behaviour_->calculateDir(monMilieu);
    orientation=behaviour_->angle_rad;
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );

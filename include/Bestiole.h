@@ -73,6 +73,7 @@ private :
 
 public:
    bool markedToDie;
+   bool markedToClone;
 
 private :
    void bouge( int xLim, int yLim );

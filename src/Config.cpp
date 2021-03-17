@@ -10,6 +10,11 @@ bool EnvConfig::sDebugCollsion=false;
 bool EnvConfig::sDrawSensors=false;
 
 
+double EnvConfig::sCloneProb=0;
+double EnvConfig::sDieProb=0;
+double EnvConfig::sPsychoChangeBProb=0;
+
+
 
 
 size_t EnvConfig::ReadConfFile(const char* fname)
@@ -66,6 +71,26 @@ void EnvConfig::assignVar(const std::string name,const double value)
       sDebugCollsion=(bool)value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
    }
+
+
+   if (!strcmp(name.c_str(),"CLONE_PROB"))
+   {
+      sCloneProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
+
+   if (!strcmp(name.c_str(),"DIE_PROB"))
+   {
+      sDieProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
+
+   if (!strcmp(name.c_str(),"PSYCH_CHANGEB_PROB"))
+   {
+      sPsychoChangeBProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
+
 
 
   
