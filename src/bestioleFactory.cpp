@@ -14,11 +14,12 @@ Milieu* BestioleFactory::milieu_=0;
 
 
 
-Bestiole* BestioleFactory::createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor)
+Bestiole* BestioleFactory::createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor,enum_Accesorie selected_accesorie)
 {
     Behaviour* behav=createBehaviour( selected_behaviour);
     Sensor* sensor= createSensor(selected_sensor);
-    std::shared_ptr<Bestiole> result =std::shared_ptr<Bestiole>( new Bestiole(sensor,behav ));
+    Accesorie* accesorie= createAccesorie(selected_accesorie);
+    std::shared_ptr<Bestiole> result =std::shared_ptr<Bestiole>( new Bestiole(sensor,behav,accesorie ));
     milieu_->addMember(result);
 
     //ilan branch
@@ -44,6 +45,16 @@ Behaviour* BestioleFactory::createBehaviour(enum_Behavior selected_behaviour)
     if(selected_behaviour==enum_Behavior::Braindead) beh= (Behaviour*)(new BraindeadBehaviour()) ;
     if(selected_behaviour==enum_Behavior::Psycho) beh= (Behaviour*)(new PsychoBehaviour()) ;
     return beh;
+}
+
+
+Accesorie* BestioleFactory::createAccesorie(enum_Accesorie selected_accesorie)
+{
+
+    Accesorie* acc;
+    if(selected_accesorie==enum_Accesorie::Turbojet) acc= (Accesorie*)(new TurboJet()) ;
+
+    return acc;
 }
 
 Sensor* BestioleFactory::createSensor(enum_Sensor selected_sensor)

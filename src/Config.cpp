@@ -14,6 +14,8 @@ double EnvConfig::sCloneProb=0;
 double EnvConfig::sDieProb=0;
 double EnvConfig::sPsychoChangeBProb=0;
 
+double EnvConfig::sTurboJetMod=0;
+
 
 
 
@@ -88,6 +90,13 @@ void EnvConfig::assignVar(const std::string name,const double value)
    if (!strcmp(name.c_str(),"PSYCH_CHANGEB_PROB"))
    {
       sPsychoChangeBProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
+
+
+   if (!strcmp(name.c_str(),"TURBO_JET_MOD"))
+   {
+      sTurboJetMod=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
    }
 

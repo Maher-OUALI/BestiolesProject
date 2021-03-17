@@ -8,6 +8,7 @@
 #include "vec2.h"
 #include "sensor.h"
 #include "behaviour.h"
+#include  "accesorie.h"
 
 using namespace std;
 
@@ -27,6 +28,13 @@ enum  class enum_Sensor
    Ears,
    CompositeSensor
 };
+
+enum  class enum_Accesorie
+{
+   Turbojet
+
+};
+
 
 
 
@@ -68,6 +76,8 @@ private :
 
    Sensor* sensor_;
    Behaviour* behaviour_;
+   Accesorie* accesorie_;
+
 
 
 
@@ -79,7 +89,7 @@ private :
    void bouge( int xLim, int yLim );
 
 public :                                           // Forme canonique :
-   Bestiole(   Sensor* const sensor ,Behaviour* const behaviour);                               // Constructeur par defaut
+   Bestiole(   Sensor* const sensor ,Behaviour* const behaviour,Accesorie* const accesorie);                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    //Bestiole( Bestiole && b );                 // Move constructor
    ~Bestiole( void );                              // Destructeur

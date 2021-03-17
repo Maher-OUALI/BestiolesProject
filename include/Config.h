@@ -27,6 +27,8 @@ static bool sDrawSensors;
 static double sCloneProb;
 static double sDieProb;
 
+static double sTurboJetMod;
+
 
 static double sPsychoChangeBProb;
 

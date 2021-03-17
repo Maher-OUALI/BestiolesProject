@@ -16,7 +16,7 @@ const double      Bestiole::LIMITE_VUE = 30.;
 int               Bestiole::next = 0;
 
 
-Bestiole::Bestiole(  Sensor* const sensor ,Behaviour* const behaviour )
+Bestiole::Bestiole(  Sensor* const sensor ,Behaviour* const behaviour,Accesorie* const accesorie )
 {
 
    initState();
@@ -42,6 +42,9 @@ Bestiole::Bestiole(  Sensor* const sensor ,Behaviour* const behaviour )
    sensor_->setOwner(this);
    behaviour_=behaviour;
    behaviour_->setOwner(this);
+
+   accesorie_=accesorie;
+   accesorie_->setOwner(this);
 
 }
 
@@ -75,9 +78,11 @@ Bestiole::Bestiole( const Bestiole & b )
 
    sensor_=b.sensor_->clone(this);
    behaviour_=b.behaviour_->clone(this);
+   accesorie_=b.accesorie_->clone(this);
 
    sensor_->setOwner(this);
    behaviour_->setOwner(this);
+   accesorie_->setOwner(this);
 
 }
 
@@ -315,11 +320,11 @@ void Bestiole::checkCollisions(Milieu & monMilieu )
 
 double Bestiole::getFinalSpeed()
 {
-   return base_vitesse*behaviour_->speed;
+   return base_vitesse*behaviour_->speed*accesorie_->getSpeedMod();
 }
 double Bestiole::getFinalArmor()
 {
-   return base_armour;
+   return base_armour*accesorie_->getArmorMod();
 }
 
 

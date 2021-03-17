@@ -37,7 +37,7 @@ void Milieu::step( void )
 
    cimg_forXY( *this, x, y ) fillC( x, y, 0, Colors::white[0], Colors::white[1], Colors::white[2] );
    size_t old_size = listeBestioles.size();
-   for ( int i=0;i<old_size;i++)
+   for ( size_t i=0;i<old_size;i++)
    {
 
       listeBestioles[i]->action( *this );
