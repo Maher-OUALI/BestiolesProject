@@ -27,7 +27,8 @@ enum  class enum_Behavior
 enum  class enum_Sensor
 {
    Eyes, 
-   Ears
+   Ears,
+   Composite
 };
 
 

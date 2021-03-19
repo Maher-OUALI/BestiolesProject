@@ -4,10 +4,19 @@
 #include <memory>
 
 #include "Bestiole.h"
+
 #include "SpinnerBehaviour.h"
 #include "DumbBehaviour.h"
 #include "BraindeadBehaviour.h"
+#include "PeureuseBehaviour.h"
+#include "PrevoyanteBehaviour.h"
+#include "KamikazeBehaviour.h"
+#include "GregaireBehaviour.h"
+
+#include "CompositeSensor.h"
 #include "Eyes.h"
+#include "Ears.h"
+
 
 #include "Milieu.h"
 
