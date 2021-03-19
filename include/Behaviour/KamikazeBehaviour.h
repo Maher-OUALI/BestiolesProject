@@ -7,8 +7,8 @@
 
 class KamikazeBehaviour:Behaviour
 {
-    private:
-        Bestiole* owner;
+    //private:
+    //    Bestiole* owner;
     public:
     KamikazeBehaviour()
     {

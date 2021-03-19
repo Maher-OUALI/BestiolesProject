@@ -52,13 +52,13 @@ int main()
    //BestioleFactory factory=BestioleFactory(&ecosysteme.getMilieu());
 
 
-   Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::Eyes);
+   Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Kamikaze,enum_Sensor::Eyes);
    b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0,ecosysteme.getMilieu().getHeight()/2.0);
    b1->setOrientationDeg(0.0);
    
 
    Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Eyes);
-   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+40,ecosysteme.getMilieu().getHeight()/2.0);
+   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+70,ecosysteme.getMilieu().getHeight()/2.0+2);
    b2->setOrientationDeg(180.0);
 
    

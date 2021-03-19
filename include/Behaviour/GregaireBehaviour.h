@@ -7,8 +7,8 @@
 
 class GregaireBehaviour:Behaviour
 {
-    private:
-        Bestiole* owner;
+    //private:
+    //    Bestiole* owner;
     public:
     GregaireBehaviour()
     {

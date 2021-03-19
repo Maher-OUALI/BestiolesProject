@@ -7,9 +7,8 @@
 
 class PrevoyanteBehaviour:Behaviour
 {
-    private:
-        Bestiole* owner;
-         
+    //private:
+    //    Bestiole* owner;     
     public:
     PrevoyanteBehaviour()
     {
