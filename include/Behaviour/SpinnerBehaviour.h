@@ -5,7 +5,7 @@
 
 
 
-class SpinnerBehaviour:Behaviour
+class SpinnerBehaviour: public Behaviour
 {
     // private:
     //     Bestiole* owner;

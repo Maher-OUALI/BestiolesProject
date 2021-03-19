@@ -5,7 +5,7 @@
 
 
 
-class PeureuseBehaviour:Behaviour
+class PeureuseBehaviour: public Behaviour
 {
     private:
         const int MAX_NEIGHBORS=0;

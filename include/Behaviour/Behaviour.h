@@ -26,6 +26,8 @@ class Behaviour: public Component
         virtual void calculateDir(Milieu & monMilieu)= 0;
         virtual Behaviour* clone(Bestiole* ownr)=0;
 
+        double getAngleRad(){return angle_rad;}
+        double getSpeed(){return speed;}
 
         virtual ~Behaviour(){}
 };

@@ -6,7 +6,7 @@
 
 
 
-class BraindeadBehaviour:Behaviour
+class BraindeadBehaviour:public Behaviour
 {
     // private:
     //     Bestiole* owner;

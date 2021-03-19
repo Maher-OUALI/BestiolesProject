@@ -32,7 +32,7 @@ void Eyes::DrawVisionCone(UImg & support)
     
    if(EnvConfig::sDrawSensors)
    {
-   double triangleSIze=max_dist;
+   double triangleSIze=max_dist/cos(fov_deg);
    math::vector2 triangPoint1=math::vector2(1,0).rot(fov_deg)*triangleSIze;
    math::vector2 triangPoint2=math::vector2(1,0).rot(-fov_deg)*triangleSIze;
    

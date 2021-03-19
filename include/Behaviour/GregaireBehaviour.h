@@ -5,7 +5,7 @@
 
 
 
-class GregaireBehaviour:Behaviour
+class GregaireBehaviour: public Behaviour
 {
     //private:
     //    Bestiole* owner;

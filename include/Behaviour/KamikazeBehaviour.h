@@ -5,7 +5,7 @@
 
 
 
-class KamikazeBehaviour:Behaviour
+class KamikazeBehaviour: public Behaviour
 {
     //private:
     //    Bestiole* owner;

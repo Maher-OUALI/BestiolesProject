@@ -5,7 +5,7 @@
 
 
 
-class PrevoyanteBehaviour:Behaviour
+class PrevoyanteBehaviour: public Behaviour
 {
     //private:
     //    Bestiole* owner;     
