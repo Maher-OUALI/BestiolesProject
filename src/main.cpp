@@ -58,8 +58,12 @@ int main()
    
 
    Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Eyes);
-   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+70,ecosysteme.getMilieu().getHeight()/2.0+2);
+   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+70,ecosysteme.getMilieu().getHeight()/2.0+10);
    b2->setOrientationDeg(180.0);
+
+   Bestiole* b3=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Eyes);
+   b3->setCoords(ecosysteme.getMilieu().getWidth()/2.0+60,ecosysteme.getMilieu().getHeight()/2.0-10);
+   b3->setOrientationDeg(230.0);
 
    
 

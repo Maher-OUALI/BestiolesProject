@@ -19,7 +19,7 @@ static double vcarlos;
 static double vjorge;
 static double sCollisionDieProb;
 static bool sDebugVision;
-static bool sDebugCollsion;
+static bool sDebugCollision;
 static bool sDrawSensors;
 
 

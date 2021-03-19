@@ -24,6 +24,7 @@ void PeureuseBehaviour::calculateDir(Milieu & monMilieu)
                 if(owner->jeTeVois(**it)){
                     //sum all orientation
                     orientation_moyenne += (**it).getOrientationRad();
+                    size += 1;
                 }
             }
         }

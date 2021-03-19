@@ -31,6 +31,6 @@ void KamikazeBehaviour::calculateDir(Milieu & monMilieu)
     if(pos==math::vector2(-1,-1)){
         angle_rad=owner->getOrientationRad();
     }else{
-        angle_rad=atan2((owner->getPosition()-pos)[0], (owner->getPosition()-pos)[1]);
+        angle_rad=-atan2((pos-owner->getPosition())[1], (pos-owner->getPosition())[0]);
     }
 }

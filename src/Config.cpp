@@ -6,7 +6,7 @@ double EnvConfig::vcarlos=0;
 double EnvConfig::vjorge=0;
 double EnvConfig::sCollisionDieProb=0;
 bool EnvConfig::sDebugVision=false;
-bool EnvConfig::sDebugCollsion=false;
+bool EnvConfig::sDebugCollision=false;
 bool EnvConfig::sDrawSensors=false;
 
 
@@ -63,7 +63,7 @@ void EnvConfig::assignVar(const std::string name,const double value)
 
    if (!strcmp(name.c_str(),"DEBUG_COLLISION"))
    {
-      sDebugCollsion=(bool)value;
+      sDebugCollision=(bool)value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
    }
 

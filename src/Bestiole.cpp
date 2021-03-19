@@ -9,7 +9,7 @@
 
 
 const double      Bestiole::AFF_SIZE = 8.;
-const double      Bestiole::MAX_VITESSE = 10.;
+const double      Bestiole::MAX_VITESSE = 2.;
 const double      Bestiole::LIMITE_VUE = 30.;
 
 int               Bestiole::next = 0;
@@ -296,7 +296,7 @@ void Bestiole::checkCollisions(Milieu & monMilieu )
       if ( ocurredCollision(**it) )
          {
             
-            if(EnvConfig::sDebugCollsion) std::cout<<"EVENT:"<< *this <<" detected a collision with "<<(**it)<<endl;
+            if(EnvConfig::sDebugCollision) std::cout<<"EVENT:"<< *this <<" detected a collision with "<<(**it)<<endl;
             double prob = EnvConfig::sCollisionDieProb;
             if(MyRandomGen::IsTrueRandom(prob))
             {
