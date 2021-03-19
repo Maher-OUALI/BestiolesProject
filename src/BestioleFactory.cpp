@@ -34,6 +34,10 @@ Behaviour* BestioleFactory::createBehaviour(enum_Behavior selected_behaviour)
     if(selected_behaviour==enum_Behavior::Dumb) beh= (Behaviour*)(new DumbBehaviour()) ;
     if(selected_behaviour==enum_Behavior::Spinner) beh= (Behaviour*)(new SpinnerBehaviour()) ;
     if(selected_behaviour==enum_Behavior::Braindead) beh= (Behaviour*)(new BraindeadBehaviour()) ;
+    if(selected_behaviour==enum_Behavior::Gregaire) beh= (Behaviour*)(new GregaireBehaviour()) ;
+    if(selected_behaviour==enum_Behavior::Kamikaze) beh= (Behaviour*)(new KamikazeBehaviour()) ;
+    if(selected_behaviour==enum_Behavior::Peureuse) beh= (Behaviour*)(new PeureuseBehaviour()) ;
+    if(selected_behaviour==enum_Behavior::Prevoyante) beh= (Behaviour*)(new PrevoyanteBehaviour()) ;
     return beh;
 }
 
@@ -42,6 +46,8 @@ Sensor* BestioleFactory::createSensor(enum_Sensor selected_sensor)
 
     Sensor* sensor;
     if(selected_sensor==enum_Sensor::Eyes) sensor= (Sensor*)(new Eyes()) ;
+    if(selected_sensor==enum_Sensor::Ears) sensor= (Sensor*)(new Eyes()) ;
+    if(selected_sensor==enum_Sensor::Composite) sensor= (Sensor*)(new CompositeSensor()) ;
 
     return sensor;
 }

@@ -17,12 +17,17 @@ enum  class enum_Behavior
 {
    Dumb,
    Spinner,
-   Braindead
+   Braindead, 
+   Gregaire, 
+   Kamikaze,
+   Peureuse,
+   Prevoyante
 };
 
 enum  class enum_Sensor
 {
-   Eyes
+   Eyes, 
+   Ears
 };
 
 
