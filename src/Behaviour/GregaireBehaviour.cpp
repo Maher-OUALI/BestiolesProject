@@ -17,11 +17,11 @@ void GregaireBehaviour::calculateDir(Milieu & monMilieu)
 
     for ( std::vector<shared_ptr<Bestiole>>::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it ){
         //bestiole different from itself
-        if (**it.getIdentite() != owner.getIdentite()){
+        if ((**it).getIdentite() != owner->getIdentite()){
             //check if bestiole can see target
-            if(owner.jeTeVois(**it)){
+            if(owner->jeTeVois(**it)){
                 //sum all orientation
-                orientation_moyenne += it->getOrientationRad();
+                orientation_moyenne += (**it).getOrientationRad();
             }
         }
     }
