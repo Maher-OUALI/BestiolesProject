@@ -21,7 +21,7 @@ private :
    //static const T          black[];
 
    int                     width, height;
-   std::vector<shared_ptr<Bestiole>>   listeBestioles;
+   std::vector<shared_ptr<Bestiole> >   listeBestioles;
 
 public :
    Milieu( int _width, int _height );
@@ -35,7 +35,7 @@ public :
    void addMember( shared_ptr<Bestiole> b) { listeBestioles.push_back(b); listeBestioles.back(); }
    int nbVoisins( Bestiole* b);
 
-   std::vector<shared_ptr<Bestiole>> & getBestiolesList()
+   std::vector<shared_ptr<Bestiole> > & getBestiolesList()
    {
       return listeBestioles;
    }

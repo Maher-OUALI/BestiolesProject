@@ -32,6 +32,13 @@ static double sTurboJetMod;
 
 static double sPsychoChangeBProb;
 
+static double sVisionDist;
+static double sVisionAngle;
+static double sVisionIntensity;
+
+static double sHearingDist;
+static double sHearingIntensity;
+
 
 
 static size_t ReadConfFile(const char* fname);

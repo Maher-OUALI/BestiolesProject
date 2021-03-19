@@ -16,6 +16,12 @@ double EnvConfig::sPsychoChangeBProb=0;
 
 double EnvConfig::sTurboJetMod=0;
 
+double EnvConfig::sVisionDist=35;
+double EnvConfig::sVisionAngle=45;
+double EnvConfig::sVisionIntensity=0.8;
+
+double EnvConfig::sHearingDist=25;
+double EnvConfig::sHearingIntensity=0.6;
 
 
 
@@ -100,8 +106,35 @@ void EnvConfig::assignVar(const std::string name,const double value)
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
    }
 
+   if (!strcmp(name.c_str(),"HEARING_INTENSITY"))
+   {
+      sHearingIntensity=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
 
+   if (!strcmp(name.c_str(),"HEARING_DIST"))
+   {
+      sHearingDist=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
 
-  
+   if (!strcmp(name.c_str(),"VISION_INTENSITY"))
+   {
+      sVisionIntensity=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
+
+   if (!strcmp(name.c_str(),"VISION_ANGLE"))
+   {
+      sVisionAngle=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
+
+   if (!strcmp(name.c_str(),"VISION_DIST"))
+   {
+      sVisionDist=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
+
   
 }

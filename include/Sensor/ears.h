@@ -13,8 +13,8 @@ class Ears: public Sensor
 public:
     Ears()
     {
-        detection_capacity=1;
-        max_dist=20;
+        detection_capacity=EnvConfig::sHearingIntensity;
+        max_dist=EnvConfig::sHearingDist;
     }
     bool canSense(const Bestiole &b2) override;
 

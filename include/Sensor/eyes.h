@@ -14,9 +14,9 @@ class Eyes: public Sensor
 public:
     Eyes()
     {
-        fov_deg=45;
-        max_dist=20;
-        detection_capacity=1;
+        fov_deg=EnvConfig::sVisionAngle;
+        max_dist=EnvConfig::sVisionDist;
+        detection_capacity=EnvConfig::sVisionIntensity;
     }
     bool canSense(const Bestiole &b2) override;
 
