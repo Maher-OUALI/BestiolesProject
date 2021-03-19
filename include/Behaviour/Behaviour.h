@@ -1,7 +1,7 @@
 #ifndef _BEHAVIOUR_H_
 #define _BEHAVIOUR_H_
 
-#include "component.h"
+#include "Component.h"
 
 
 

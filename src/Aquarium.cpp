@@ -1,7 +1,7 @@
 #include "Aquarium.h"
 
 #include "Milieu.h"
-#include "bestioleFactory.h"
+#include "BestioleFactory.h"
 
 Aquarium::Aquarium( int width, int height, int _delay ) : CImgDisplay(), delay( _delay )
 {

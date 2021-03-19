@@ -1,7 +1,7 @@
 build/src/Milieu.o: src/Milieu.cpp include/Milieu.h include/UImg.h \
- include/CImg.h include/Bestiole.h include/vec2.h include/Sensor/sensor.h \
- include/UImg.h include/component.h include/Config.h \
- include/Behaviour/behaviour.h include/colors.h
+ include/CImg.h include/Bestiole.h include/vec2.h include/Sensor/Sensor.h \
+ include/UImg.h include/Component.h include/Config.h \
+ include/Behaviour/Behaviour.h include/Colors.h
 
 include/Milieu.h:
 
@@ -13,14 +13,14 @@ include/Bestiole.h:
 
 include/vec2.h:
 
-include/Sensor/sensor.h:
+include/Sensor/Sensor.h:
 
 include/UImg.h:
 
-include/component.h:
+include/Component.h:
 
 include/Config.h:
 
-include/Behaviour/behaviour.h:
+include/Behaviour/Behaviour.h:
 
-include/colors.h:
+include/Colors.h:

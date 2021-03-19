@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <cmath>
 #include "Config.h"
-#include "randomGen.h"
+#include "RandomGen.h"
 
 
 const double      Bestiole::AFF_SIZE = 8.;

@@ -1,7 +1,7 @@
 #ifndef _EYES_H_
 #define _EYES_H_
 
-#include "sensor.h"
+#include "Sensor.h"
 
 
 class Eyes:Sensor
