@@ -20,7 +20,7 @@ T getRandomType(std::vector<T> types,std::vector<double> probs)
         std::mt19937 gen(rd());
         std::discrete_distribution<> d(probs.begin(),probs.end());
         auto res=types[d(gen)];
-        std::cout << res << std::endl;
+        //std::cout << res << std::endl;
         return res;
     }
 
