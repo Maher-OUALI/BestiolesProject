@@ -1,4 +1,4 @@
-#include "psychoBehaviour.h"
+#include "PsychoBehaviour.h"
 #include "Bestiole.h"
 #include "Milieu.h"
 

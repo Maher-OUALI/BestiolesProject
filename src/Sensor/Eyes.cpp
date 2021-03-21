@@ -1,4 +1,4 @@
-#include "eyes.h"
+#include "Eyes.h"
 #include "Bestiole.h"
 
 

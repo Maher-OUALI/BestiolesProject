@@ -6,7 +6,7 @@
 #include <cmath>
 #include "Config.h"
 #include "randomGen.h"
-#include "bestioleFactory.h"
+#include "BestioleFactory.h"
 
 
 const double      Bestiole::AFF_SIZE = 8.;
@@ -303,7 +303,7 @@ bool Bestiole::ocurredCollision(const Bestiole & b)
 
 void Bestiole::checkCollisions(Milieu & monMilieu )
 {
-   for ( std::vector<shared_ptr<Bestiole>>::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it )
+   for ( std::vector<shared_ptr<Bestiole> >::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it )
       if ( ocurredCollision(**it) )
          {
             

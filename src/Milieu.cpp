@@ -6,7 +6,7 @@
 #include <cmath>
 #include "colors.h"
 
-#include "bestioleFactory.h"
+#include "BestioleFactory.h"
 
 
 // const T    Milieu::white[] = { (T)255, (T)255, (T)255 };

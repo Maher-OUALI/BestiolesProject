@@ -2,7 +2,7 @@
 #define _ACCESSORIE_H_
 #include "UImg.h"
 
-#include "accesorie.h"
+#include "Accesorie.h"
 
 
 

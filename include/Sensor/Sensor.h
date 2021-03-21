@@ -2,7 +2,7 @@
 #define _SENSOR_H_
 #include "UImg.h"
 
-#include "component.h"
+#include "Component.h"
 
 
 

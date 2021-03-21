@@ -5,14 +5,14 @@
 
 #include "Bestiole.h"
 
-#include "spinnerBehaviour.h"
-#include "dumbBehaviour.h"
-#include "braindeadBehaviour.h"
-#include "eyes.h"
-#include "ears.h"
-#include "compositeSensor.h"
+#include "SpinnerBehaviour.h"
+#include "DumbBehaviour.h"
+#include "BraindeadBehaviour.h"
+#include "Eyes.h"
+#include "Ears.h"
+#include "CompositeSensor.h"
 #include "Milieu.h"
-#include "turboJet.h"
+#include "TurboJet.h"
 
 
 

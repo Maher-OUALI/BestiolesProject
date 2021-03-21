@@ -1,4 +1,4 @@
-#include "compositeSensor.h"
+#include "CompositeSensor.h"
 #include "Bestiole.h"
 
 

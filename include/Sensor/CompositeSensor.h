@@ -1,9 +1,9 @@
 #ifndef _COMPOSITE_SENSOR_H_
 #define _COMPOSITE_SENSOR_H_
 
-#include "sensor.h"
-#include "ears.h"
-#include "eyes.h"
+#include "Sensor.h"
+#include "Ears.h"
+#include "Eyes.h"
 
 
 class CompositeSensor: public Sensor

@@ -1,4 +1,4 @@
-#include "spinnerBehaviour.h"
+#include "SpinnerBehaviour.h"
 #include "Bestiole.h"
 #include "Milieu.h"
 

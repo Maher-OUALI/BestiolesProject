@@ -1,9 +1,9 @@
 #ifndef _PSYCHO_BEHAVIOUR_H_
 #define _PSYCHO_BEHAVIOUR_H_
 
-#include "behaviour.h"
-#include "dumbBehaviour.h"
-#include "spinnerBehaviour.h"
+#include "Behaviour.h"
+#include "DumbBehaviour.h"
+#include "SpinnerBehaviour.h"
 
 
 enum  PsycBehvrs

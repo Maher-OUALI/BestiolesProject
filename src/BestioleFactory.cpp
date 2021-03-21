@@ -1,13 +1,13 @@
-#include "bestioleFactory.h"
+#include "BestioleFactory.h"
 
 #include "randomGen.h"
 
-#include "spinnerBehaviour.h"
-#include "dumbBehaviour.h"
-#include "braindeadBehaviour.h"
-#include "psychoBehaviour.h"
-#include "eyes.h"
-#include "ears.h"
+#include "SpinnerBehaviour.h"
+#include "DumbBehaviour.h"
+#include "BraindeadBehaviour.h"
+#include "PsychoBehaviour.h"
+#include "Eyes.h"
+#include "Ears.h"
 
 #include <memory>
 

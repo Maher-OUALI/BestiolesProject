@@ -1,7 +1,7 @@
 #ifndef _BRAINDEAD_BEHAVIOUR_H_
 #define _BRAINDEAD_BEHAVIOUR_H_
 
-#include "behaviour.h"
+#include "Behaviour.h"
 
 
 

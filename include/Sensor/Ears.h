@@ -1,7 +1,7 @@
 #ifndef _EARS_H_
 #define _EARS_H_
 
-#include "sensor.h"
+#include "Sensor.h"
 
 
 class Ears: public Sensor
