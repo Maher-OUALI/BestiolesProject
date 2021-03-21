@@ -1,5 +1,5 @@
-#ifndef _TURBOJET_H_
-#define _TURBOJET_H_
+#ifndef _SHIELD_H_
+#define _SHIELD_H_
 #include "UImg.h"
 
 #include "Accessory.h"
@@ -7,23 +7,24 @@
 
 
 
-class TurboJet:public Accessory
+class Shield:public Accessory
 {
 
 
     
 public:
-    TurboJet():Accessory()
+    Shield():Accessory()
     {
-        speed_mod_=EnvConfig::sTurboJetMod;
+        speed_mod_=0.5;
+        armor_mod_=EnvConfig::sShieldArmorMod;
         
     }
    // virtual double getSpeedMod(){return speed_mod_;}
     //virtual double getArmorMod(){return armor_mod_;}
     //virtual double getStealthMod(){return stealth_mod_;}
-    TurboJet* clone(Bestiole* ownr) override;
+    Shield* clone(Bestiole* ownr) override;
 
-    ~TurboJet(){}
+    ~Shield(){}
 
 
 

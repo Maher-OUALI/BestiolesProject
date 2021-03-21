@@ -308,7 +308,7 @@ void Bestiole::checkCollisions(Milieu & monMilieu )
          {
             
             if(EnvConfig::sDebugCollsion) std::cout<<"EVENT:"<< *this <<" detected a collision with "<<(**it)<<endl;
-            double prob = EnvConfig::sCollisionDieProb;
+            double prob = EnvConfig::sCollisionDieProb/getFinalArmor();
             if(MyRandomGen::IsTrueRandom(prob))
             {
                cout<<"EVENT: "<<*this<<" was marked to die"<<endl;

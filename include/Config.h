@@ -28,6 +28,8 @@ static double sCloneProb;
 static double sDieProb;
 
 static double sTurboJetMod;
+static double sShieldArmorMod;
+static double sCloakStealthMod;
 
 
 static double sPsychoChangeBProb;
@@ -38,6 +40,8 @@ static double sVisionIntensity;
 
 static double sHearingDist;
 static double sHearingIntensity;
+
+static int sMaxBestioles;
 
 
 

@@ -31,7 +31,9 @@ enum  class enum_Sensor
 
 enum  class enum_Accessory
 {
-   Turbojet
+   Turbojet,
+   Cloak,
+   Shield
 
 };
 

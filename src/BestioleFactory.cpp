@@ -8,6 +8,9 @@
 #include "PsychoBehaviour.h"
 #include "Eyes.h"
 #include "Ears.h"
+#include "TurboJet.h"
+#include "Shield.h"
+#include "Cloak.h"
 
 #include <memory>
 
@@ -18,7 +21,10 @@ Milieu* BestioleFactory::milieu_=0;
 
 std::shared_ptr<Bestiole> BestioleFactory::createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor,enum_Accessory selected_accessory)
 {
-    Behaviour* behav=createBehaviour( selected_behaviour);
+    if ((int)(milieu_->getBestiolesList().size())<EnvConfig::sMaxBestioles)
+    {
+        //cout<<milieu_->getBestiolesList().size()<<endl;
+        Behaviour* behav=createBehaviour( selected_behaviour);
     Sensor* sensor= createSensor(selected_sensor);
     Accessory* accessory= createAccessory(selected_accessory);
     std::shared_ptr<Bestiole> result =std::shared_ptr<Bestiole>( new Bestiole(sensor,behav,accessory ));
@@ -29,9 +35,15 @@ std::shared_ptr<Bestiole> BestioleFactory::createBestiole(enum_Behavior selected
     (*result).setCoords(init_x,init_y);
     milieu_->addMember(result);
 
+
+
     //ilan branch
 
     return result;
+    }
+    else{
+        return nullptr;
+    }
 }
 
 
@@ -40,7 +52,7 @@ std::shared_ptr<Bestiole> BestioleFactory::createRandomBestiole()
     
     enum_Sensor curr_sensor=MyRandomGen::getRandomType<enum_Sensor>(vector<enum_Sensor>({enum_Sensor::Eyes,enum_Sensor::Ears,enum_Sensor::CompositeSensor}),vector<double>({0.3,0.3,0.3}));
     enum_Behavior curr_behaviour=MyRandomGen::getRandomType<enum_Behavior>(vector<enum_Behavior>({enum_Behavior::Dumb,enum_Behavior::Spinner}),vector<double>({0.5,0.5}));
-    enum_Accessory curr_accessory=MyRandomGen::getRandomType<enum_Accessory>(vector<enum_Accessory>({enum_Accessory::Turbojet}),vector<double>({1.0}));
+    enum_Accessory curr_accessory=MyRandomGen::getRandomType<enum_Accessory>(vector<enum_Accessory>({enum_Accessory::Turbojet,enum_Accessory::Shield,enum_Accessory::Cloak}),vector<double>({0.3,0.3,0.3}));
 
     std::shared_ptr<Bestiole> result =createBestiole(curr_behaviour,curr_sensor,curr_accessory);
 
@@ -51,11 +63,15 @@ std::shared_ptr<Bestiole> BestioleFactory::createRandomBestiole()
 
 std::shared_ptr<Bestiole> BestioleFactory::createBestioleClone(const Bestiole & b)
 {
-    
+
+    if ((int)(milieu_->getBestiolesList().size())<EnvConfig::sMaxBestioles)
+    {
     std::shared_ptr<Bestiole> result =std::shared_ptr<Bestiole>( new Bestiole(b ));
     milieu_->addMember(result);
-
     return result;
+    }
+    return nullptr;
+    
 }
 
 Behaviour* BestioleFactory::createBehaviour(enum_Behavior selected_behaviour)
@@ -75,6 +91,8 @@ Accessory* BestioleFactory::createAccessory(enum_Accessory selected_accessory)
 
     Accessory* acc;
     if(selected_accessory==enum_Accessory::Turbojet) acc= (Accessory*)(new TurboJet()) ;
+    if(selected_accessory==enum_Accessory::Shield) acc= (Accessory*)(new Shield()) ;
+    if(selected_accessory==enum_Accessory::Cloak) acc= (Accessory*)(new Cloak()) ;
 
     return acc;
 }
