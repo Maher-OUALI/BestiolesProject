@@ -16,12 +16,12 @@ Milieu* BestioleFactory::milieu_=0;
 
 
 
-std::shared_ptr<Bestiole> BestioleFactory::createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor,enum_Accesorie selected_accesorie)
+std::shared_ptr<Bestiole> BestioleFactory::createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor,enum_Accessory selected_accessory)
 {
     Behaviour* behav=createBehaviour( selected_behaviour);
     Sensor* sensor= createSensor(selected_sensor);
-    Accesorie* accesorie= createAccesorie(selected_accesorie);
-    std::shared_ptr<Bestiole> result =std::shared_ptr<Bestiole>( new Bestiole(sensor,behav,accesorie ));
+    Accessory* accessory= createAccessory(selected_accessory);
+    std::shared_ptr<Bestiole> result =std::shared_ptr<Bestiole>( new Bestiole(sensor,behav,accessory ));
 
 
     double init_x=static_cast<double>( rand() )/RAND_MAX*milieu_->getWidth();
@@ -40,9 +40,9 @@ std::shared_ptr<Bestiole> BestioleFactory::createRandomBestiole()
     
     enum_Sensor curr_sensor=MyRandomGen::getRandomType<enum_Sensor>(vector<enum_Sensor>({enum_Sensor::Eyes,enum_Sensor::Ears,enum_Sensor::CompositeSensor}),vector<double>({0.3,0.3,0.3}));
     enum_Behavior curr_behaviour=MyRandomGen::getRandomType<enum_Behavior>(vector<enum_Behavior>({enum_Behavior::Dumb,enum_Behavior::Spinner}),vector<double>({0.5,0.5}));
-    enum_Accesorie curr_accesorie=MyRandomGen::getRandomType<enum_Accesorie>(vector<enum_Accesorie>({enum_Accesorie::Turbojet}),vector<double>({1.0}));
+    enum_Accessory curr_accessory=MyRandomGen::getRandomType<enum_Accessory>(vector<enum_Accessory>({enum_Accessory::Turbojet}),vector<double>({1.0}));
 
-    std::shared_ptr<Bestiole> result =createBestiole(curr_behaviour,curr_sensor,curr_accesorie);
+    std::shared_ptr<Bestiole> result =createBestiole(curr_behaviour,curr_sensor,curr_accessory);
 
 
 
@@ -70,11 +70,11 @@ Behaviour* BestioleFactory::createBehaviour(enum_Behavior selected_behaviour)
 }
 
 
-Accesorie* BestioleFactory::createAccesorie(enum_Accesorie selected_accesorie)
+Accessory* BestioleFactory::createAccessory(enum_Accessory selected_accessory)
 {
 
-    Accesorie* acc;
-    if(selected_accesorie==enum_Accesorie::Turbojet) acc= (Accesorie*)(new TurboJet()) ;
+    Accessory* acc;
+    if(selected_accessory==enum_Accessory::Turbojet) acc= (Accessory*)(new TurboJet()) ;
 
     return acc;
 }

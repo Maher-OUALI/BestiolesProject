@@ -6,7 +6,7 @@
 
 
 
-class Accesorie:public Component
+class Accessory:public Component
 {
 
 protected:
@@ -15,7 +15,7 @@ double armor_mod_;
 double stealth_mod_;
     
 public:
-    Accesorie()
+    Accessory()
     {
         speed_mod_=1.0;
         armor_mod_=1.0;
@@ -24,9 +24,9 @@ public:
     virtual double getSpeedMod(){return speed_mod_;}
     virtual double getArmorMod(){return armor_mod_;}
     virtual double getStealthMod(){return stealth_mod_;}
-    virtual Accesorie* clone(Bestiole* ownr)=0;
+    virtual Accessory* clone(Bestiole* ownr)=0;
 
-    virtual ~Accesorie(){}
+    virtual ~Accessory(){}
 
 
 

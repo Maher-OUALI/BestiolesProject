@@ -8,7 +8,7 @@
 #include "vec2.h"
 #include "Sensor.h"
 #include "Behaviour.h"
-#include  "Accesorie.h"
+#include  "Accessory.h"
 
 using namespace std;
 
@@ -29,7 +29,7 @@ enum  class enum_Sensor
    CompositeSensor
 };
 
-enum  class enum_Accesorie
+enum  class enum_Accessory
 {
    Turbojet
 
@@ -76,7 +76,7 @@ private :
 
    Sensor* sensor_;
    Behaviour* behaviour_;
-   Accesorie* accesorie_;
+   Accessory* accessory_;
 
 
 
@@ -89,7 +89,7 @@ private :
    void bouge( int xLim, int yLim );
 
 public :                                           // Forme canonique :
-   Bestiole(   Sensor* const sensor ,Behaviour* const behaviour,Accesorie* const accesorie);                               // Constructeur par defaut
+   Bestiole(   Sensor* const sensor ,Behaviour* const behaviour,Accessory* const accessory);                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    //Bestiole( Bestiole && b );                 // Move constructor
    ~Bestiole( void );                              // Destructeur

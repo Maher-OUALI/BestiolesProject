@@ -2,18 +2,18 @@
 #define _ACCESSORIE_H_
 #include "UImg.h"
 
-#include "Accesorie.h"
+#include "Accessory.h"
 
 
 
 
-class TurboJet:public Accesorie
+class TurboJet:public Accessory
 {
 
 
     
 public:
-    TurboJet():Accesorie()
+    TurboJet():Accessory()
     {
         speed_mod_=EnvConfig::sTurboJetMod;
         

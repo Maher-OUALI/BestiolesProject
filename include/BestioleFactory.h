@@ -21,7 +21,7 @@ class BestioleFactory
    
    public:
      // BestioleFactory(){}
- static std::shared_ptr<Bestiole> createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor,enum_Accesorie selected_accesorie);
+ static std::shared_ptr<Bestiole> createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor,enum_Accessory selected_accessory);
    static std::shared_ptr<Bestiole> createBestioleClone(const Bestiole & b);
    static std::shared_ptr<Bestiole> createRandomBestiole();
    //,bool register_best=false
@@ -35,7 +35,7 @@ class BestioleFactory
 
    static   Sensor* createSensor(enum_Sensor selected_sensor);
 
-   static Accesorie* createAccesorie(enum_Accesorie selected_accesorie);
+   static Accessory* createAccessory(enum_Accessory selected_accessory);
 };
 
 
