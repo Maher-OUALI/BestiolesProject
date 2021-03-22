@@ -18,7 +18,11 @@ enum  class enum_Behavior
 {
    Dumb,
    Spinner,
-   Braindead,
+   Braindead, 
+   Gregaire, 
+   Kamikaze,
+   Peureuse,
+   Prevoyante,
    Psycho
 };
 
@@ -34,7 +38,6 @@ enum  class enum_Accessory
    Turbojet,
    Cloak,
    Shield
-
 };
 
 
