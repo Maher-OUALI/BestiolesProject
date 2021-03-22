@@ -23,6 +23,8 @@
 
 //including accessories
 #include "TurboJet.h"
+#include "Cloak.h"
+#include "Shield.h"
 
 
 
