@@ -306,13 +306,14 @@ void Bestiole::checkCollisions(Milieu & monMilieu )
    for ( std::vector<shared_ptr<Bestiole> >::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it )
       if ( ocurredCollision(**it) )
          {
-            
+            orientation+=M_PI;
             if(EnvConfig::sDebugCollsion) std::cout<<"EVENT:"<< *this <<" detected a collision with "<<(**it)<<endl;
             double prob = EnvConfig::sCollisionDieProb/getFinalArmor();
             if(MyRandomGen::IsTrueRandom(prob))
             {
                cout<<"EVENT: "<<*this<<" was marked to die"<<endl;
                markedToDie=true;
+               
             }
          }
 }
