@@ -12,7 +12,7 @@ PeureuseBehaviour* PeureuseBehaviour::clone(Bestiole* ownr)
 
 void PeureuseBehaviour::calculateDir(Milieu & monMilieu)
 {
-    if(monMilieu.nbVoisins(owner)>MAX_NEIGHBORS){
+    if(monMilieu.nbVoisins(owner)>PeureuseBehaviour::max_neighbors){
 
         double orientation_moyenne;
         int size=0;
@@ -31,7 +31,7 @@ void PeureuseBehaviour::calculateDir(Milieu & monMilieu)
 
         //return the opposite of average orientation
         angle_rad=-orientation_moyenne/size;
-        speed=SPEED_PEUREUSE_FACTOR;
+        speed=PeureuseBehaviour::speed_factor;
         isEscaping=true;
 
     }else{
