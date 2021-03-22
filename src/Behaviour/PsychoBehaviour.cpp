@@ -17,6 +17,11 @@ void PsychoBehaviour::setOwner(Bestiole* ownr)
     owner=ownr;
     dumbBehaviour_.setOwner(ownr);
     spinnerBehaviour_.setOwner(ownr);
+    kamikazeBehaviour_.setOwner(ownr);
+    prevoyanteBehaviour_.setOwner(ownr);
+    peureuseBehaviour_.setOwner(ownr);
+    gregaireBehaviour_.setOwner(ownr);
+    braindeadBehaviour_.setOwner(ownr);
 }
 
 
@@ -31,6 +36,11 @@ void PsychoBehaviour::calculateDir(Milieu & monMilieu)
         auto newBehaviour=MyRandomGen::getRandomType<PsycBehvrs>(std::vector<PsycBehvrs>({psychDumb,psychSpinner}),std::vector<double>({0.5,0.5}));
         if(newBehaviour==psychSpinner)currentBehaviour_=&spinnerBehaviour_;
         if(newBehaviour==psychDumb)currentBehaviour_=&dumbBehaviour_;
+        if(newBehaviour==psychBraindead)currentBehaviour_=&braindeadBehaviour_;
+        if(newBehaviour==psychKamikaze)currentBehaviour_=&kamikazeBehaviour_;
+        if(newBehaviour==psychPeureuse)currentBehaviour_=&peureuseBehaviour_;
+        if(newBehaviour==psychPrevoyante)currentBehaviour_=&prevoyanteBehaviour_;
+        if(newBehaviour==psychGregaire)currentBehaviour_=&gregaireBehaviour_;
     }
 
 
