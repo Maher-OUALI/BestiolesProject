@@ -225,7 +225,7 @@ void Bestiole::bouge( int xLim, int yLim )
 
 void Bestiole::action( Milieu & monMilieu )
 {
-   checkCollisions(monMilieu);
+   //checkCollisions(monMilieu);
 
    if(MyRandomGen::IsTrueRandom(EnvConfig::sDieProb)) markedToDie=True;
    if(MyRandomGen::IsTrueRandom(EnvConfig::sCloneProb)) BestioleFactory::createBestioleClone(*this);
