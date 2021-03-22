@@ -5,13 +5,23 @@
 
 #include "Bestiole.h"
 
+//including behaviours
 #include "SpinnerBehaviour.h"
 #include "DumbBehaviour.h"
 #include "BraindeadBehaviour.h"
+#include "PeureuseBehaviour.h"
+#include "PrevoyanteBehaviour.h"
+#include "KamikazeBehaviour.h"
+#include "GregaireBehaviour.h"
+#include "PsychoBehaviour.h"
+
+//including sensors
 #include "Eyes.h"
 #include "Ears.h"
 #include "CompositeSensor.h"
 #include "Milieu.h"
+
+//including accessories
 #include "TurboJet.h"
 
 
