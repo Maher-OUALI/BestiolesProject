@@ -1,9 +1,9 @@
 PROJECT := $(notdir $(CURDIR))
 #EXCECUTABLE = $(BUILDDIR)/$(PROJECT)
-EXCECUTABLE = main
+EXCECUTABLE := main unit_tests/kamikaseBehaviourUnitTest
 
 # Directories specification
-SRCDIRS := src src/Behaviour src/Sensor src/Accesorie
+SRCDIRS := src unit_tests src/Behaviour src/Sensor src/Accesorie
 INCDIRS := include include/Behaviour include/Sensor include/Accesorie
 BUILDDIR := build
 

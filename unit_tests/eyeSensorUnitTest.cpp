@@ -35,7 +35,7 @@ int eyeSensorUnitTest()
    Aquarium       ecosysteme( 640, 480, 30 );
    BestioleFactory::milieu_=&ecosysteme.getMilieu();
 
-   //create a kamikaze bestiole
+   
    Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Gregaire,enum_Sensor::Eyes);
    b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0);
    b1->setOrientationDeg(0.0);
