@@ -8,19 +8,20 @@
 class PeureuseBehaviour: public Behaviour
 {
     private:
-        const int MAX_NEIGHBORS=0;
-        const double SPEED_PEUREUSE_FACTOR=3.0;
-    //    Bestiole* owner;
-        bool isEscaping=false;
+        int max_neighbors;
+        double speed_factor;
+        bool isEscaping;
     public:
-    PeureuseBehaviour()
-    {
-        
-    }
-    void calculateDir(Milieu & monMilieu) override;
+        PeureuseBehaviour()
+        {
+            max_neighbors=EnvConfig::sMaxNeighborsPeureuse;
+            speed_factor=EnvConfig::sRunawayFactorPeureuse;
+            isEscaping=false;
+        }
+        void calculateDir(Milieu & monMilieu) override;
 
-    PeureuseBehaviour* clone(Bestiole* ownr);
-    ~PeureuseBehaviour(){}
+        PeureuseBehaviour* clone(Bestiole* ownr);
+        ~PeureuseBehaviour(){}
 };
 
 #endif
