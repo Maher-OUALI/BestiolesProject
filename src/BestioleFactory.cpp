@@ -2,12 +2,22 @@
 
 #include "randomGen.h"
 
+//include behaviours
 #include "SpinnerBehaviour.h"
 #include "DumbBehaviour.h"
 #include "BraindeadBehaviour.h"
 #include "PsychoBehaviour.h"
+#include "GregaireBehaviour.h"
+#include "PrevoyanteBehaviour.h"
+#include "PeureuseBehaviour.h"
+#include "KamikazeBehaviour.h"
+
+//include sensors
+#include "CompositeSensor.h"
 #include "Eyes.h"
 #include "Ears.h"
+
+//include Accessories
 #include "TurboJet.h"
 #include "Shield.h"
 #include "Cloak.h"
@@ -81,7 +91,10 @@ Behaviour* BestioleFactory::createBehaviour(enum_Behavior selected_behaviour)
     if(selected_behaviour==enum_Behavior::Dumb) beh= (Behaviour*)(new DumbBehaviour()) ;
     if(selected_behaviour==enum_Behavior::Spinner) beh= (Behaviour*)(new SpinnerBehaviour()) ;
     if(selected_behaviour==enum_Behavior::Braindead) beh= (Behaviour*)(new BraindeadBehaviour()) ;
-    if(selected_behaviour==enum_Behavior::Psycho) beh= (Behaviour*)(new PsychoBehaviour()) ;
+    if(selected_behaviour==enum_Behavior::Gregaire) beh= (Behaviour*)(new GregaireBehaviour()) ;
+    if(selected_behaviour==enum_Behavior::Kamikaze) beh= (Behaviour*)(new KamikazeBehaviour()) ;
+    if(selected_behaviour==enum_Behavior::Peureuse) beh= (Behaviour*)(new PeureuseBehaviour()) ;
+    if(selected_behaviour==enum_Behavior::Prevoyante) beh= (Behaviour*)(new PrevoyanteBehaviour()) ;
     return beh;
 }
 
