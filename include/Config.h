@@ -42,7 +42,9 @@ static double sHearingDist;
 static double sHearingIntensity;
 
 static int sMaxBestioles;
-
+  
+static int sMaxNeighborsPeureuse;
+static double sRunawayFactorPeureuse;
 
 
 static size_t ReadConfFile(const char* fname);
