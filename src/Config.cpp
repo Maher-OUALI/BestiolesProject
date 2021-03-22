@@ -27,6 +27,9 @@ double EnvConfig::sHearingIntensity=0.6;
 
 int EnvConfig::sMaxBestioles=0;
 
+int EnvConfig::sMaxNeighborsPeureuse=3;
+double EnvConfig::sRunawayFactorPeureuse=3.0;
+
 
 
 size_t EnvConfig::ReadConfFile(const char* fname)
@@ -158,7 +161,17 @@ void EnvConfig::assignVar(const std::string name,const double value)
       sMaxBestioles=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
    }
-
-
+   
+   if (!strcmp(name.c_str(),"MAX_NEIGHBORS_PEUREUSE"))
+   {
+      sMaxNeighborsPeureuse=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
+   
+   if (!strcmp(name.c_str(),"RUNAWAY_FACTOR_PEUREUSE"))
+   {
+      sRunawayFactorPeureuse=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+   }
   
 }
