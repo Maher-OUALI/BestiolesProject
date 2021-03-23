@@ -20,8 +20,8 @@ void SpinnerBehaviour::calculateDir(Milieu & monMilieu)
             
               if(EnvConfig::sDebugVision)  {
                   cout<<*owner<<" can see "<<**it<<std::endl;
-                  cout<<(*it).get()->getFinalStealth()<<std::endl;
-                  cout<<owner->getSensor()<<std::endl;
+                  //cout<<(*it).get()->getFinalStealth()<<std::endl;
+                  //cout<<owner->getSensor()->cap()<<std::endl;
               }
             
         }

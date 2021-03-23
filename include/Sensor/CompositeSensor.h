@@ -24,6 +24,7 @@ public:
 
     void Draw(UImg & support) override;
 
+
     void DrawCompositeSensor(UImg & support);
 
     void setOwner(Bestiole* ownr) override;

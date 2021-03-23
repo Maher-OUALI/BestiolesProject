@@ -334,7 +334,7 @@ double Bestiole::getFinalArmor()
 }
 double Bestiole::getFinalStealth() const
 {
-   return base_stealth+accessory_->getSpeedMod();
+   return base_stealth+accessory_->getStealthMod();
 }
 
 

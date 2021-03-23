@@ -20,6 +20,7 @@ public:
 
     Ears* clone(Bestiole* ownr) ;
 
+
     void Draw(UImg & support) override;
 
     void DrawHearingCircle(UImg & support);
