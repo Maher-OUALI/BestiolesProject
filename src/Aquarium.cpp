@@ -41,6 +41,7 @@ void Aquarium::run( void )
    bool stillPressing=false;
    std::stringstream namef; 
    system("rm ./results/* ");
+   system("mkdir ./results/ ");
    cout << "running Aquarium" << endl;
 
    
