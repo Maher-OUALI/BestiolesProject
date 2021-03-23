@@ -23,11 +23,13 @@ void SpinnerBehaviour::calculateDir(Milieu & monMilieu)
                   //cout<<(*it).get()->getFinalStealth()<<std::endl;
                   //cout<<owner->getSensor()->cap()<<std::endl;
               }
+
             
         }
         else
         {
           if(EnvConfig::sDebugVision)  cout<<"....................."<<std::endl;
         }
+        
     }
 }

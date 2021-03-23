@@ -21,7 +21,7 @@ void BraindeadBehaviour::calculateDir(Milieu & monMilieu)
         if(owner->jeTeVois(**it) ){
             
             
-              if(EnvConfig::sDebugVision)  cout<<*owner<<" can see "<<**it<<std::endl;
+              if(EnvConfig::sDebugVision)  cout<<*owner<<" can sense "<<**it<<std::endl;
             
         }
         else

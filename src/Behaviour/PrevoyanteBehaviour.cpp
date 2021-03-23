@@ -21,11 +21,15 @@ void PrevoyanteBehaviour::calculateDir(Milieu & monMilieu)
         if ((**it).getIdentite() != owner->getIdentite()){
             //check if bestiole can see target
             if(owner->jeTeVois(**it)){
-                if(EnvConfig::sDebugVision)  cout<<*owner<<" can see "<<**it<<std::endl;
+                if(EnvConfig::sDebugVision)  cout<<*owner<<" can sense "<<**it<<std::endl;
                 //update nearest bestiole position to the owner
                 if(math::vector2::distance(owner->getPosition(),(**it).getPosition()) < min_dist){
                     pos = (**it).getPosition();
                 }
+            }
+            else
+            {
+            if(EnvConfig::sDebugVision)  cout<<"....................."<<std::endl;
             }
         }
     }

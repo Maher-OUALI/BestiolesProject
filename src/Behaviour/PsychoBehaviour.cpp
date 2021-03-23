@@ -47,4 +47,20 @@ void PsychoBehaviour::calculateDir(Milieu & monMilieu)
     currentBehaviour_->calculateDir(monMilieu);
     angle_rad= currentBehaviour_->getAngleRad();
     speed=currentBehaviour_->getSpeed();
+
+    for ( std::vector<shared_ptr<Bestiole>>::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it )
+    if ((*it).get()!=owner)
+    {
+        if(owner->jeTeVois(**it) ){
+            
+            
+              if(EnvConfig::sDebugVision)  cout<<*owner<<" can sense "<<**it<<std::endl;
+            
+        }
+        else
+        {
+          if(EnvConfig::sDebugVision)  cout<<"....................."<<std::endl;
+        }
+        
+    }
 }
