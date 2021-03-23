@@ -34,6 +34,7 @@ class Behaviour: public Component
 
         double getAngleRad(){return angle_rad;}
         double getSpeed(){return speed;}
+        T getColor(){return color_;}
 
 
         virtual ~Behaviour(){}
