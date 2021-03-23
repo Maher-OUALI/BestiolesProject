@@ -27,7 +27,7 @@ public:
 
         speed_mod_=1.0;
         armor_mod_=1.0;
-        stealth_mod_=1.0;
+        stealth_mod_=0.0;
     }
     virtual double getSpeedMod(){return speed_mod_;}
     virtual double getArmorMod(){return armor_mod_;}

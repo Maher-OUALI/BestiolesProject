@@ -135,7 +135,7 @@ public :                                           // Forme canonique :
 
    double getFinalSpeed();
    double getFinalArmor();
-   double getFinalStealth();
+   double getFinalStealth() const;
 
 
    //Temporary

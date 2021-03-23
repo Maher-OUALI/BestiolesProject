@@ -22,6 +22,7 @@ public:
 
     Eyes* clone(Bestiole* ownr) ;
 
+
     void Draw(UImg & support) override;
 
     void DrawVisionCone(UImg & support);

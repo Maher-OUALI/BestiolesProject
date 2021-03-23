@@ -7,7 +7,7 @@ bool Ears::canSense(const Bestiole &b2)
 {
     
     double distance=math::vector2::distance(owner->getPosition(),b2.getPosition());
-    if(max_dist>distance)
+    if(max_dist>distance && b2.getFinalStealth()<detection_capacity )
     {
         return true;
     }

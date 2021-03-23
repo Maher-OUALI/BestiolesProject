@@ -22,6 +22,7 @@ void PeureuseBehaviour::calculateDir(Milieu & monMilieu)
             if ((**it).getIdentite() != owner->getIdentite()){
                 //check if bestiole can see target
                 if(owner->jeTeVois(**it)){
+                    if(EnvConfig::sDebugVision)  cout<<*owner<<" can see "<<**it<<std::endl;
                     //sum all orientation
                     orientation_moyenne += (**it).getOrientationRad();
                     size += 1;

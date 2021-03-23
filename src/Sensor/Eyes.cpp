@@ -10,7 +10,7 @@ bool Eyes::canSense(const Bestiole &b2)
     double ownerAngle=owner->getAngleDeg();
     double finalAngle=math::constrainAngle(relativeAngle-ownerAngle);
     double distance=math::vector2::distance(owner->getPosition(),b2.getPosition());
-    if(finalAngle < fov_deg   && finalAngle > -fov_deg && max_dist>distance )
+    if(finalAngle < fov_deg   && finalAngle > -fov_deg && max_dist>distance && b2.getFinalStealth()<detection_capacity )
     {
         return true;
     }
@@ -21,6 +21,7 @@ Eyes* Eyes::clone(Bestiole* ownr)
 {
     return new Eyes();
 }
+
 
 
 void Eyes::Draw(UImg & support)
