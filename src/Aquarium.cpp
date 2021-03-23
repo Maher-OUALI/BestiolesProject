@@ -84,12 +84,12 @@ void Aquarium::run( void )
                lastchar=waitForKey();
                if(static_cast<unsigned char>( lastchar) !='f' && lastchar>=65456)
                   sToDel=sToDel*10+(lastchar-65456);
-                  cout<<sToDel<<endl;
+                  cout<<"Input: "<<sToDel<<endl;
             }
             
             
             cout<<sToDel<<endl;
-            cout<<"Pressed D..."<<endl;
+
 
             
             for ( std::vector<shared_ptr<Bestiole> >::iterator it = flotte->getBestiolesList().begin() ; it != flotte->getBestiolesList().end() ; ++it )
@@ -152,7 +152,7 @@ int Aquarium::waitForKey()
 
             }
             
-            cout<<"Entered character: "<<lastkey<<endl;
+            //cout<<"Entered character: "<<lastkey<<endl;
             return lastkey;
 }
 
