@@ -5,24 +5,6 @@ class main
 +main():int
 }
 
-interface Aquarium_
-{
-  -Milieu:*flotte
-  -int:delay
-  -int:currentTime
-  
-  +Aquarium(int width, int height, int _delay)
-  +~Aquarium()
-
-  +getMilieu(): Milieu&
-  +run():void
-  +waitForKey(): int
-  +saveState(stringstream& namef):void
-  +saveBilan():void
-
-
-}
-
 class BestioleFactory
 {
   +Milieu*: milieu_
@@ -38,8 +20,8 @@ class BestioleFactory
   -createAccessory(enum_Accessory selected_accessory):Accessory
 }
 
-interface Milieu_{
-  -int: width
+class Milieu {
+    -int: width
   -int: height
   -vector<shared_ptr<Bestiole>>: listeBestioles
   
@@ -53,18 +35,25 @@ interface Milieu_{
   getBestiolesList():vector<shared_ptr<Bestiole>>&
   +applyDeath():void
   +operator<<(): ostream&
-
-  
-}
-
-class Milieu {
-  shouldDie(Bestiole b):bool
+  +shouldDie(Bestiole b):bool
 }
 
 
 class Aquarium{
+  -Milieu:*flotte
+  -int:delay
+  -int:currentTime
   +int:screenWidth
   +int:screenHeigth
+  
+  +Aquarium(int width, int height, int _delay)
+  +~Aquarium()
+
+  +getMilieu(): Milieu&
+  +run():void
+  +waitForKey(): int
+  +saveState(stringstream& namef):void
+  +saveBilan():void
 
   +void run()
 }
@@ -227,7 +216,7 @@ class PeureuseBehaviour{
   -bool: isEscaping
 
   +PeureuseBehaviour()
-  -~PeureuseBehaviour()
+  +~PeureuseBehaviour()
 
   +calculateDir(Milieu& monMilieu):void
   +clone(Bestiole* ownr): PeureuseBehaviour*
@@ -344,8 +333,6 @@ class vec2{
 
 
 main-->Aquarium
-Aquarium_<|..Aquarium
-Milieu_ <|.. Milieu
 
 Aquarium-->Milieu
 Milieu *-- Bestiole
@@ -372,7 +359,16 @@ Behaviour<|-- GregaireBehaviour
 Behaviour<|-- KamikazeBehaviour
 Behaviour<|-- PeureuseBehaviour
 Behaviour<|-- PrevoyanteBehaviour
-PsychoBehaviour--|>PsycBehvrs
+PsychoBehaviour..>PsycBehvrs
+
+PsychoBehaviour *-- SpinnerBehaviour
+PsychoBehaviour *-- DumbBehaviour
+PsychoBehaviour *-- KamikazeBehaviour
+PsychoBehaviour *-- PrevoyanteBehaviour
+PsychoBehaviour *-- GregaireBehaviour
+PsychoBehaviour *-- BraindeadBehaviour
+PsychoBehaviour *-- SpinnerBehaviour
+PsychoBehaviour *-- PeureuseBehaviour
 
 
 Component<|--Accessory
