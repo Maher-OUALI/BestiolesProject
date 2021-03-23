@@ -78,14 +78,16 @@ std::shared_ptr<Bestiole> BestioleFactory::createRandomBestiole()
         enum_Behavior::Kamikaze,
         enum_Behavior::Peureuse,
         enum_Behavior::Prevoyante,
-        enum_Behavior::Spinner}),vector<double>(
+        enum_Behavior::Spinner,
+        enum_Behavior::Psycho}),vector<double>(
             {EnvConfig::behaviourDumbProb,
             EnvConfig::behaviourBrainDeadProb,
             EnvConfig::behaviourGregaireProb,
             EnvConfig::behaviourKamikazeProb,
             EnvConfig::behaviourLazyProb,
             EnvConfig::behaviourPrevoyanteProb,
-            EnvConfig::behaviourSpinnerProb}
+            EnvConfig::behaviourSpinnerProb,
+            EnvConfig::behaviourPsychoProb}
             ));
 
 
@@ -129,14 +131,16 @@ Behaviour* BestioleFactory::createRandomBehaviour()
         enum_Behavior::Kamikaze,
         enum_Behavior::Peureuse,
         enum_Behavior::Prevoyante,
-        enum_Behavior::Spinner}),vector<double>(
+        enum_Behavior::Spinner,
+        enum_Behavior::Psycho}),vector<double>(
             {EnvConfig::behaviourDumbProb,
             EnvConfig::behaviourBrainDeadProb,
             EnvConfig::behaviourGregaireProb,
             EnvConfig::behaviourKamikazeProb,
             EnvConfig::behaviourLazyProb,
             EnvConfig::behaviourPrevoyanteProb,
-            EnvConfig::behaviourSpinnerProb}
+            EnvConfig::behaviourSpinnerProb,
+            EnvConfig::behaviourPsychoProb}
             ));
     Behaviour* behav=createBehaviour( curr_behaviour);
     cout<<"New random behaviour: "<<behav->getName()<<endl;
@@ -155,6 +159,7 @@ Behaviour* BestioleFactory::createBehaviour(enum_Behavior selected_behaviour)
     if(selected_behaviour==enum_Behavior::Kamikaze) beh= (Behaviour*)(new KamikazeBehaviour()) ;
     if(selected_behaviour==enum_Behavior::Peureuse) beh= (Behaviour*)(new PeureuseBehaviour()) ;
     if(selected_behaviour==enum_Behavior::Prevoyante) beh= (Behaviour*)(new PrevoyanteBehaviour()) ;
+    if(selected_behaviour==enum_Behavior::Psycho) beh= (Behaviour*)(new PsychoBehaviour()) ;
     return beh;
 }
 
