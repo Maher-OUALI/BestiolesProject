@@ -12,7 +12,9 @@ class KamikazeBehaviour: public Behaviour
     public:
     KamikazeBehaviour():Behaviour("Kamikaze")
     {
-        
+        color_[0]=Colors::red[0];
+        color_[1]=Colors::red[1];
+        color_[2]=Colors::red[2];
     }
     void calculateDir(Milieu & monMilieu) override;
 
