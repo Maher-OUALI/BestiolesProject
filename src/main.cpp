@@ -65,10 +65,16 @@ int main()
    b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+40,ecosysteme.getMilieu().getHeight()/2.0);
    b2->setOrientationDeg(180.0);
 
+
+   //Eyes dummySensor = Eyes();
+
+   //cout<<dummySensor.getName()<<endl;
    
 
-   //for ( int i = 1; i <= 3; ++i )
-   //   BestioleFactory::createRandomBestiole();
+   
+
+   for ( int i = 1; i <= 10; ++i )
+      BestioleFactory::createRandomBestiole();
    ecosysteme.run();
 
    std::cout<<"End of program"<<std::endl;

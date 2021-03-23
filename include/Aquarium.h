@@ -21,6 +21,8 @@ private :
 
    int            delay;
 
+   int currentTime;
+
 public :
    Aquarium( int width, int height, int _delay );
    ~Aquarium( void );
@@ -28,6 +30,8 @@ public :
    Milieu & getMilieu( void ) { return *flotte; }
 
    void run( void );
+
+   void saveState( stringstream & namef );
 
 };
 

@@ -11,7 +11,7 @@ class Sensor:public Component
 
     
 public:
-    Sensor()
+    Sensor(const std::string name):Component(name)
     {
         
     }

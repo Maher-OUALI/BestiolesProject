@@ -10,7 +10,7 @@ class KamikazeBehaviour: public Behaviour
     //private:
     //    Bestiole* owner;
     public:
-    KamikazeBehaviour()
+    KamikazeBehaviour():Behaviour("Kamikaze")
     {
         
     }

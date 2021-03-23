@@ -16,7 +16,7 @@ class Behaviour: public Component
          double speed;
 
     public:
-        Behaviour()
+        Behaviour(const std::string name):Component(name)
         {
             speed=1.0;
             angle_rad=0.0;

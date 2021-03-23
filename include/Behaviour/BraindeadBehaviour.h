@@ -11,7 +11,7 @@ class BraindeadBehaviour:public Behaviour
     // private:
     //     Bestiole* owner;
     public:
-    BraindeadBehaviour()
+    BraindeadBehaviour():Behaviour("BrainDead")
     {
     
     }

@@ -11,7 +11,7 @@ class Ears: public Sensor
     double detection_capacity;
     double max_dist;
 public:
-    Ears()
+    Ears():Sensor("Ears")
     {
         detection_capacity=EnvConfig::sHearingIntensity;
         max_dist=EnvConfig::sHearingDist;

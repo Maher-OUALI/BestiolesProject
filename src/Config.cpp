@@ -31,6 +31,24 @@ int EnvConfig::sMaxNeighborsPeureuse=3;
 double EnvConfig::sRunawayFactorPeureuse=3.0;
 
 
+double EnvConfig::behaviourBrainDeadProb=0;
+double EnvConfig::behaviourDumbProb=0;
+double EnvConfig::behaviourGregaireProb=0;
+double EnvConfig::behaviourKamikazeProb=0;
+double EnvConfig::behaviourLazyProb=0;
+double EnvConfig::behaviourPrevoyanteProb=0;
+double EnvConfig::behaviourPsychoProb=0;
+double EnvConfig::behaviourSpinnerProb=0;
+
+double EnvConfig::sensorEyesProb=0;
+double EnvConfig::sensorEarsProb=0;
+double EnvConfig::sensorEyesEarsProb=0;
+
+double EnvConfig::accesShieldPob=0;
+double EnvConfig::accesCloakPob=0;
+double EnvConfig::accesTurboJetPob=0;
+
+
 
 size_t EnvConfig::ReadConfFile(const char* fname)
 {
@@ -73,18 +91,21 @@ void EnvConfig::assignVar(const std::string name,const double value)
    {
       sCollisionDieProb=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
    if (!strcmp(name.c_str(),"DEBUG_VISION"))
    {
       sDebugVision=(bool)value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
    if (!strcmp(name.c_str(),"DEBUG_COLLISION"))
    {
       sDebugCollsion=(bool)value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
 
@@ -92,18 +113,21 @@ void EnvConfig::assignVar(const std::string name,const double value)
    {
       sCloneProb=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
    if (!strcmp(name.c_str(),"DIE_PROB"))
    {
       sDieProb=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
    if (!strcmp(name.c_str(),"PSYCH_CHANGEB_PROB"))
    {
       sPsychoChangeBProb=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
 
@@ -111,18 +135,21 @@ void EnvConfig::assignVar(const std::string name,const double value)
    {
       sTurboJetMod=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
    if (!strcmp(name.c_str(),"SHIELD_ARMOR_MOD"))
    {
       sShieldArmorMod=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
    if (!strcmp(name.c_str(),"CLOAK_STEALTH_MOD"))
    {
       sCloakStealthMod=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
 
@@ -130,48 +157,161 @@ void EnvConfig::assignVar(const std::string name,const double value)
    {
       sHearingIntensity=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
    if (!strcmp(name.c_str(),"HEARING_DIST"))
    {
       sHearingDist=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
    if (!strcmp(name.c_str(),"VISION_INTENSITY"))
    {
       sVisionIntensity=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
    if (!strcmp(name.c_str(),"VISION_ANGLE"))
    {
       sVisionAngle=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
    if (!strcmp(name.c_str(),"VISION_DIST"))
    {
       sVisionDist=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
 
    if (!strcmp(name.c_str(),"MAX_BESTIOLES"))
    {
       sMaxBestioles=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
    
    if (!strcmp(name.c_str(),"MAX_NEIGHBORS_PEUREUSE"))
    {
       sMaxNeighborsPeureuse=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
    
    if (!strcmp(name.c_str(),"RUNAWAY_FACTOR_PEUREUSE"))
    {
       sRunawayFactorPeureuse=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
    }
+
+
+
+
+
+
+
+
+   if (!strcmp(name.c_str(),"BEHAVIOUR_BRAINDEAD_PROB"))
+   {
+      behaviourBrainDeadProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"BEHAVIOUR_DUMB_PROB"))
+   {
+      behaviourDumbProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"BEHAVIOUR_SPINNER_PROB"))
+   {
+      behaviourSpinnerProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"BEHAVIOUR_GREGAIRE_PROB"))
+   {
+      behaviourGregaireProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"BEHAVIOUR_LAZY_PROB"))
+   {
+      behaviourLazyProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"BEHAVIOUR_PSYCHO_PROB"))
+   {
+      behaviourPsychoProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"BEHAVIOUR_KAMIKAZE_PROB"))
+   {
+      behaviourKamikazeProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"BEHAVIOUR_PREVOYANTE_PROB"))
+   {
+      behaviourPrevoyanteProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
+
+
+
+
+   if (!strcmp(name.c_str(),"SENSOR_EYES_PROB"))
+   {
+      sensorEyesProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
+   if (!strcmp(name.c_str(),"SENSOR_EARS_PROB"))
+   {
+      sensorEarsProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"SENSOR_EYESEARS_PROB"))
+   {
+      sensorEyesEarsProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
+
+
+
+
+
+   if (!strcmp(name.c_str(),"ACCES_CLOAK_PROB"))
+   {
+      accesCloakPob=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"ACCES_SHIELD_PROB"))
+   {
+      accesShieldPob=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"ACCES_TURBOJET_PROB"))
+   {
+      accesTurboJetPob=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   std::cout<<"variable"<<name<<"cannot be assigned"<<std::endl;
   
 }

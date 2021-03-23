@@ -12,7 +12,7 @@ class Eyes: public Sensor
     double fov_deg;
     double max_dist;
 public:
-    Eyes()
+    Eyes():Sensor("Eyes")
     {
         fov_deg=EnvConfig::sVisionAngle;
         max_dist=EnvConfig::sVisionDist;

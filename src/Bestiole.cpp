@@ -32,6 +32,7 @@ Bestiole::Bestiole(  Sensor* const sensor ,Behaviour* const behaviour,Accessory*
    //vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
    base_vitesse = MAX_VITESSE;
    base_armour=1.0;
+   base_stealth=1.0;
 
    couleur = new T[ 3 ];
    couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
@@ -53,7 +54,9 @@ Bestiole::Bestiole( const Bestiole & b )
 {
 
    initState();
-   stillInCollsion=True; //we start at same position so collision will be obius.
+   stillInCollsion=true; //we start at same position so collision will be obius.
+   lastCollWith=b.getIdentite();
+   
 
    identite = ++next;
 
@@ -71,6 +74,7 @@ Bestiole::Bestiole( const Bestiole & b )
    //stats copy
    base_vitesse = b.base_vitesse;
    base_armour = b.base_armour;
+   base_stealth=b.base_stealth;
 
 
    couleur = new T[ 3 ];
@@ -149,6 +153,7 @@ void Bestiole::initState()
 {
    stillInCollsion=false;
    markedToDie=false;
+   lastCollWith=0;
 }
 
 
@@ -282,30 +287,24 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
 
 bool Bestiole::ocurredCollision(const Bestiole & b) 
 {
-   if (b.getIdentite() == identite)
-      return false;
 
-   double dist=math::vector2::distance(pos,b.getPosition());
-   if(dist<2.5*AFF_SIZE )
-      {
-         
-         if(!stillInCollsion) 
-         {
-         stillInCollsion=true;
-         return true;
-         }
-         else
-         return false;
-      }
-   stillInCollsion=false;
    return false;
 }
 
 void Bestiole::checkCollisions(Milieu & monMilieu )
 {
+   bool anyNeighbourClose=false;
+
    for ( std::vector<shared_ptr<Bestiole> >::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it )
-      if ( ocurredCollision(**it) )
-         {
+      {
+         double dist=math::vector2::distance(pos,(**it).getPosition());
+         if(dist<2.5*AFF_SIZE  && (**it).getIdentite() != identite)
+        {
+           anyNeighbourClose=true;
+            if ( !stillInCollsion)
+            {
+            stillInCollsion=true;
+            lastCollWith=(*it)->getIdentite();
             orientation+=M_PI;
             if(EnvConfig::sDebugCollsion) std::cout<<"EVENT:"<< *this <<" detected a collision with "<<(**it)<<endl;
             double prob = EnvConfig::sCollisionDieProb/getFinalArmor();
@@ -315,7 +314,12 @@ void Bestiole::checkCollisions(Milieu & monMilieu )
                markedToDie=true;
                
             }
+            }  
          }
+         }
+   if(!anyNeighbourClose)
+   stillInCollsion=false;
+      
 }
 
 
@@ -326,6 +330,10 @@ double Bestiole::getFinalSpeed()
 double Bestiole::getFinalArmor()
 {
    return base_armour*accessory_->getArmorMod();
+}
+double Bestiole::getFinalStealth()
+{
+   return base_stealth*accessory_->getSpeedMod();
 }
 
 

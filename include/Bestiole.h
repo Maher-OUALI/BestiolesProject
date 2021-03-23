@@ -74,10 +74,11 @@ private :
    //Base stats
    double            base_vitesse;
    double            base_armour;
+   double            base_stealth;
 
    T               * couleur;
 
-   bool stillInCollsion;
+   
 
    Sensor* sensor_;
    Behaviour* behaviour_;
@@ -89,6 +90,9 @@ private :
 public:
    bool markedToDie;
    bool markedToClone;
+   bool stillInCollsion;
+
+   int lastCollWith;
 
 private :
    void bouge( int xLim, int yLim );
@@ -131,14 +135,21 @@ public :                                           // Forme canonique :
 
    double getFinalSpeed();
    double getFinalArmor();
+   double getFinalStealth();
 
 
    //Temporary
    void DrawVisionCone(UImg & support,const Bestiole & b,double orientation, math::vector2 relativePos);
 
+   std::ostream&  printInfo(std::ostream& os){
+      os<<identite<<" , "<<behaviour_->getName()<<" , "<<sensor_->getName()<<" , "<<accessory_->getName()<<endl;
+      return os;
+   }
+
 };
 
 std::ostream& operator<<(std::ostream& os, const Bestiole& b);
+
 
 
 #endif

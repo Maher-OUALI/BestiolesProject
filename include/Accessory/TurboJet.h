@@ -13,7 +13,7 @@ class TurboJet:public Accessory
 
     
 public:
-    TurboJet():Accessory()
+    TurboJet():Accessory("TurboJet")
     {
         speed_mod_=EnvConfig::sTurboJetMod;
         

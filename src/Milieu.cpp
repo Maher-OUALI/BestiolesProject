@@ -89,3 +89,15 @@ void Milieu::applyDeath()
 // {
 //    listeBestioles.erase(std::remove_if(listeBestioles.begin(), listeBestioles.end(), shouldDie), listeBestioles.end());
 // }
+
+
+std::ostream& operator<<(std::ostream& os,  Milieu& b) 
+{
+   os<<"ID , Behaviour , Sensor , Accesorie"<<endl;
+    for ( std::vector<shared_ptr<Bestiole>>::iterator it = b.getBestiolesList().begin() ; it != b.getBestiolesList().end() ; ++it )
+      (*it)->printInfo(os);
+
+
+    return os;
+}
+

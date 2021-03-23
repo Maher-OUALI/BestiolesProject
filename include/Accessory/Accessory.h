@@ -15,7 +15,7 @@ double armor_mod_;
 double stealth_mod_;
     
 public:
-    Accessory()
+    Accessory(const std::string name):Component(name)
     {
         speed_mod_=1.0;
         armor_mod_=1.0;

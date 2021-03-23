@@ -36,7 +36,7 @@ class PsychoBehaviour:public Behaviour
      Behaviour* currentBehaviour_;
     
     public:
-    PsychoBehaviour():Behaviour()
+    PsychoBehaviour():Behaviour("Psycho")
     {
         
         currentBehaviour_= &spinnerBehaviour_;

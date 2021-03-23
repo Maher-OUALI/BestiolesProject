@@ -11,11 +11,13 @@ class Component
 {
 protected:
     Bestiole* owner;
+
+    const std::string name_;
     
 public:
-    Component()
+    Component(std::string name):name_(name)
     {
-        
+       
     }
 
     //virtual Component* clone(Bestiole* ownr);
@@ -29,6 +31,8 @@ public:
     virtual ~Component(){}
 
     virtual void Draw(UImg & support){}
+
+    const std::string getName(){return name_;}
 
 
 };

@@ -12,7 +12,7 @@ class PeureuseBehaviour: public Behaviour
         double speed_factor;
         bool isEscaping;
     public:
-        PeureuseBehaviour()
+        PeureuseBehaviour():Behaviour("Lazy")
         {
             max_neighbors=EnvConfig::sMaxNeighborsPeureuse;
             speed_factor=EnvConfig::sRunawayFactorPeureuse;

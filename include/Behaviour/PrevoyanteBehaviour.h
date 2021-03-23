@@ -10,7 +10,7 @@ class PrevoyanteBehaviour: public Behaviour
     //private:
     //    Bestiole* owner;     
     public:
-    PrevoyanteBehaviour()
+    PrevoyanteBehaviour():Behaviour("Oracle")
     {
         
     }

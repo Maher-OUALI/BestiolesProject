@@ -10,7 +10,7 @@ class GregaireBehaviour: public Behaviour
     //private:
     //    Bestiole* owner;
     public:
-    GregaireBehaviour()
+    GregaireBehaviour():Behaviour("Greagaire")
     {
         
     }

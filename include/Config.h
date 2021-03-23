@@ -47,6 +47,24 @@ static int sMaxNeighborsPeureuse;
 static double sRunawayFactorPeureuse;
 
 
+static double behaviourBrainDeadProb;
+static double behaviourDumbProb;
+static double behaviourGregaireProb;
+static double behaviourKamikazeProb;
+static double behaviourLazyProb;
+static double behaviourPrevoyanteProb;
+static double behaviourPsychoProb;
+static double behaviourSpinnerProb;
+
+static double sensorEyesProb;
+static double sensorEarsProb;
+static double sensorEyesEarsProb;
+
+static double accesShieldPob;
+static double accesCloakPob;
+static double accesTurboJetPob;
+
+
 static size_t ReadConfFile(const char* fname);
 
 

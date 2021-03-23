@@ -3,11 +3,17 @@
 #include "Milieu.h"
 #include "BestioleFactory.h"
 
+#include <fstream>
+#include <iostream>
+#include <sstream>
+
 Aquarium::Aquarium( int width, int height, int _delay ) : CImgDisplay(), delay( _delay )
 {
 
    int         screenWidth = 1280; //screen_width();
    int         screenHeight = 1024; //screen_height();
+
+   currentTime=0;
 
 
    cout << "const Aquarium" << endl;
@@ -33,6 +39,8 @@ Aquarium::~Aquarium( void )
 void Aquarium::run( void )
 {
    bool stillPressing=false;
+   std::stringstream namef; 
+   system("rm ./results/* ");
    cout << "running Aquarium" << endl;
 
    while ( ! is_closed() )
@@ -44,7 +52,10 @@ void Aquarium::run( void )
          stillPressing=true;
          cout << "Vous avez presse la touche " << static_cast<unsigned char>( key() );
          cout << " (" << key() << ")" << endl;
-         if ( is_keyESC() ) close();
+         if ( is_keyESC() ) {
+            saveState(namef);
+            close();
+         }
 
          if(is_keySPACE())
          {
@@ -55,6 +66,15 @@ void Aquarium::run( void )
          {
             cout<<"Pressed V..."<<endl;
             EnvConfig::sDrawSensors=!EnvConfig::sDrawSensors;
+         }
+         if(is_keyP())
+         {
+            cout<<"Pressed P..."<<endl;
+            cout<<"Current time: "<<currentTime<<endl;
+            cout<<getMilieu();
+
+            saveState(namef);
+     
          }
       }
       else if(!is_key() )
@@ -67,6 +87,21 @@ void Aquarium::run( void )
 
       wait( delay );
 
+      currentTime+=delay;
+
    } // while
 
+}
+
+
+void Aquarium::saveState( stringstream & namef )
+{
+   namef.str("");
+   namef<<"./results/"<<currentTime<<".csv"; 
+   cout<<"Writting to :"<<namef.str()<<endl;
+   fstream MyFile;
+   MyFile.open(namef.str(),std::ios::out);
+   MyFile << fflush;
+   MyFile<<getMilieu();
+   MyFile.close();
 }

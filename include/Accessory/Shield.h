@@ -13,7 +13,7 @@ class Shield:public Accessory
 
     
 public:
-    Shield():Accessory()
+    Shield():Accessory("Eyes")
     {
         speed_mod_=0.5;
         armor_mod_=EnvConfig::sShieldArmorMod;

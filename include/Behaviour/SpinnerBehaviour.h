@@ -10,7 +10,7 @@ class SpinnerBehaviour:public Behaviour
     // private:
     //     Bestiole* owner;
     public:
-    SpinnerBehaviour()
+    SpinnerBehaviour():Behaviour("Spinner")
     {
         
     }

@@ -13,7 +13,7 @@ class Cloak:public Accessory
 
     
 public:
-    Cloak():Accessory()
+    Cloak():Accessory("Cloak")
     {
         speed_mod_=0.5;
         stealth_mod_=EnvConfig::sCloakStealthMod;

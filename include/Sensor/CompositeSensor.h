@@ -13,7 +13,7 @@ class CompositeSensor: public Sensor
     Ears* ear;
     Eyes* eye;
 public:
-    CompositeSensor()
+    CompositeSensor():Sensor("EyesEars")
     {
         ear =  new Ears() ;
         eye =  new Eyes();
