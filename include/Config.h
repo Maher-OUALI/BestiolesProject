@@ -54,6 +54,7 @@ static int sMaxBestioles;
   
 static int sMaxNeighborsPeureuse;
 static double sRunawayFactorPeureuse;
+static int sNbrStepsPrediction;
 
 
 static double behaviourBrainDeadProb;
