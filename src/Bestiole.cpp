@@ -32,7 +32,7 @@ Bestiole::Bestiole(  Sensor* const sensor ,Behaviour* const behaviour,Accessory*
    //vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
    base_vitesse = MAX_VITESSE;
    base_armour=1.0;
-   base_stealth=1.0;
+   base_stealth=0.0;
 
    couleur = new T[ 3 ];
    couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
@@ -333,9 +333,9 @@ double Bestiole::getFinalArmor()
 {
    return base_armour*accessory_->getArmorMod();
 }
-double Bestiole::getFinalStealth()
+double Bestiole::getFinalStealth() const
 {
-   return base_stealth*accessory_->getSpeedMod();
+   return base_stealth+accessory_->getStealthMod();
 }
 
 
