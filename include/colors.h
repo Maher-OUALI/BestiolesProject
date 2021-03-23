@@ -17,6 +17,7 @@ const T    pink[] = { (T)255, (T)192, (T)203 };
 const T    cyan[] = { (T)127, (T)255, (T)212 };
 const T    orange[] = { (T)255, (T)165, (T)0 };
 const T    brown[] = { (T)165, (T)42, (T)42 };
+const T    gray[] = { (T)100, (T)100, (T)100 };
 }
 
 #endif
