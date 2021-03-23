@@ -15,9 +15,9 @@ class Shield:public Accessory
 public:
     Shield():Accessory("Shield")
     {
-        color_[0]=Colors::brown[0];
-        color_[1]=Colors::brown[1];
-        color_[2]=Colors::brown[2];
+        color_[0]=Colors::pink[0];
+        color_[1]=Colors::pink[1];
+        color_[2]=Colors::pink[2];
 
 
         speed_mod_=0.5;
