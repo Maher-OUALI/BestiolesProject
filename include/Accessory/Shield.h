@@ -15,6 +15,11 @@ class Shield:public Accessory
 public:
     Shield():Accessory("Eyes")
     {
+        color_[0]=Colors::green[0];
+        color_[1]=Colors::green[1];
+        color_[2]=Colors::green[2];
+
+
         speed_mod_=0.5;
         armor_mod_=EnvConfig::sShieldArmorMod;
         

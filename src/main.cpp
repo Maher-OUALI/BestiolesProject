@@ -61,7 +61,7 @@ int main()
    b1->setOrientationDeg(0.0);
    
 
-   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Eyes,enum_Accessory::Turbojet).get();
+   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Eyes,enum_Accessory::Shield).get();
    b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+40,ecosysteme.getMilieu().getHeight()/2.0);
    b2->setOrientationDeg(180.0);
 
@@ -73,9 +73,9 @@ int main()
 
    
 
-   for ( int i = 1; i <= 10; ++i )
-      BestioleFactory::createRandomBestiole();
-   ecosysteme.run();
+   //for ( int i = 1; i <= 10; ++i )
+   //    BestioleFactory::createRandomBestiole();
+    ecosysteme.run();
 
    std::cout<<"End of program"<<std::endl;
    return 0;

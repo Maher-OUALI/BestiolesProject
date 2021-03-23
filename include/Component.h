@@ -3,6 +3,7 @@
 #include "UImg.h"
 #include "vec2.h"
 #include "Config.h"
+#include "colors.h"
 
 class Bestiole;
 class Milieu;

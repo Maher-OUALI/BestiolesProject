@@ -261,6 +261,7 @@ void Bestiole::draw( UImg & support )
    support.draw_circle( headPos[0], headPos[1], AFF_SIZE/2., couleur );
 
    sensor_->Draw(support);
+   accessory_->Draw(support);
    
 
 }
