@@ -13,6 +13,7 @@ namespace MyRandomGen{
 
 
 bool IsTrueRandom(double prob_true);
+double RandomDouble(double b_min , double b_max);
 template<typename T>
 T getRandomType(std::vector<T> types,std::vector<double> probs)
     {

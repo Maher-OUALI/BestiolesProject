@@ -16,14 +16,23 @@ double EnvConfig::sPsychoChangeBProb=0;
 
 double EnvConfig::sTurboJetMod=0;
 double EnvConfig::sShieldArmorMod=0;
-double EnvConfig::sCloakStealthMod=0;
 
-double EnvConfig::sVisionDist=35;
-double EnvConfig::sVisionAngle=45;
-double EnvConfig::sVisionIntensity=0.8;
+double EnvConfig::sMinCloakStealthMod=0;
+double EnvConfig::sMaxCloakStealthMod=0.9;
 
-double EnvConfig::sHearingDist=25;
-double EnvConfig::sHearingIntensity=0.6;
+double EnvConfig::sMaxVisionDist=35;
+double EnvConfig::sMaxVisionAngle=45;
+double EnvConfig::sMaxVisionIntensity=0.8;
+
+double EnvConfig::sMaxHearingDist=25;
+double EnvConfig::sMaxHearingIntensity=0.6;
+
+double EnvConfig::sMinVisionDist=35;
+double EnvConfig::sMinVisionAngle=45;
+double EnvConfig::sMinVisionIntensity=0.8;
+
+double EnvConfig::sMinHearingDist=25;
+double EnvConfig::sMinHearingIntensity=0.6;
 
 int EnvConfig::sMaxBestioles=0;
 
@@ -145,45 +154,87 @@ void EnvConfig::assignVar(const std::string name,const double value)
       return;
    }
 
-   if (!strcmp(name.c_str(),"CLOAK_STEALTH_MOD"))
+   if (!strcmp(name.c_str(),"MIN_CLOAK_STEALTH_MOD"))
    {
-      sCloakStealthMod=value;
+      sMinCloakStealthMod=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
+   if (!strcmp(name.c_str(),"MAX_CLOAK_STEALTH_MOD"))
+   {
+      sMaxCloakStealthMod=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
       return;
    }
 
 
-   if (!strcmp(name.c_str(),"HEARING_INTENSITY"))
+   if (!strcmp(name.c_str(),"MIN_HEARING_INTENSITY"))
    {
-      sHearingIntensity=value;
+      sMinHearingIntensity=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
       return;
    }
 
-   if (!strcmp(name.c_str(),"HEARING_DIST"))
+   if (!strcmp(name.c_str(),"MIN_HEARING_DIST"))
    {
-      sHearingDist=value;
+      sMinHearingDist=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
       return;
    }
 
-   if (!strcmp(name.c_str(),"VISION_INTENSITY"))
+   if (!strcmp(name.c_str(),"MIN_VISION_INTENSITY"))
    {
-      sVisionIntensity=value;
+      sMinVisionIntensity=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
       return;
    }
 
-   if (!strcmp(name.c_str(),"VISION_ANGLE"))
+   if (!strcmp(name.c_str(),"MIN_VISION_ANGLE"))
    {
-      sVisionAngle=value;
+      sMinVisionAngle=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
       return;
    }
 
-   if (!strcmp(name.c_str(),"VISION_DIST"))
+   if (!strcmp(name.c_str(),"MIN_VISION_DIST"))
    {
-      sVisionDist=value;
+      sMinVisionDist=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
+if (!strcmp(name.c_str(),"MAX_HEARING_INTENSITY"))
+   {
+      sMaxHearingIntensity=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
+   if (!strcmp(name.c_str(),"MAX_HEARING_DIST"))
+   {
+      sMaxHearingDist=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
+   if (!strcmp(name.c_str(),"MAX_VISION_INTENSITY"))
+   {
+      sMaxVisionIntensity=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
+   if (!strcmp(name.c_str(),"MAX_VISION_ANGLE"))
+   {
+      sMaxVisionAngle=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
+   if (!strcmp(name.c_str(),"MAX_VISION_DIST"))
+   {
+      sMaxVisionDist=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
       return;
    }

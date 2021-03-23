@@ -2,6 +2,7 @@
 #define _EARS_H_
 
 #include "Sensor.h"
+#include "randomGen.h"
 
 
 class Ears: public Sensor
@@ -13,8 +14,8 @@ class Ears: public Sensor
 public:
     Ears():Sensor("Ears")
     {
-        detection_capacity=EnvConfig::sHearingIntensity;
-        max_dist=EnvConfig::sHearingDist;
+        detection_capacity=MyRandomGen::RandomDouble(EnvConfig::sMinHearingIntensity , EnvConfig::sMaxHearingIntensity);
+        max_dist=MyRandomGen::RandomDouble(EnvConfig::sMinHearingDist , EnvConfig::sMaxHearingDist);
     }
     bool canSense(const Bestiole &b2) override;
 

@@ -29,17 +29,25 @@ static double sDieProb;
 
 static double sTurboJetMod;
 static double sShieldArmorMod;
-static double sCloakStealthMod;
+static double sMinCloakStealthMod;
+static double sMaxCloakStealthMod;
 
 
 static double sPsychoChangeBProb;
 
-static double sVisionDist;
-static double sVisionAngle;
-static double sVisionIntensity;
+static double sMaxVisionDist;
+static double sMaxVisionAngle;
+static double sMaxVisionIntensity;
 
-static double sHearingDist;
-static double sHearingIntensity;
+static double sMaxHearingDist;
+static double sMaxHearingIntensity;
+
+static double sMinVisionDist;
+static double sMinVisionAngle;
+static double sMinVisionIntensity;
+
+static double sMinHearingDist;
+static double sMinHearingIntensity;
 
 static int sMaxBestioles;
   

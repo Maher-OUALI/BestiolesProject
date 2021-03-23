@@ -3,6 +3,7 @@
 #include "UImg.h"
 
 #include "Accessory.h"
+#include "randomGen.h"
 
 
 
@@ -20,8 +21,8 @@ public:
         color_[2]=Colors::pink[2];
 
 
-        speed_mod_=0.5;
-        stealth_mod_=EnvConfig::sCloakStealthMod;
+        speed_mod_=1.0;
+        stealth_mod_=MyRandomGen::RandomDouble(EnvConfig::sMinCloakStealthMod , EnvConfig::sMaxCloakStealthMod);
         
     }
    // virtual double getSpeedMod(){return speed_mod_;}
