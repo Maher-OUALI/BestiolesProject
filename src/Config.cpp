@@ -7,7 +7,7 @@ double EnvConfig::vjorge=0;
 double EnvConfig::sCollisionDieProb=0;
 bool EnvConfig::sDebugVision=false;
 bool EnvConfig::sDebugCollsion=false;
-bool EnvConfig::sDrawSensors=false;
+bool EnvConfig::sDrawSensors=true;
 
 double EnvConfig::sBirthProb=0;
 double EnvConfig::sCloneProb=0;
