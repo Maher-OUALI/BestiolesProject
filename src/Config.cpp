@@ -38,6 +38,7 @@ int EnvConfig::sMaxBestioles=0;
 
 int EnvConfig::sMaxNeighborsPeureuse=3;
 double EnvConfig::sRunawayFactorPeureuse=3.0;
+int EnvConfig::sNbrStepsPrediction=10;
 
 
 double EnvConfig::behaviourBrainDeadProb=0;
@@ -375,6 +376,12 @@ if (!strcmp(name.c_str(),"MAX_HEARING_INTENSITY"))
    if (!strcmp(name.c_str(),"ACCES_TURBOJET_PROB"))
    {
       accesTurboJetPob=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"NBR_STEPS_PREDICTION"))
+   {
+      sNbrStepsPrediction=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
       return;
    }
