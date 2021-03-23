@@ -12,7 +12,9 @@ class PrevoyanteBehaviour: public Behaviour
     public:
     PrevoyanteBehaviour():Behaviour("Oracle")
     {
-        
+        color_[0]=Colors::orange[0];
+        color_[1]=Colors::orange[1];
+        color_[2]=Colors::orange[2];
     }
     void calculateDir(Milieu & monMilieu) override;
 
