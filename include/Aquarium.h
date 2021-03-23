@@ -32,6 +32,7 @@ public :
    void run( void );
 
    void saveState( stringstream & namef );
+   void saveBilan();
 
 };
 

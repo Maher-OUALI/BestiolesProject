@@ -13,7 +13,7 @@ class Shield:public Accessory
 
     
 public:
-    Shield():Accessory("Eyes")
+    Shield():Accessory("Shield")
     {
         color_[0]=Colors::green[0];
         color_[1]=Colors::green[1];

@@ -39,6 +39,8 @@ class BestioleFactory
    //,bool register_best=false
    static Milieu *milieu_;
 
+   static   Behaviour* createRandomBehaviour();
+
 
    private:
 

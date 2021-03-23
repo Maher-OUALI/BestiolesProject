@@ -164,6 +164,7 @@ Bestiole::~Bestiole( void )
 
    delete sensor_;
    delete behaviour_;
+   delete accessory_;
 
    cout << "Calling destructor on  "<<*this << endl;
 

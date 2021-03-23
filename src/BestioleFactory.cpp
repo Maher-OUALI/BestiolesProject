@@ -118,6 +118,31 @@ std::shared_ptr<Bestiole> BestioleFactory::createBestioleClone( Bestiole & b)
     
 }
 
+
+Behaviour* BestioleFactory::createRandomBehaviour()
+{
+    enum_Behavior curr_behaviour=MyRandomGen::getRandomType<enum_Behavior>(vector<enum_Behavior>(
+        {enum_Behavior::Dumb,
+        enum_Behavior::Braindead,
+        enum_Behavior::Gregaire,
+        enum_Behavior::Kamikaze,
+        enum_Behavior::Peureuse,
+        enum_Behavior::Prevoyante,
+        enum_Behavior::Spinner}),vector<double>(
+            {EnvConfig::behaviourDumbProb,
+            EnvConfig::behaviourBrainDeadProb,
+            EnvConfig::behaviourGregaireProb,
+            EnvConfig::behaviourKamikazeProb,
+            EnvConfig::behaviourLazyProb,
+            EnvConfig::behaviourPrevoyanteProb,
+            EnvConfig::behaviourSpinnerProb}
+            ));
+    Behaviour* behav=createBehaviour( curr_behaviour);
+    cout<<"New random behaviour: "<<behav->getName()<<endl;
+    return behav;
+
+}
+
 Behaviour* BestioleFactory::createBehaviour(enum_Behavior selected_behaviour)
 {
 

@@ -126,6 +126,8 @@ public :                                           // Forme canonique :
    void initState();
 
    Sensor* getSensor(){return sensor_;}
+   Behaviour* getBehaviour(){return behaviour_;}
+    Accessory* getAccessory(){return accessory_;}
 
    bool ocurredCollision(const Bestiole & b) ;
 
@@ -136,6 +138,16 @@ public :                                           // Forme canonique :
    double getFinalSpeed();
    double getFinalArmor();
    double getFinalStealth();
+
+
+   void changeBehaviour(Behaviour* newBehaviour)
+   {
+      if(behaviour_!=nullptr)
+         delete behaviour_;
+      behaviour_=newBehaviour;
+      behaviour_->setOwner(this);
+      
+   }
 
 
    //Temporary
