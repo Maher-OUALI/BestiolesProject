@@ -14,10 +14,16 @@ class Behaviour: public Component
 
          double angle_rad;
          double speed;
+         T    color_[3];
 
     public:
         Behaviour(const std::string name):Component(name)
         {
+            color_[0]=Colors::black[0];
+            color_[1]=Colors::black[1];
+            color_[2]=Colors::black[2];
+            
+            
             speed=1.0;
             angle_rad=0.0;
         }
@@ -28,6 +34,7 @@ class Behaviour: public Component
 
         double getAngleRad(){return angle_rad;}
         double getSpeed(){return speed;}
+        T getColor(){return color_;}
 
 
         virtual ~Behaviour(){}

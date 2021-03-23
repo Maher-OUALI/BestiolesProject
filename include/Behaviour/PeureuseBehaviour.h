@@ -14,6 +14,10 @@ class PeureuseBehaviour: public Behaviour
     public:
         PeureuseBehaviour():Behaviour("Lazy")
         {
+            color_[0]=Colors::yellow[0];
+            color_[1]=Colors::yellow[1];
+            color_[2]=Colors::yellow[2];
+
             max_neighbors=EnvConfig::sMaxNeighborsPeureuse;
             speed_factor=EnvConfig::sRunawayFactorPeureuse;
             isEscaping=false;

@@ -35,14 +35,18 @@ Bestiole::Bestiole(  Sensor* const sensor ,Behaviour* const behaviour,Accessory*
    base_stealth=0.0;
 
    couleur = new T[ 3 ];
-   couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+   //couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+   //couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+   //couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
 
    sensor_=sensor;
    sensor_->setOwner(this);
+   
    behaviour_=behaviour;
    behaviour_->setOwner(this);
+   couleur[0] = behaviour_->getColor()[0];
+   couleur[1] = behaviour_->getColor()[1];
+   couleur[2] = behaviour_->getColor()[2];
 
    accessory_=accessory;
    accessory_->setOwner(this);

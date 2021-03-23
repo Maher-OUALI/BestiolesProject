@@ -12,7 +12,9 @@ class GregaireBehaviour: public Behaviour
     public:
     GregaireBehaviour():Behaviour("Greagaire")
     {
-        
+        color_[0]=Colors::green[0];
+        color_[1]=Colors::green[1];
+        color_[2]=Colors::green[2];
     }
     void calculateDir(Milieu & monMilieu) override;
 
