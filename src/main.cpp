@@ -49,12 +49,64 @@ int main()
    EnvConfig::ReadConfFile(fname);
 
 
+   cout<< "=============================="<<endl;
+   cout<< "1 : kamikazeBehaviourUnitTest"<<endl;
+   cout<< "2 : gregaireBehaviourUnitTest"<<endl;
+   cout<< "3 : peureuseBehaviourUnitTest"<<endl;
+   cout<< "4 : prevoyanteBehaviourUnitTest"<<endl;
+   cout<< "5 : psychoBehaviourUnitTest"<<endl;
+   cout<< "6 : earsSensorUnitTest"<<endl;
+   cout<< "7 : eyesSensorUnitTest"<<endl;
+   cout<< "8 : compositeSensorUnitTest"<<endl;
+   cout<< "9 : cloakAccessoryUnitTest"<<endl;
+   cout<< "10 : shieldAccessoryUnitTest"<<endl;
+   cout<< "11 : turboJetAccessoryUnitTest"<<endl;
+   cout<< "=============================="<<endl;
+   cout<<"choose a test case number " << endl;
 
-   Aquarium       ecosysteme( 640, 480, 30 );
+   int choice;
+   cin >> choice;
+
+
+
+   Aquarium       ecosysteme( 640, 640, 30 );
    BestioleFactory::milieu_=&ecosysteme.getMilieu();
 
-   
-   TestCases::peureuseBehaviourUnitTest(ecosysteme);
+   switch (choice) {
+  case 1:
+    TestCases::kamikazeBehaviourUnitTest(ecosysteme);
+    break;
+  case 2:
+    TestCases::gregaireBehaviourUnitTest(ecosysteme);
+    break;
+  case 3:
+    TestCases::peureuseBehaviourUnitTest(ecosysteme);
+    break;
+  case 4:
+    TestCases::prevoyanteBehaviourUnitTest(ecosysteme);
+    break;
+  case 5:
+    TestCases::psychoBehaviourUnitTest(ecosysteme);
+    break;
+  case 6:
+    TestCases::earsSensorUnitTest(ecosysteme);
+    break;
+  case 7:
+    TestCases::eyesSensorUnitTest(ecosysteme);
+    break;
+   case 8:
+    TestCases::compositeSensorUnitTest(ecosysteme);
+    break;
+   case 9:
+    TestCases::cloakAccessoryUnitTest(ecosysteme);
+    break;
+   case 10:
+    TestCases::shieldAccessoryUnitTest( ecosysteme);
+    break;
+   case 11:
+    TestCases::turboJetAccessoryUnitTest(ecosysteme);
+    break;
+}
    
    /*
    for ( int i = 1; i <= 30; ++i )
