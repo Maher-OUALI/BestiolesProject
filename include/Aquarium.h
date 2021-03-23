@@ -31,6 +31,8 @@ public :
 
    void run( void );
 
+   int waitForKey();
+
    void saveState( stringstream & namef );
    void saveBilan();
 

@@ -48,7 +48,7 @@ void Aquarium::run( void )
 
    while ( ! is_closed() )
    {
-
+      //cout<<(int)is_key()<<endl;
       // cout << "iteration de la simulation" << endl;
 
       if ( is_key() && !stillPressing) {
@@ -70,7 +70,33 @@ void Aquarium::run( void )
          if(is_keySPACE())
          {
             cout<<"Pressed SPACE..."<<endl;
-            BestioleFactory::createRandomBestiole();;
+            BestioleFactory::createRandomBestiole();
+         }
+         if(is_keyD())
+         {
+            cout<<"Pressed D..."<<endl;
+            stillPressing=false;
+
+            int sToDel=0; 
+            int lastchar=0;
+            while(static_cast<unsigned char>( lastchar) !='f')
+            {
+               lastchar=waitForKey();
+               if(static_cast<unsigned char>( lastchar) !='f' && lastchar>=65456)
+                  sToDel=sToDel*10+(lastchar-65456);
+                  cout<<sToDel<<endl;
+            }
+            
+            
+            cout<<sToDel<<endl;
+            cout<<"Pressed D..."<<endl;
+
+            
+            for ( std::vector<shared_ptr<Bestiole> >::iterator it = flotte->getBestiolesList().begin() ; it != flotte->getBestiolesList().end() ; ++it )
+            {
+               if((*it)->getIdentite()==sToDel)
+                  (*it)->markedToDie=True;
+            }
          }
          if(is_keyV())
          {
@@ -106,6 +132,28 @@ void Aquarium::run( void )
 
    } // while
 
+}
+
+
+int Aquarium::waitForKey()
+{
+   //cout<<static_cast<unsigned char>( key() )<<endl;
+            int lastkey=0;
+            while(!(bool)is_key())
+            {
+               //cout<<" Waiting..."<<endl;
+
+            }
+            while((bool)is_key())
+            {
+               //cout<<" Waiting..."<<endl;
+               lastkey=key() ;
+               
+
+            }
+            
+            cout<<"Entered character: "<<lastkey<<endl;
+            return lastkey;
 }
 
 
@@ -159,3 +207,4 @@ void Aquarium::saveBilan( )
             //MyFile<<"Hi";
             MyFile.close();
 }
+
