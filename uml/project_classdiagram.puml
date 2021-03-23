@@ -1,0 +1,385 @@
+@startuml classDiagram
+
+class main
+{
++main():int
+}
+
+interface Aquarium_
+{
+  -Milieu:*flotte
+  -int:delay
+  -int:currentTime
+  
+  +Aquarium(int width, int height, int _delay)
+  +~Aquarium()
+
+  +getMilieu(): Milieu&
+  +run():void
+  +waitForKey(): int
+  +saveState(stringstream& namef):void
+  +saveBilan():void
+
+
+}
+
+class BestioleFactory
+{
+  +Milieu*: milieu_
+
+  +createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor,enum_Accessory selected_accessory):shared_ptr<Bestiole>
+  +createBestioleClone(Bestiole &b):shared_ptr<Bestiole>
+
+  +createRandomeBestiole():shared_ptr<Bestiole>
+  +createRandomBehaviour(): Behaviour*
+
+  -createBehaviour(enum_Behavior selected_behaviour):Behaviour
+  -createSensor(enum_Sensor selected_sensor):Sensor
+  -createAccessory(enum_Accessory selected_accessory):Accessory
+}
+
+interface Milieu_{
+  -int: width
+  -int: height
+  -vector<shared_ptr<Bestiole>>: listeBestioles
+  
+  +Milieu(int _width, int _height)
+  +~Milieu()
+  +getWidth():int
+  +getHeight():int
+  +step():void
+  +addMember(Bestiole b):void
+  +nbVoisins(Bestiole b):int
+  getBestiolesList():vector<shared_ptr<Bestiole>>&
+  +applyDeath():void
+  +operator<<(): ostream&
+
+  
+}
+
+class Milieu {
+  shouldDie(Bestiole b):bool
+}
+
+
+class Aquarium{
+  +int:screenWidth
+  +int:screenHeigth
+
+  +void run()
+}
+
+enum enum_Behavior{
+Dumb
+Spinner
+Braindead 
+Gregaire 
+Kamikaze
+Peureuse
+Prevoyante
+Psycho
+}
+
+enum enum_Sensor{
+  Eyes
+  Ears
+  CompositeSensor
+}
+
+enum enum_Accessory{
+  TurboJet
+  Cloak
+  Shield
+}
+
+class Accessory{
+  #double: speed_mod_
+  #double: armor_mod_
+  #double: stealh_mod_
+
+  +Acessory(string name)
+  +~Acessory()
+  +getSpeedMod():double
+  +getArmorMod():double
+  +getStealthMod():double
+  +clone(Bestiole* ownr):Accessory
+  +Draw(UImg &support): void
+}
+
+
+class Cloak{
+  +Cloak()
+  +~Cloak()
+  +clone(Bestiole* ownr): Cloak*
+}
+
+class TurboJet{
+  +TurboJet()
+  +~TurboJet()
+  clone(Bestiole* ownr): TurboJet* 
+}
+
+class Shield{
+  +Shield()
+  +~Shield()
+  clone(Bestiole* ownr): Shield* 
+}
+
+interface Component{
+  # Bestiole*: owner
+  +setOwner(Bestiole* ownr):void
+  +clone(Bestiole* ownr):Component*
+  +getOwner():Bestiole*
+  +Draw(UImg):void
+}
+
+class Sensor{
+  +Sensor(string name)
+  +~Sensor()
+  +canSense(Bestiole &b2):bool
+  +clone(Bestiole* ownr):Sensor*
+}
+
+class Ears {
+  -double: detection_capacity
+  -double: max_dist
+
+  +Ears()
+  +~Ears()
+  +canSense(Bestiole* &b2):bool
+  +clone(Bestiole* ownr):Ears*
+  +draw(UImg&support):void
+  +drawHearingCircle(UImg &support):void
+}
+class Eyes{
+  -detection_capacity
+  -fov_deg
+  -max_dist
+
+  +Eyes()
+  +~Eyes()
+  +canSense(Bestiole &b2):bool
+  +clone(Bestiole* ownr):Eyes*
+  +draw(UImg&support):void
+  +drawVisionCone(UImg &support):void
+}
+
+class CompositeSensor {
+  -Ears*: ear
+  -Eyes*: eye
+
+  +CompositeSensor()
+  +~CompositeSensor()
+  +canSense(Bestiole &b2):bool
+  +clone(Bestiole* ownr)CompositeSensor*
+  +draw(UImg &support):void
+  +drawCompositeSensor(UImg &support)
+  +setOwner(Bestiole* ownr):void
+}
+
+interface Behaviour {
+  <<friend>> Bestiole
+  # double: angle_rad
+  # double: speedMod
+  # T: color_
+
+  +Behaviour(string name)
+  +~Behaviour()
+  +calculateDir(Milieu &monMilieu):void
+  +clone(Bestiole* ownr):Behaviour
+
+  +getAngleRad():double
+  +getSpeed():double
+  getColor(): T*
+}
+
+class BraindeadBehaviour {
+  +BraindeadBehaviour()
+  +~BraindeadBehaviour()
+  +calculateDir(Milieu& monMilieu):void
+  +clone(Bestiole* ownr):BraindeadBehaviour*
+}
+
+class DumbBehaviour {
+  +DumbBehaviour()
+  +~DumbBehaviour()
+  +calculateDir(Milieu& monMilieu):void
+  +clone(Bestiole* ownr):DumbBehaviour*
+}
+
+class GregaireBehaviour{
+  +GregaireBehaviour()
+  +~GregaireBehaviour()
+  +calculateDir(Milieu& monMilieu):void
+  +clone(Bestiole* ownr): GregaireBehaviour*
+}
+
+class KamikazeBehaviour{
+  +KamikazeBehaviour()
+  +~KamikazeBehaviour()
+  +calculateDir(Milieu& monMilieu):void
+  +clone(Bestiole* ownr): KamikazeBehaviour*
+}
+
+class PeureuseBehaviour{
+  -int: max_neighbours
+  -double: speed_factor
+  -bool: isEscaping
+
+  +PeureuseBehaviour()
+  -~PeureuseBehaviour()
+
+  +calculateDir(Milieu& monMilieu):void
+  +clone(Bestiole* ownr): PeureuseBehaviour*
+}
+
+class PrevoyanteBehaviour{
+  +PrevoyanteBehaviour()
+  +~PrevoyanteBehaviour()
+  +calculateDir(Milieu& monMilieu):void
+  +clone(Bestiole* ownr):PrevoyanteBehaviour()
+}
+
+
+
+class SpinnerBehaviour {
+  +SpinnerBehaviour()
+  +~SpinnerBehaviour()
+  +calculateDir(Milieu& monMilieu):void
+  +clone(Bestiole* ownr):SpinnerBehaviour*
+}
+
+class PsychoBehaviour {
+  - DumbBehaviour: dumbBehaviour
+  - SpinnerBehaviour: spinnerBehaviour
+  - KamikazeBehaviour: kamikazeBehaviour
+  - PrevoyanteBehaviour: prevoyanteBehaviour
+  - PeureuseBehaviour: peureuseBehaviour
+  - GregaireBehaviour: gregaireBehaviour
+  - BraindeadBehaviour: braindeadBehaviour
+  - Behaviour*: currentBehaviour_
+
+  +PsychoBehaviour()
+  +~PsychoBehaviour()
+  +calculateDir(Milieu& monMilieu):void
+  +setOwner(Bestiole ownr):void
+  +clone(Bestiole* ownr):PsachoBehaviour*
+}
+
+enum PsycBehvrs{
+  psychDumb
+  psychSpinner 
+  psychBraindead
+  psychKamikaze
+  psychGregaire
+  psychPeureuse
+  psychPrevoyante
+}
+
+
+class Bestiole{
+  -{static} const double: AFF_SIZE
+  -{static} const double: MAX_VITESSE
+  -{static} const double: LIMITE_VUE
+  -{static} int: next
+  -int: identite
+  -vector2: pos
+  -vector2: cumulPos
+
+  -double: orientation
+  -double: base_vitesse
+  -double: base_armor
+  -double: base_stealth
+  -T*: couleur
+
+  -bool: stillInCollision
+
+  -Sensor*: sensor_
+  -Behvaiour*: Behaviour_
+  -Accessory*: accessory_
+
+  +bool: markedToDie
+  +bool: markedToClone
+  +bool: stillInCollision
+  +int: lastCollWith
+
+  +Bestiole(Sensor* const sensor ,Behaviour* const behaviour,Accessory* const accessory)
+  +Bestiole(const Bestiole& b)
+  +~Bestiole()
+
+  -bouge(int:xLim, int:yLim):void
+  +action(Milieu &monMilieu):void
+  +draw(UImg &support)
+  +jeTeVois(Bestiole &b):bool
+  +initCoords(int xLim, int yLim):void
+  +setCoords(double x, double y):void
+
+  +operator==(Bestiole &b1, Bestiole &b2):bool
+  +setOrientationDeg(double angle):void
+  +getOrientationRad():double
+  +getPosition():vector2
+  +getAngleDeg():double
+
+  +initState():void
+  +getSensor():Sensor*
+  +getBehaviour():Beheaviour*
+  +getAccessory():Acessory*
+
+  +ocurredCollision(Bestiole &b):bool
+  +checkCollisions(Mileu &monMilieu):void
+  +getIdentite():int
+  +getFinalSpeed():double
+  +getFinalArmor():double
+  +getFinalStealth():double
+
+  +changeBehaviour(Behaviour* newBehaviour)
+  operator<<(ostream& os, Bestiole& b):ostream&
+}
+
+class vec2{
+  +contrainAngle(double x): double
+  +rad2Deg(double x): double
+  +deg2Rad(double x):double
+}
+
+
+main-->Aquarium
+Aquarium_<|..Aquarium
+Milieu_ <|.. Milieu
+
+Aquarium-->Milieu
+Milieu *-- Bestiole
+BestioleFactory ..> Bestiole 
+BestioleFactory -- Milieu
+
+Bestiole *-- Component
+Bestiole ..> enum_Behavior
+Bestiole ..> enum_Accessory
+Bestiole ..> enum_Sensor
+Bestiole --> vec2
+
+Component <|-- Sensor
+Sensor <|-- CompositeSensor
+Sensor <|-- Ears
+Sensor <|-- Eyes
+
+Component<|-- Behaviour
+Behaviour<|-- DumbBehaviour
+Behaviour<|-- BraindeadBehaviour
+Behaviour<|-- PsychoBehaviour
+Behaviour<|-- SpinnerBehaviour
+Behaviour<|-- GregaireBehaviour
+Behaviour<|-- KamikazeBehaviour
+Behaviour<|-- PeureuseBehaviour
+Behaviour<|-- PrevoyanteBehaviour
+PsychoBehaviour--|>PsycBehvrs
+
+
+Component<|--Accessory
+Accessory<|--TurboJet
+Accessory<|--Cloak
+Accessory<|--Shield
+
+
+
+@enduml

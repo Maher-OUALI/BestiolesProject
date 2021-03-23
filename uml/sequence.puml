@@ -1,0 +1,30 @@
+@startuml sqeuencediagramm
+participant main
+participant Aquarium
+participant Milieu
+participant BestoileFactory
+participant Sensor
+participant Behaviour
+participant Accessoire
+participant Bestoile
+
+
+main --> Aquarium: <<create>>
+Aquarium --> Milieu: <<create>>
+main --> BestoileFactory: <<create>>
+main -> BestoileFactory: BestoileFactory.createBestoile(selectedBehav, selectedSens, selectedAcc)
+note right: needs to specify characteristics from enums. Abbreviated for readability.
+BestoileFactory --> Sensor: <<create>>
+BestoileFactory --> Behaviour: <<create>>
+BestoileFactory --> Accessoire: <<create>>
+BestoileFactory --> Bestoile: <<create>>
+Bestoile --> BestoileFactory: shared_ptr<Bestiole>
+BestoileFactory -> BestoileFactory: setCoords(x, y)
+Milieu -> Milieu: addMember(shared_ptr<Bestiole>)
+
+
+BestoileFactory --> main: shared_ptr<Bestiole>
+
+
+
+@enduml

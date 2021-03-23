@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+actor "Client" as fc
+rectangle Simulation {
+  usecase "Create initial \nPopulation" as UC1
+  usecase "Get Report" as UC2
+  usecase "Create Bestiole" as UC4
+  usecase "Create Sensor" as UC5
+  usecase "Manage Population" as UC6
+  usecase "Create Behaviour" as UC7
+  usecase "Death of Bestiole" as UC8
+  usecase "Create Accessory" as UC9
+}
+
+fc --> UC1
+fc --> UC2
+UC1 ..>"includes" UC6
+UC6 ..>"extends" UC4
+UC4 ..>"extends" UC5
+UC2 "extends" <..UC6
+UC4 ..> "includes" UC7
+UC6 ..> "includes" UC8
+UC4 ..> "extends" UC9
+@enduml
