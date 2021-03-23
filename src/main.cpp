@@ -72,8 +72,8 @@ int main()
 
    
 
-   //for ( int i = 1; i <= 10; ++i )
-   //    BestioleFactory::createRandomBestiole();
+   for ( int i = 1; i <= 30; ++i )
+       BestioleFactory::createRandomBestiole();
     ecosysteme.run();
 
    std::cout<<"End of program"<<std::endl;

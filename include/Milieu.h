@@ -23,6 +23,12 @@ private :
    int                     width, height;
    std::vector<shared_ptr<Bestiole> >   listeBestioles;
 
+public:
+   int deathByCollisions;
+   int naturalDeaths;
+   int births;
+   int clones;
+
 public :
    Milieu( int _width, int _height );
    ~Milieu( void );

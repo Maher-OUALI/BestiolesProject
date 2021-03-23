@@ -26,6 +26,7 @@ static bool sDrawSensors;
 
 static double sCloneProb;
 static double sDieProb;
+static double sBirthProb;
 
 static double sTurboJetMod;
 static double sShieldArmorMod;
@@ -71,6 +72,8 @@ static double sensorEyesEarsProb;
 static double accesShieldPob;
 static double accesCloakPob;
 static double accesTurboJetPob;
+
+static int sMaxtime;
 
 
 static size_t ReadConfFile(const char* fname);

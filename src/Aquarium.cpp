@@ -46,7 +46,7 @@ void Aquarium::run( void )
    
 
 
-   while ( ! is_closed() )
+   while ( ! is_closed() && (currentTime<EnvConfig::sMaxtime ||EnvConfig::sMaxtime==0))
    {
       //cout<<(int)is_key()<<endl;
       // cout << "iteration de la simulation" << endl;
@@ -56,15 +56,7 @@ void Aquarium::run( void )
          cout << "Vous avez presse la touche " << static_cast<unsigned char>( key() );
          cout << " (" << key() << ")" << endl;
          if ( is_keyESC() ) {
-            saveState(namef);
-
-            saveBilan();
-           
-
-
-
-
-            close();
+            break;
          }
 
          if(is_keySPACE())
@@ -132,6 +124,12 @@ void Aquarium::run( void )
 
    } // while
 
+   saveState(namef);
+
+   saveBilan();
+
+   close();
+
 }
 
 
@@ -189,6 +187,8 @@ void Aquarium::saveBilan( )
    sums["Kamikaze"]=0;
    sums["Greagaire"]=0;
    sums["Psycho"]=0;
+
+
      for ( std::vector<shared_ptr<Bestiole> >::iterator it = flotte->getBestiolesList().begin() ; it != flotte->getBestiolesList().end() ; ++it )
             {
                sums[(*it)->getSensor()->getName()]+=1;
@@ -196,11 +196,17 @@ void Aquarium::saveBilan( )
                sums[(*it)->getAccessory()->getName()]+=1;
             }
             namef.str("");
-            namef<<"./results/bilan.csv"; 
+            namef<<"./results/"<<currentTime<<"_bilan.csv"; 
             cout<<"Writting to :"<<namef.str()<<endl;
             fstream MyFile;
             MyFile.open(namef.str(),std::ios::out);
             //MyFile << fflush;
+            MyFile<<"Final number of bestioles: "<<flotte->getBestiolesList().size()<<endl;
+            MyFile<<"Natural deaths: "<<flotte->naturalDeaths<<endl;
+            MyFile<<"Collision deaths: "<<flotte->deathByCollisions<<endl;
+            MyFile<<"Births: "<<flotte->births<<endl;
+            MyFile<<"Clones: "<<flotte->clones<<endl;
+
             for( auto iter = sums.begin(); iter != sums.end(); iter++ ) {
                MyFile << "component: " << iter->first << ", quantity: " << iter->second << endl;
             }

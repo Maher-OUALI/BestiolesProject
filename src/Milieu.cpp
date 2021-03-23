@@ -20,6 +20,8 @@ Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
    cout << "const Milieu" << endl;
 
    std::srand( time(NULL) );
+   deathByCollisions=0;
+   naturalDeaths=0;
 
 }
 
@@ -56,6 +58,11 @@ void Milieu::step( void )
    } 
 
    applyDeath();
+
+   if(MyRandomGen::IsTrueRandom(EnvConfig::sBirthProb)){ 
+      BestioleFactory::createRandomBestiole();
+      births+=1;
+      }
 
 }
 

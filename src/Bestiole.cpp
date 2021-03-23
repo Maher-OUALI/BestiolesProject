@@ -237,7 +237,10 @@ void Bestiole::action( Milieu & monMilieu )
 {
    //checkCollisions(monMilieu);
 
-   if(MyRandomGen::IsTrueRandom(EnvConfig::sDieProb)) markedToDie=True;
+   if(MyRandomGen::IsTrueRandom(EnvConfig::sDieProb)){ 
+      markedToDie=True;
+      monMilieu.naturalDeaths+=1;
+      }
    if(MyRandomGen::IsTrueRandom(EnvConfig::sCloneProb)) BestioleFactory::createBestioleClone(*this);
 
 
@@ -318,6 +321,7 @@ void Bestiole::checkCollisions(Milieu & monMilieu )
             {
                cout<<"EVENT: "<<*this<<" was marked to die"<<endl;
                markedToDie=true;
+               monMilieu.deathByCollisions+=1;
                
             }
             }  

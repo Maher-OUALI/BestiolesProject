@@ -112,6 +112,7 @@ std::shared_ptr<Bestiole> BestioleFactory::createBestioleClone( Bestiole & b)
     std::shared_ptr<Bestiole> result =std::shared_ptr<Bestiole>( new Bestiole(b ));
     b.lastCollWith=result->getIdentite();
     milieu_->addMember(result);
+    milieu_->clones+=1;
     return result;
     }
     return nullptr;

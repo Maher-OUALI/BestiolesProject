@@ -9,7 +9,7 @@ bool EnvConfig::sDebugVision=false;
 bool EnvConfig::sDebugCollsion=false;
 bool EnvConfig::sDrawSensors=false;
 
-
+double EnvConfig::sBirthProb=0;
 double EnvConfig::sCloneProb=0;
 double EnvConfig::sDieProb=0;
 double EnvConfig::sPsychoChangeBProb=0;
@@ -57,6 +57,8 @@ double EnvConfig::accesShieldPob=0;
 double EnvConfig::accesCloakPob=0;
 double EnvConfig::accesTurboJetPob=0;
 
+int EnvConfig::sMaxtime=0;
+
 
 
 size_t EnvConfig::ReadConfFile(const char* fname)
@@ -96,6 +98,14 @@ size_t EnvConfig::ReadVar(FILE* file,std::string &name,double &retval)
 
 void EnvConfig::assignVar(const std::string name,const double value)
 {
+
+   if (!strcmp(name.c_str(),"MAX_TIME"))
+   {
+      sMaxtime=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
    if (!strcmp(name.c_str(),"COLLISION_DIE_PROB"))
    {
       sCollisionDieProb=value;
@@ -117,7 +127,12 @@ void EnvConfig::assignVar(const std::string name,const double value)
       return;
    }
 
-
+   if (!strcmp(name.c_str(),"BIRTH_PROB"))
+   {
+      sBirthProb=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
    if (!strcmp(name.c_str(),"CLONE_PROB"))
    {
       sCloneProb=value;
