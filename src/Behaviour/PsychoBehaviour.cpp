@@ -33,7 +33,7 @@ void PsychoBehaviour::calculateDir(Milieu & monMilieu)
     {
         cout<<"Changing behaviour"<<endl;
 
-        auto newBehaviour=MyRandomGen::getRandomType<PsycBehvrs>(std::vector<PsycBehvrs>({psychDumb,psychSpinner}),std::vector<double>({0.5,0.5}));
+        auto newBehaviour=MyRandomGen::getRandomType<PsycBehvrs>(std::vector<PsycBehvrs>({psychDumb,psychSpinner,psychBraindead,psychKamikaze,psychPeureuse,psychPrevoyante,psychGregaire}),std::vector<double>({0.5,0.5}));
         if(newBehaviour==psychSpinner)currentBehaviour_=&spinnerBehaviour_;
         if(newBehaviour==psychDumb)currentBehaviour_=&dumbBehaviour_;
         if(newBehaviour==psychBraindead)currentBehaviour_=&braindeadBehaviour_;
@@ -41,26 +41,14 @@ void PsychoBehaviour::calculateDir(Milieu & monMilieu)
         if(newBehaviour==psychPeureuse)currentBehaviour_=&peureuseBehaviour_;
         if(newBehaviour==psychPrevoyante)currentBehaviour_=&prevoyanteBehaviour_;
         if(newBehaviour==psychGregaire)currentBehaviour_=&gregaireBehaviour_;
+
     }
 
 
+    owner->getColeur()[0]=currentBehaviour_->getColor()[0];
+    owner->getColeur()[1]=currentBehaviour_->getColor()[1];
+    owner->getColeur()[2]=currentBehaviour_->getColor()[2];
     currentBehaviour_->calculateDir(monMilieu);
     angle_rad= currentBehaviour_->getAngleRad();
     speed=currentBehaviour_->getSpeed();
-
-    for ( std::vector<shared_ptr<Bestiole>>::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it )
-    if ((*it).get()!=owner)
-    {
-        if(owner->jeTeVois(**it) ){
-            
-            
-              if(EnvConfig::sDebugVision)  cout<<*owner<<" can sense "<<**it<<std::endl;
-            
-        }
-        else
-        {
-          if(EnvConfig::sDebugVision)  cout<<"....................."<<std::endl;
-        }
-        
-    }
 }
