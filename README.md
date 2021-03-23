@@ -9,15 +9,23 @@ Configuration:
 The config file config.txt probides parameters to tweak before starting the simulation.
 
 COLLISION_DIE_PROB  :  The probability to die from a collsion
+
 DEBUG_VISION. :  Print in terminal if a bestiole can see another one
+
 DEBUG_COLLISION  : Print in terminal if a bestiole collided another one
+
 CLONE_PROB. : probability that a bestiole gets cloned
+
 DIE_PROB  : Probability of sudden death of a bestiole
+
 PSYCH_CHANGEB_PROB  :  probability that the psycho behaviour changes behaviour
+
 TURBO_JET_MOD : How much the the accesorie changes speed
+
 SHIELD_ARMOR_MOD  : How much the the accesorie changes armor
 
 MIN_CLOAK_STEALTH_MOD  : How much the the accesorie changes stealth
+
 MAX_CLOAK_STEALTH_MOD  : How much the the accesorie changes stealth
 
 #sensor parameters
@@ -85,7 +93,11 @@ ACCES_TURBOJET_PROB = 0.1
 ACCES_SHIELD_PROB = 0.1
 
 Usage:
+
 Keyboard keys can be used as followed
+
 -Key P: save a snapshot of the state in csv format at the folder /results
+
 -Key Space: spawn a clone of the first bestiole
+
 -Key V: visualize sensors detection region for each bestiole
