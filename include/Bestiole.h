@@ -117,6 +117,7 @@ public :                                           // Forme canonique :
 
    void setOrientationDeg(double angle);
    double getOrientationRad(){return orientation;}
+   double getAFF_SIZE(){return AFF_SIZE;}
 
    math::vector2 getPosition()const {return pos;}
    double getAngleDeg(){return orientation/M_PI*180;}
