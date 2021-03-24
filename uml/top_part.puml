@@ -1,0 +1,72 @@
+@startuml classDiagram
+
+class main
+{
++main(int argc, char** argv):int
+}
+
+class BestioleFactory
+{
+  +{static}Milieu: *milieu_
+
+  +{static}createBestiole(enum_Behavior selected_behaviour,enum_Sensor selected_sensor,enum_Accessory selected_accessory):shared_ptr<Bestiole>
+  +{static}createBestioleClone(Bestiole& b):shared_ptr<Bestiole>
+
+  +{static}createRandomeBestiole():shared_ptr<Bestiole>
+  +{static}createRandomBehaviour(): Behaviour*
+
+  -{static}createBehaviour(enum_Behavior selected_behaviour):Behaviour
+  -{static}createSensor(enum_Sensor selected_sensor):Sensor
+  -{static}createAccessory(enum_Accessory selected_accessory):Accessory
+}
+
+class Milieu {
+  -int: width
+  -int: height
+  -vector<shared_ptr<Bestiole>>: listeBestioles
+  
+  +int deathByCollisions
+  +int naturalDeaths
+  +int births
+  +int clones
+
+  +Milieu(int _width, int _height)
+  +~Milieu()
+  +getWidth():int
+  +getHeight():int
+  +step():void
+  +addMember(shared_ptr<Bestiole> b):void
+  +nbVoisins(Bestiole* b):int
+  getBestiolesList():vector<shared_ptr<Bestiole>>&
+  +applyDeath():void
+  +operator<<(): ostream&
+  +shouldDie(Bestiole b):bool
+}
+
+
+class Aquarium{
+  -Milieu:*flotte
+  -int:delay
+  -int:currentStep
+
+  +int:screenWidth
+  +int:screenHeigth
+  
+  +Aquarium(int width, int height, int _delay)
+  +~Aquarium()
+
+  +getMilieu(): Milieu&
+  +run():void
+  +waitForKey(): int
+  +saveState(fstream& MyFile):void
+  +saveBilan():void
+}
+
+main-->Aquarium
+
+Aquarium-->Milieu
+Milieu *-- Bestiole
+BestioleFactory ..> Bestiole 
+BestioleFactory -- Milieu
+
+@enduml
