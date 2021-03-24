@@ -7,8 +7,7 @@
 #include <string>
 
 
-double EnvConfig::vcarlos=0;
-double EnvConfig::vjorge=0;
+
 double EnvConfig::sCollisionDieProb=0;
 bool EnvConfig::sDebugVision=false;
 bool EnvConfig::sDebugCollsion=false;
@@ -21,6 +20,8 @@ double EnvConfig::sPsychoChangeBProb=0;
 
 double EnvConfig::sTurboJetMod=0;
 double EnvConfig::sShieldArmorMod=0;
+double EnvConfig::sShieldSpeedMod=0.5;
+
 
 double EnvConfig::sMinCloakStealthMod=0;
 double EnvConfig::sMaxCloakStealthMod=0.9;
@@ -93,6 +94,7 @@ size_t EnvConfig::ReadConfFile(const char* fname)
    std::ifstream cFile (fname);
    if (cFile.is_open()){
       std::string line;
+      //Get one line after another
       while(getline(cFile, line)){
         
             ProcessLine(line);
@@ -110,14 +112,14 @@ size_t EnvConfig::ProcessLine(std::string & line)
    {
        std::vector<std::string> result; 
          std::istringstream iss(line); 
+         //Split the line in words
          for(std::string s; iss >> s; ) 
             result.push_back(s); 
-         //for(size_t i=0;i<result.size();i++)
-            //std::cout<<result[i]<<"//";
-         //std::cout<<std::endl;
+
 
          if(result.size()==3)
          {
+            //Check if we are defining the name
             if (result[0]=="NAME")
             {
 
@@ -127,13 +129,15 @@ size_t EnvConfig::ProcessLine(std::string & line)
 
             else
             {
+               //Assign numeric values to global variables
                assignVar(result[0],std::stod (result[2]));
             }
          }
    }
 
 
-//assign variables based on the read lines
+//assign variables based on the read lines. Each if assigns a static variable that
+// can be accesed across the program
 void EnvConfig::assignVar(const std::string name,const double value)
 {
 
@@ -217,6 +221,12 @@ void EnvConfig::assignVar(const std::string name,const double value)
    if (!strcmp(name.c_str(),"SHIELD_ARMOR_MOD"))
    {
       sShieldArmorMod=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"SHIELD_SPEED_MOD"))
+   {
+      sShieldSpeedMod=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
       return;
    }

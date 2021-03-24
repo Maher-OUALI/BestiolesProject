@@ -1,3 +1,4 @@
+//High damage resistance scenario
 NAME = higharmature
 
 MAX_TIME = 7000
@@ -14,6 +15,7 @@ DIE_PROB = 0.01
 PSYCH_CHANGEB_PROB = 0.01
 TURBO_JET_MOD = 1.0
 SHIELD_ARMOR_MOD = 4.0
+SHIELD_SPEED_MOD = 0.5
 
 MIN_CLOAK_STEALTH_MOD = 0.2
 MAX_CLOAK_STEALTH_MOD = 0.6

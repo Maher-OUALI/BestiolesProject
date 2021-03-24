@@ -20,7 +20,7 @@ public:
         color_[2]=Colors::brown[2];
 
 
-        speed_mod_=0.5;
+        speed_mod_=EnvConfig::sShieldSpeedMod;
         armor_mod_=EnvConfig::sShieldArmorMod;
         
     }

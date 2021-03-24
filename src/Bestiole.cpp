@@ -83,7 +83,7 @@ Bestiole::Bestiole( const Bestiole & b )
 
    couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
-
+   //component cloning
    sensor_=b.sensor_->clone(this);
    behaviour_=b.behaviour_->clone(this);
    accessory_=b.accessory_->clone(this);
@@ -95,62 +95,7 @@ Bestiole::Bestiole( const Bestiole & b )
 }
 
 
-// Bestiole::Bestiole(  Bestiole && b )
-// {
 
-//    initState();
-
-//    identite = ++next;
-
-//    cout << "const Bestiole (" << identite << ") par move" << endl;
-
-//    //x = b.x;
-//    //y = b.y;
-//    pos=b.pos;
-
-
-//    //cumulX = cumulY = 0.;
-//    cumulPos=math::vector2();
-//    orientation = b.orientation;
-//    vitesse = b.vitesse;
-//    couleur = new T[ 3 ];
-//    memcpy( couleur, b.couleur, 3*sizeof(T) );
-
-//    sensor_=b.sensor_;
-//    sensor_->setOwner(this);
-//    behaviour_=b.behaviour_;
-//    behaviour_->setOwner(this);
-
-// }
-
-
-// Bestiole& Bestiole::operator=( Bestiole&& b)
-// {
-//    initState();
-
-//    identite = ++next;
-
-//    cout << "const Bestiole (" << identite << ") par move" << endl;
-
-//    //x = b.x;
-//    //y = b.y;
-//    pos=b.pos;
-
-
-//    //cumulX = cumulY = 0.;
-//    cumulPos=math::vector2();
-//    orientation = b.orientation;
-//    vitesse = b.vitesse;
-//    couleur = new T[ 3 ];
-//    memcpy( couleur, b.couleur, 3*sizeof(T) );
-
-//    sensor_=b.sensor_;
-//    sensor_->setOwner(this);
-//    behaviour_=b.behaviour_;
-//    behaviour_->setOwner(this);
-
-//    return *this;
-// }
 
 
 void Bestiole::initState()
@@ -265,7 +210,7 @@ void Bestiole::draw( UImg & support )
    math::vector2 relativePos=math::vector2().setCircle(AFF_SIZE/2.1,-orientation/M_PI*180.);
    math::vector2 headPos=(pos+relativePos);
 
-
+   //Drawing
    support.draw_ellipse( pos[0], pos[1], AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., couleur );
    support.draw_circle( headPos[0], headPos[1], AFF_SIZE/2., couleur );
 

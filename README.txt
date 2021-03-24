@@ -1,9 +1,17 @@
 Launching:
 1) Open a terminal
 2) Build using command make (make clean for starting again)
-2) run .\/build/main or .\/build/main [Directory to custom config file]
+2) run .\/build/main 
+or
+ .\/build/main [Directory to custom config file]
+
+
 Note: If not config file is selected, the default one at the rrot Directory will
-be used
+be used. Some .txt experiments are provided:
+1) onlykamikaze.txt
+2) highbirths.txt
+3) higharmature.txt
+4) balanced.txt
 
 ///////////////////////////////////////////////////////////////////////////////////////
 Color Guidelines

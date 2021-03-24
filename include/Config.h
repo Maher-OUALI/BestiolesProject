@@ -18,8 +18,6 @@ public:
 
 static std::string experimentName;
 
-static double vcarlos;
-static double vjorge;
 
 
 static double sCollisionDieProb;
@@ -33,6 +31,7 @@ static double sBirthProb;
 
 static double sTurboJetMod;
 static double sShieldArmorMod;
+static double sShieldSpeedMod;
 static double sMinCloakStealthMod;
 static double sMaxCloakStealthMod;
 
