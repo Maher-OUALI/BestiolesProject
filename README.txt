@@ -17,40 +17,39 @@ be used. Some .txt experiments are provided:
 Color Guidelines
 
 Behaviours
-
 Gregaire: Green
 Kamikaze: Red
 Peureseuse: Yellow
 Prevoyante: Orange
 Psycho: Color of current active behaviour
 
-accesorie
+Accessories
 Cloak:pink
 Shield:brown
 TurboJet:cyan
 
-sensors
+Sensors
 Can be seen by pressing the key "V"
 
 ///////////////////////////////////////////////////////////////////////////////////////
 Configuration:
-The config file config.txt probides parameters to tweak before starting the simulation.
+The config file config.txt provides parameters to tweak before starting the simulation.
 
-NAME is the name of the experiment, this allows to save csv with specific names
+NAME is the name of the experiment, this allows to save csv with specific names.
 
 MAX_TIME Maximum time of simulation (0 for unlimited)
-STEP_LOG_FREQ Fraquency of state logging (0 for dissabled)
+STEP_LOG_FREQ Frequency of state logging (0 for disabled)
 INIT_BESTIOLES_NB Initial number of bestioles
 
-COLLISION_DIE_PROB The probability to die from a collsion
+COLLISION_DIE_PROB The probability to die from a collision
 DEBUG_VISION Print in terminal if a bestiole can see another one
 DEBUG_COLLISION Print in terminal if a bestiole collided another one
-CLONE_PROB probability that a bestiole gets cloned
+CLONE_PROB Probability that a bestiole gets cloned
 DIE_PROB Probability of sudden death of a bestiole
-PSYCH_CHANGEB_PROB probability that the psycho behaviour changes behaviour
-TURBO_JET_MOD How much the the accesorie changes speed
-SHIELD_ARMOR_MOD How much the the accesorie changes armor
-CLOAK_STEALTH_MOD How much the the accesorie changes stealth
+PSYCH_CHANGEB_PROB Probability that the psycho behaviour changes behaviour
+TURBO_JET_MOD How much the the accessory changes speed
+SHIELD_ARMOR_MOD How much the the accessory changes armor
+CLOAK_STEALTH_MOD How much the the accessory changes stealth
 
 #sensor parameters
 VISION_DIST = 100
@@ -86,14 +85,14 @@ ACCES_TURBOJET_PROB = 0.1
 ACCES_SHIELD_PROB = 0.1
 ///////////////////////////////////////////////////////////////////////////////////////
 Usage:
-Keyboard keys can be used as followed
+Keyboard keys can be used as followed:
 
--Key Space: spawn a clone of the first bestiole
+-Key Space: Spawn a clone of the first bestiole.
 
--Key V: visualize sensors detection region for each bestiole
+-Key V: Visualize sensors detection region for each bestiole.
 
 -Key D: Used for deletion. use a keypad (only keypad) to write the id of bestiole to delete. 
-Then press the key "f". Simulation will pause during inputting.
+Then press the key "f". Simulation will pause during input.
 
 -Key S: Used for switching behaviour. use a keypad (only keypad) to write the id of bestiole to switch behaviour. 
-Then press the key "f". Simulation will pause during inputting.
+Then press the key "f". Simulation will pause during input.

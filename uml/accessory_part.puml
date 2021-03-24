@@ -1,0 +1,50 @@
+@startuml classDiagram
+
+class Accessory{
+  #double: speed_mod_
+  #double: armor_mod_
+  #double: stealh_mod_
+  #T: color_[3]
+
+  +Acessory(const string name)
+  +~Acessory()
+  +getSpeedMod():double
+  +getArmorMod():double
+  +getStealthMod():double
+  +clone(Bestiole* ownr):Accessory*
+  +Draw(UImg & support): void
+}
+
+
+class Cloak{
+  +Cloak()
+  +~Cloak()
+  +clone(Bestiole* ownr): Cloak*
+}
+
+class Empty{
+  +Empty()
+  +~Empty()
+  +clone(Bestiole* ownr): Empty*
+  +Draw(UImg & support): void
+}
+
+class TurboJet{
+  +TurboJet()
+  +~TurboJet()
+  +clone(Bestiole* ownr): TurboJet* 
+}
+
+class Shield{
+  +Shield()
+  +~Shield()
+  +clone(Bestiole* ownr): Shield* 
+}
+
+Component<|--Accessory
+Accessory<|--TurboJet
+Accessory<|--Cloak
+Accessory<|--Shield
+Accessory<|--Empty
+
+@enduml

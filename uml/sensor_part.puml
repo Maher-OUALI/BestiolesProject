@@ -1,0 +1,54 @@
+@startuml classDiagram
+class Sensor{
+  +Sensor(const string name)
+  +~Sensor()
+  +canSense(const Bestiole &b2):bool
+  +clone(Bestiole* ownr):Sensor*
+}
+
+class Ears {
+  -double: detection_capacity
+  -double: max_dist
+
+  +Ears()
+  +Ears(const Ears &ear)
+  +~Ears()
+  +canSense(Bestiole* &b2):bool
+  +clone(Bestiole* ownr):Ears*
+  +Draw(UImg&support):void
+  +DrawHearingCircle(UImg &support):void
+}
+class Eyes{
+  -double:detection_capacity
+  -double:fov_deg
+  -double:max_dist
+
+  +Eyes()
+  +Eyes(Eyes &eye)
+  +~Eyes()
+  +canSense(const Bestiole &b2):bool
+  +clone(Bestiole* ownr):Eyes*
+  +Draw(UImg & support):void
+  +DrawVisionCone(UImg &support):void
+}
+
+class CompositeSensor {
+  -Ears*: ear
+  -Eyes*: eye
+
+  +CompositeSensor()
+  +CompositeSensor(const CompositeSensor &csensor)
+  +~CompositeSensor()
+  +canSense(const Bestiole &b2):bool
+  +clone(Bestiole* ownr)CompositeSensor*
+  +Draw(UImg & support):void
+  +DrawCompositeSensor(UImg &support)
+  +setOwner(Bestiole* ownr):void
+}
+
+Component <|-- Sensor
+Sensor <|-- CompositeSensor
+Sensor <|-- Ears
+Sensor <|-- Eyes
+
+@enduml

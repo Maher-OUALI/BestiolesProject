@@ -1,0 +1,113 @@
+@startuml classDiagram
+interface Behaviour {
+  <<friend>> Bestiole
+  # double: angle_rad
+  # double: speedMod
+  # T: color_[3]
+
+  +Behaviour(const string name)
+  +~Behaviour()
+  +calculateDir(Milieu & monMilieu):void
+  +clone(Bestiole* ownr):Behaviour
+
+  +getAngleRad():double
+  +getSpeed():double
+  getColor(): T*
+}
+
+class BraindeadBehaviour {
+  +BraindeadBehaviour()
+  +~BraindeadBehaviour()
+  +calculateDir(Milieu & monMilieu):void
+  +clone(Bestiole* ownr):BraindeadBehaviour*
+}
+
+class DumbBehaviour {
+  +DumbBehaviour()
+  +~DumbBehaviour()
+  +calculateDir(Milieu & monMilieu):void
+  +clone(Bestiole* ownr):DumbBehaviour*
+}
+
+class GregaireBehaviour{
+  +GregaireBehaviour()
+  +~GregaireBehaviour()
+  +calculateDir(Milieu & monMilieu):void
+  +clone(Bestiole* ownr): GregaireBehaviour*
+}
+
+class KamikazeBehaviour{
+  +KamikazeBehaviour()
+  +~KamikazeBehaviour()
+  +calculateDir(Milieu & monMilieu):void
+  +clone(Bestiole* ownr): KamikazeBehaviour*
+}
+
+class PeureuseBehaviour{
+  -int: max_neighbours
+  -double: speed_factor
+  -bool: isEscaping
+
+  +PeureuseBehaviour()
+  +~PeureuseBehaviour()
+
+  +calculateDir(Milieu & monMilieu):void
+  +clone(Bestiole* ownr): PeureuseBehaviour*
+}
+
+class PrevoyanteBehaviour{
+  +PrevoyanteBehaviour()
+  +~PrevoyanteBehaviour()
+  +calculateDir(Milieu & monMilieu):void
+  +clone(Bestiole* ownr):PrevoyanteBehaviour()
+}
+
+
+
+class SpinnerBehaviour {
+  +SpinnerBehaviour()
+  +~SpinnerBehaviour()
+  +calculateDir(Milieu & monMilieu):void
+  +clone(Bestiole* ownr):SpinnerBehaviour*
+}
+
+class PsychoBehaviour {
+  - DumbBehaviour: dumbBehaviour
+  - SpinnerBehaviour: spinnerBehaviour
+  - KamikazeBehaviour: kamikazeBehaviour
+  - PrevoyanteBehaviour: prevoyanteBehaviour
+  - PeureuseBehaviour: peureuseBehaviour
+  - GregaireBehaviour: gregaireBehaviour
+  - BraindeadBehaviour: braindeadBehaviour
+  - Behaviour*: currentBehaviour_
+
+  +PsychoBehaviour()
+  +~PsychoBehaviour()
+  +calculateDir(Milieu & monMilieu):void
+  +setOwner(Bestiole ownr):void
+  +clone(Bestiole* ownr):PsachoBehaviour*
+}
+
+enum PsycBehvrs{
+  psychDumb
+  psychSpinner 
+  psychBraindead
+  psychKamikaze
+  psychGregaire
+  psychPeureuse
+  psychPrevoyante
+}
+
+Component<|-- Behaviour
+Behaviour<|-- DumbBehaviour
+Behaviour<|-- BraindeadBehaviour
+Behaviour<|-- PsychoBehaviour
+Behaviour<|-- SpinnerBehaviour
+Behaviour<|-- GregaireBehaviour
+Behaviour<|-- KamikazeBehaviour
+Behaviour<|-- PeureuseBehaviour
+Behaviour<|-- PrevoyanteBehaviour
+PsychoBehaviour..>PsycBehvrs
+
+
+@enduml
