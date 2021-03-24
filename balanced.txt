@@ -1,4 +1,3 @@
-///Balanced environment for reference
 NAME = balanced
 
 MAX_TIME = 7000

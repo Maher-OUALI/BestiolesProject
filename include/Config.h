@@ -90,7 +90,7 @@ static size_t ReadConfFile(const char* fname);
 
 
 private:
-static   size_t ReadVar(FILE* file,std::string &name,double &retval);
+static   size_t ProcessLine(std::string & line);
 
 static void assignVar(const std::string name,const double value);
 

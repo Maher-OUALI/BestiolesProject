@@ -1,10 +1,8 @@
-//Higher rate of births
 NAME = highbirth
 
 MAX_TIME = 7000
 STEP_LOG_FREQ = 30
 INIT_BESTIOLES_NB = 20
-
 
 COLLISION_DIE_PROB = 1.0
 DEBUG_VISION = 0

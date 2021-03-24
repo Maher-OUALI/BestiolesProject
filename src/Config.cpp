@@ -1,5 +1,10 @@
 #include "Config.h"
 #include <cstring>
+#include <fstream>
+#include <vector>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 
 double EnvConfig::vcarlos=0;
@@ -69,47 +74,62 @@ std::string EnvConfig::experimentName="";
 
 size_t EnvConfig::ReadConfFile(const char* fname)
 {
-   FILE* ptr = fopen(fname,"r"); 
-    if (ptr==NULL) 
-    { 
-        printf("No config file found."); 
-        return 0; 
-    } 
+   // FILE* ptr = fopen(fname,"r"); 
+   //  if (ptr==NULL) 
+   //  { 
+   //      printf("No config file found."); 
+   //      return 0; 
+   //  } 
 
-    printf("Config file found.....\n");
-   std::string var_name; 
-   double var_value;
-   while (!ReadVar(ptr,var_name,var_value))
-   {
-      assignVar(var_name,var_value);
+   //  printf("Config file found.....\n");
+   // std::string var_name; 
+   // double var_value;
+   // while (!ReadVar(ptr,var_name,var_value))
+   // {
+   //    assignVar(var_name,var_value);
+   // }
+   // return 0;
+
+   std::ifstream cFile (fname);
+   if (cFile.is_open()){
+      std::string line;
+      while(getline(cFile, line)){
+        
+            ProcessLine(line);
+
+         
+      } 
+
+
    }
-   return 0;
 }
 
 
 
-size_t EnvConfig::ReadVar(FILE* file,std::string &name,double &retval)
+size_t EnvConfig::ProcessLine(std::string & line)
    {
-      char var_name[100]; 
-      char var_vstring[100]; 
-      if (fscanf(file,"NAME = %s\n",var_vstring)==1) 
-      { 
-         
-         std::string tempstr( var_vstring);
-         experimentName=tempstr;
-         std::cout<<"Name of experiment: "<<var_vstring<<std::endl;
-      }
+       std::vector<std::string> result; 
+         std::istringstream iss(line); 
+         for(std::string s; iss >> s; ) 
+            result.push_back(s); 
+         //for(size_t i=0;i<result.size();i++)
+            //std::cout<<result[i]<<"//";
+         //std::cout<<std::endl;
 
-      //Get values to write to global configuration variables
+         if(result.size()==3)
+         {
+            if (result[0]=="NAME")
+            {
 
-      if (fscanf(file,"%s = %s\n",var_name,var_vstring)==2) 
-      { 
-         retval = std::stod (std::string(var_vstring));
-         name=var_name;
-         
-         return 0;
-      }
-      return -1;
+               experimentName=result[2];
+               std::cout<<"Name of experiment: "<<experimentName<<std::endl;
+            }
+
+            else
+            {
+               assignVar(result[0],std::stod (result[2]));
+            }
+         }
    }
 
 

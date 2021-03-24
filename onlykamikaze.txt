@@ -1,4 +1,4 @@
-// only kamikazes are allowed
+//Only kamikazes
 NAME = onlykamikaze
 
 MAX_TIME = 7000

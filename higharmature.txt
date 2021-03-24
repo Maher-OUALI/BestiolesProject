@@ -1,4 +1,3 @@
-//Only shield accesorie is allowed bith high modifier value
 NAME = higharmature
 
 MAX_TIME = 7000
