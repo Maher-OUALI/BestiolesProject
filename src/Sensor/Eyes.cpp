@@ -19,8 +19,9 @@ bool Eyes::canSense(const Bestiole &b2)
 
 Eyes* Eyes::clone(Bestiole* ownr)
 {
-    return new Eyes();
+    return new Eyes(*this);
 }
+
 
 
 
