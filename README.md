@@ -62,6 +62,8 @@ STEP_LOG_FREQ Frequency of state logging (0 for disabled)
 
 INIT_BESTIOLES_NB Initial number of bestioles
 
+MAX_BESTIOLES Maximum bestioles allowed during simulation
+
 COLLISION_DIE_PROB The probability to die from a collision
 
 DEBUG_VISION Print in terminal if a bestiole can see another one
@@ -74,32 +76,49 @@ DIE_PROB Probability of sudden death of a bestiole
 
 PSYCH_CHANGEB_PROB Probability that the psycho behaviour changes behaviour
 
-TURBO_JET_MOD How much the the accessory changes speed
+### Accessory parameters
 
-SHIELD_ARMOR_MOD How much the the accessory changes armor
+TURBO_JET_MOD How much the accessory changes speed
 
-CLOAK_STEALTH_MOD How much the the accessory changes stealth
+SHIELD_ARMOR_MOD How much the accessory changes armor
+
+MIN_CLOAK_STEALTH_MOD Min camouflage capacity
+
+MAX_CLOAK_STEALTH_MOD Max camouflage capacity
+
 
 ### sensor parameters
 
-VISION_DIST = 100
+MIN_VISION_DIST Min vision distance
 
-VISION_ANGLE = 45
+MIN_VISION_ANGLE Min vision angle
 
-VISION_INTENSITY = 0.9
+MIN_VISION_INTENSITY Min vision intensity
 
-HEARING_DIST = 30
+MIN_HEARING_DIST Min hearing distance
 
-HEARING_INTENSITY = 0.7
+MIN_HEARING_INTENSITY Min hearing intensity
 
-MAX_BESTIOLES Maximum bestioles allowed during simulation
+
+MAX_VISION_DIST Max vision distance
+
+MAX_VISION_ANGLE Max vision angle
+
+MAX_VISION_INTENSITY Max vision intensity
+
+MAX_HEARING_DIST Max hearing distance
+
+MAX_HEARING_INTENSITY Max hearing intensity 
+
+
 
 ### Behaviour parameters
 
-MAX_NEIGHBORS_PEUREUSE = 0
+MAX_NEIGHBORS_PEUREUSE Maximum number of neighbors acceptable by Peureuse
 
-RUNAWAY_FACTOR_PEUREUSE = 3.0
+RUNAWAY_FACTOR_PEUREUSE Speed factor when number of neighbors of Peureuse exceeds maximum
 
+NBR_STEPS_PREDICTION Number of steps in the future when estimating neighbors trajectories by Prevoyante
 
 
 ### Probabilities of instantiation during creation of bestiole
