@@ -43,27 +43,30 @@ void TestCases::peureuseBehaviourUnitTest(Aquarium & ecosysteme){
    EnvConfig::sCollisionDieProb=1.;
    //create a prevoyante bestiole
    Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Peureuse,enum_Sensor::Ears,enum_Accessory::Empty).get();
-   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0);
+   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-200,ecosysteme.getMilieu().getHeight()/2.0);
    b1->setOrientationDeg(0.0);
-   
+
    //create two other bestiole moving the opposite direction
-   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::Eyes,enum_Accessory::Empty).get();
-   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+70,ecosysteme.getMilieu().getHeight()/2.0+10);
-   b2->setOrientationDeg(180.0);
+   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::Eyes,enum_Accessory::Empty).get();
+   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+100,ecosysteme.getMilieu().getHeight()/2.0+20);
+   b2->setOrientationDeg(0.0);
 
    Bestiole* b3=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::Eyes,enum_Accessory::Empty).get();
-   b3->setCoords(ecosysteme.getMilieu().getWidth()/2.0+70,ecosysteme.getMilieu().getHeight()/2.0-10);
+   b3->setCoords(ecosysteme.getMilieu().getWidth()/2.0+30,ecosysteme.getMilieu().getHeight()/2.0-50);
    b3->setOrientationDeg(180.0);
 }
 
 void TestCases::prevoyanteBehaviourUnitTest(Aquarium & ecosysteme){
    //force configuration
    EnvConfig::sCollisionDieProb=1.;
+   EnvConfig::sMaxHearingDist=300;
+   EnvConfig::sMinHearingDist=200;
+
    //create a prevoyante bestiole
    Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Prevoyante,enum_Sensor::Ears,enum_Accessory::Empty).get();
    b1->setCoords(0.,ecosysteme.getMilieu().getHeight()/2.0);
    b1->setOrientationDeg(0.0);
-   
+
    //create two other bestiole moving the opposite direction
    Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::Eyes,enum_Accessory::Empty).get();
    b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0,0.);
@@ -144,16 +147,58 @@ void TestCases::compositeSensorUnitTest(Aquarium & ecosysteme){
 }
 
 void TestCases::cloakAccessoryUnitTest(Aquarium & ecosysteme){
+   //force specific configuration
+   EnvConfig::sCollisionDieProb=0.;
+   EnvConfig::sDebugVision=true;
 
+   Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::CompositeSensor,enum_Accessory::Empty).get();
+   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0);
+   b1->setOrientationDeg(0.0);
+
+   //a tweak to not show hearing range
+   EnvConfig::sMaxHearingDist=1;
+   EnvConfig::sMinHearingDist=0;
+   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Ears,enum_Accessory::Cloak).get();
+   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+200,ecosysteme.getMilieu().getHeight()/2.0);
+   b2->setOrientationDeg(180.0);
 }
 
 void TestCases::shieldAccessoryUnitTest(Aquarium & ecosysteme){
+   //force specific configuration
+   EnvConfig::sCollisionDieProb=1.;
+   EnvConfig::sShieldArmorMod=4.;
+   EnvConfig::sDebugVision=true;
 
+   Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::CompositeSensor,enum_Accessory::Empty).get();
+   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0);
+   b1->setOrientationDeg(0.0);
+
+
+   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Ears,enum_Accessory::Shield).get();
+   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+200,ecosysteme.getMilieu().getHeight()/2.0);
+   b2->setOrientationDeg(180.0);
 }
 
 void TestCases::turboJetAccessoryUnitTest(Aquarium & ecosysteme){
+   //force specific configuration
+   EnvConfig::sCollisionDieProb=1.;
+   EnvConfig::sShieldArmorMod=4.;
+   EnvConfig::sDebugVision=true;
+   //a tweak to not show hearing range
+   EnvConfig::sMaxHearingDist=1;
+   EnvConfig::sMinHearingDist=0;
+
+   Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::Ears,enum_Accessory::Empty).get();
+   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-200,ecosysteme.getMilieu().getHeight()/2.0-50);
+   b1->setOrientationDeg(0.0);
+
+
+   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::Ears,enum_Accessory::Turbojet).get();
+   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+200,ecosysteme.getMilieu().getHeight()/2.0+50);
+   b2->setOrientationDeg(180.0);
 
 }
+
 
 void TestCases::Debugtest(Aquarium & ecosysteme){
 
