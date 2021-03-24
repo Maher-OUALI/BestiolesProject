@@ -3,11 +3,10 @@ Launching:
 2) Build using command make (make clean for starting again)
 2) run .\/build/main 
 or
- .\/build/main [Directory to custom config file]
+ .\/build/main [Directory to custom config file:DEFAULT=config.txt]
 
 
-Note: If not config file is selected, the default one at the rrot Directory will
-be used. Some .txt experiments are provided:
+Some .txt experiments are provided:
 1) onlykamikaze.txt
 2) highbirths.txt
 3) higharmature.txt
@@ -19,14 +18,14 @@ Color Guidelines
 Behaviours
 Gregaire: Green
 Kamikaze: Red
-Peureseuse: Yellow
-Prevoyante: Orange
+Peureseuse: Dark Yellow
+Prevoyante: Blue
 Psycho: Color of current active behaviour
 
 Accessories
-Cloak:pink
-Shield:brown
-TurboJet:cyan
+Cloak: Pink
+Shield: Brown
+TurboJet: Cyan
 
 Sensors
 Can be seen by pressing the key "V"
@@ -84,6 +83,7 @@ ACCES_CLOAK_PROB = 0.1
 ACCES_TURBOJET_PROB = 0.1
 ACCES_SHIELD_PROB = 0.1
 ///////////////////////////////////////////////////////////////////////////////////////
+
 Usage:
 Keyboard keys can be used as followed:
 
@@ -96,3 +96,24 @@ Then press the key "f". Simulation will pause during input.
 
 -Key S: Used for switching behaviour. use a keypad (only keypad) to write the id of bestiole to switch behaviour. 
 Then press the key "f". Simulation will pause during input.
+/////////////////////////////////////////////////////////////////////////////////////////
+
+List of UnitTests:
+==============================
+0 : Normal0UnitTest 
+1 : kamikazeBehaviourUnitTest
+2 : gregaireBehaviourUnitTest
+3 : peureuseBehaviourUnitTest
+4 : prevoyanteBehaviourUnitTest
+5 : psychoBehaviourUnitTest
+6 : earsSensorUnitTest
+7 : eyesSensorUnitTest
+8 : compositeSensorUnitTest
+9 : cloakAccessoryUnitTest
+10 : shieldAccessoryUnitTest
+11 : turboJetAccessoryUnitTest
+12 : debugTest
+==============================
+choose a test case number 
+
+NB: To correctly use UnitTests 1-11 make sure to use the basetest configuration file (config.txt) by calling ./build/main directly without specifying a config file
