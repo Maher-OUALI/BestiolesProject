@@ -17,7 +17,7 @@ void CompositeSensor::setOwner(Bestiole* ownr)
 
 CompositeSensor* CompositeSensor::clone(Bestiole* ownr)
 {
-    return new CompositeSensor();
+    return new CompositeSensor(*this);
 }
 
 void CompositeSensor::Draw(UImg & support)
