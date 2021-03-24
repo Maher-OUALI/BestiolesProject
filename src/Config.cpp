@@ -57,6 +57,7 @@ double EnvConfig::sensorEyesEarsProb=0;
 double EnvConfig::accesShieldPob=0;
 double EnvConfig::accesCloakPob=0;
 double EnvConfig::accesTurboJetPob=0;
+double EnvConfig::accesEmptyPob=0;
 
 int EnvConfig::sMaxtime=0;
 int EnvConfig::stepLogFreq=0;
@@ -409,6 +410,14 @@ if (!strcmp(name.c_str(),"MAX_HEARING_INTENSITY"))
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
       return;
    }
+   if (!strcmp(name.c_str(),"ACCES_EMPTY_PROB"))
+   {
+      accesEmptyPob=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   
+   
    if (!strcmp(name.c_str(),"NBR_STEPS_PREDICTION"))
    {
       sNbrStepsPrediction=value;

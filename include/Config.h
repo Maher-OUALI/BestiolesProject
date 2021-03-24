@@ -76,6 +76,7 @@ static double sensorEyesEarsProb;
 static double accesShieldPob;
 static double accesCloakPob;
 static double accesTurboJetPob;
+static double accesEmptyPob;
 
 static int sMaxtime;
 static int stepLogFreq;

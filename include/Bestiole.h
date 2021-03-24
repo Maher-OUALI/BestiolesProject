@@ -37,7 +37,8 @@ enum  class enum_Accessory
 {
    Turbojet,
    Cloak,
-   Shield
+   Shield,
+   Empty
 };
 
 
