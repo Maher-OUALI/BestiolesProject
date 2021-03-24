@@ -101,3 +101,20 @@ void TestCases::shieldAccessoryUnitTest(Aquarium & ecosysteme){
 void TestCases::turboJetAccessoryUnitTest(Aquarium & ecosysteme){
 
 }
+
+void TestCases::Debugtest(Aquarium & ecosysteme){
+
+      //create a gregaire bestiole moving in one direction
+   Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Gregaire,enum_Sensor::CompositeSensor,enum_Accessory::Shield).get();
+   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-200,ecosysteme.getMilieu().getHeight()/2.0);
+   b1->setOrientationDeg(0.0);
+
+   Bestiole* b2=BestioleFactory::createBestioleClone(*b1).get();
+   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0,ecosysteme.getMilieu().getHeight()/2.0);
+   b1->setOrientationDeg(180.0);
+
+   
+
+
+
+}
