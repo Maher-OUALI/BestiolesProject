@@ -79,13 +79,17 @@ void TestCases::psychoBehaviourUnitTest(Aquarium & ecosysteme){
    EnvConfig::sPsychoChangeBProb = 0.01;
    //create a psycho bestiole
    Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Psycho,enum_Sensor::Ears,enum_Accessory::Empty).get();
-   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0);
+   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0,ecosysteme.getMilieu().getHeight()/2.0);
    b1->setOrientationDeg(0.0);
    
    //create two other bestiole moving the opposite direction
    Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::Eyes,enum_Accessory::Empty).get();
    b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+200,ecosysteme.getMilieu().getHeight()/2.0);
    b2->setOrientationDeg(180.0);
+
+   Bestiole* b3=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::Eyes,enum_Accessory::Empty).get();
+   b3->setCoords(ecosysteme.getMilieu().getWidth()/2.0-200,ecosysteme.getMilieu().getHeight()/2.0);
+   b3->setOrientationDeg(180.0);
 }
 
 void TestCases::earsSensorUnitTest(Aquarium & ecosysteme){
@@ -96,13 +100,13 @@ void TestCases::earsSensorUnitTest(Aquarium & ecosysteme){
    EnvConfig::sMinHearingDist=50;
 
    Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::Ears,enum_Accessory::Empty).get();
-   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0);
+   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0+30);
    b1->setOrientationDeg(0.0);
 
    //a tweak to not show hearing range
    EnvConfig::sMaxHearingDist=1;
    EnvConfig::sMinHearingDist=0;
-   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::Ears,enum_Accessory::Empty).get();
+   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::Ears,enum_Accessory::Empty).get();
    b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+200,ecosysteme.getMilieu().getHeight()/2.0);
    b2->setOrientationDeg(180.0);
    
@@ -114,13 +118,13 @@ void TestCases::eyesSensorUnitTest(Aquarium & ecosysteme){
    EnvConfig::sDebugVision=true;
 
    Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::Eyes,enum_Accessory::Empty).get();
-   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0);
+   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0+30);
    b1->setOrientationDeg(0.0);
 
    //a tweak to not show hearing range
    EnvConfig::sMaxHearingDist=1;
    EnvConfig::sMinHearingDist=0;
-   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::Ears,enum_Accessory::Empty).get();
+   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::Ears,enum_Accessory::Empty).get();
    b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+200,ecosysteme.getMilieu().getHeight()/2.0);
    b2->setOrientationDeg(180.0);
 }
@@ -129,19 +133,19 @@ void TestCases::compositeSensorUnitTest(Aquarium & ecosysteme){
    //force specific configuration
    EnvConfig::sCollisionDieProb=0.;
    EnvConfig::sDebugVision=true;
-   EnvConfig::sMaxVisionDist=70;
-   EnvConfig::sMinVisionDist=60;
-   EnvConfig::sMaxHearingDist=50;
-   EnvConfig::sMinHearingDist=40;
+   EnvConfig::sMaxVisionDist=100;
+   EnvConfig::sMinVisionDist=80;
+   EnvConfig::sMaxHearingDist=200;
+   EnvConfig::sMinHearingDist=100;
 
    Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::CompositeSensor,enum_Accessory::Empty).get();
-   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0);
+   b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0+30);
    b1->setOrientationDeg(0.0);
 
    //a tweak to not show hearing range
    EnvConfig::sMaxHearingDist=1;
    EnvConfig::sMinHearingDist=0;
-   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::Ears,enum_Accessory::Empty).get();
+   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::Ears,enum_Accessory::Empty).get();
    b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+200,ecosysteme.getMilieu().getHeight()/2.0);
    b2->setOrientationDeg(180.0);
 }
@@ -150,8 +154,11 @@ void TestCases::cloakAccessoryUnitTest(Aquarium & ecosysteme){
    //force specific configuration
    EnvConfig::sCollisionDieProb=0.;
    EnvConfig::sDebugVision=true;
+   EnvConfig::sMaxCloakStealthMod=1.0;
+   EnvConfig::sMinCloakStealthMod=0.99;
 
-   Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::CompositeSensor,enum_Accessory::Empty).get();
+
+   Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Kamikaze,enum_Sensor::CompositeSensor,enum_Accessory::Empty).get();
    b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-100,ecosysteme.getMilieu().getHeight()/2.0);
    b1->setOrientationDeg(0.0);
 
@@ -159,7 +166,7 @@ void TestCases::cloakAccessoryUnitTest(Aquarium & ecosysteme){
    EnvConfig::sMaxHearingDist=1;
    EnvConfig::sMinHearingDist=0;
    Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Ears,enum_Accessory::Cloak).get();
-   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+200,ecosysteme.getMilieu().getHeight()/2.0);
+   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+200,ecosysteme.getMilieu().getHeight()/2.0+20);
    b2->setOrientationDeg(180.0);
 }
 
@@ -187,6 +194,8 @@ void TestCases::turboJetAccessoryUnitTest(Aquarium & ecosysteme){
    //a tweak to not show hearing range
    EnvConfig::sMaxHearingDist=1;
    EnvConfig::sMinHearingDist=0;
+   EnvConfig::sTurboJetMod=3.0;
+
 
    Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::Ears,enum_Accessory::Empty).get();
    b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0-200,ecosysteme.getMilieu().getHeight()/2.0-50);
