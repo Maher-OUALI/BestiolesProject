@@ -45,10 +45,6 @@ Shield: Brown
 
 TurboJet: Cyan
 
-### Sensors
-
-Can be seen by pressing the key "V"
-
 
 ## Configuration:
 
@@ -87,7 +83,7 @@ MIN_CLOAK_STEALTH_MOD Min camouflage capacity
 MAX_CLOAK_STEALTH_MOD Max camouflage capacity
 
 
-### sensor parameters
+### Sensor parameters
 
 MIN_VISION_DIST Min vision distance
 
@@ -198,4 +194,4 @@ Then press the key "f". Simulation will pause during input.
 
 choose a test case number 
 
-NB: To correctly use UnitTests 1-11 make sure to use the basetest configuration file (config.txt) by calling ./build/main directly without specifying a config file
+NB: To correctly use UnitTests 1-11 make sure to use the basetest configuration file (config.txt) by calling "./build/main" directly without specifying a config file
