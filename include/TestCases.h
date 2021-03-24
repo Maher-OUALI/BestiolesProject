@@ -23,7 +23,7 @@ void compositeSensorUnitTest(Aquarium & ecosystem);
 void cloakAccessoryUnitTest(Aquarium & ecosystem);
 void shieldAccessoryUnitTest(Aquarium & ecosystem);
 void turboJetAccessoryUnitTest(Aquarium & ecosystem);
-
+void Debugtest(Aquarium & ecosystem);
 
 }
 
