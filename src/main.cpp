@@ -56,14 +56,14 @@ int main()
 
 
 
-   Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Spinner,enum_Sensor::Eyes,enum_Accessory::Turbojet).get();
+   Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Psycho,enum_Sensor::Eyes,enum_Accessory::Turbojet).get();
    b1->setCoords(ecosysteme.getMilieu().getWidth()/2.0,ecosysteme.getMilieu().getHeight()/2.0);
    b1->setOrientationDeg(0.0);
    
 
-   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Eyes,enum_Accessory::Cloak).get();
-   b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+40,ecosysteme.getMilieu().getHeight()/2.0);
-   b2->setOrientationDeg(180.0);
+   // Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Eyes,enum_Accessory::Cloak).get();
+   // b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+40,ecosysteme.getMilieu().getHeight()/2.0);
+   // b2->setOrientationDeg(180.0);
 
 
    //Eyes dummySensor = Eyes();
