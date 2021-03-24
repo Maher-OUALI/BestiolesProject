@@ -102,21 +102,33 @@ Then press the key "f". Simulation will pause during input.
 /////////////////////////////////////////////////////////////////////////////////////////
 
 List of UnitTests:
-==============================
+
 0 : Normal0UnitTest 
+
 1 : kamikazeBehaviourUnitTest
+
 2 : gregaireBehaviourUnitTest
+
 3 : peureuseBehaviourUnitTest
+
 4 : prevoyanteBehaviourUnitTest
+
 5 : psychoBehaviourUnitTest
+
 6 : earsSensorUnitTest
+
 7 : eyesSensorUnitTest
+
 8 : compositeSensorUnitTest
+
 9 : cloakAccessoryUnitTest
+
 10 : shieldAccessoryUnitTest
+
 11 : turboJetAccessoryUnitTest
+
 12 : debugTest
-==============================
+
 choose a test case number 
 
 NB: To correctly use UnitTests 1-11 make sure to use the basetest configuration file (config.txt) by calling ./build/main directly without specifying a config file
