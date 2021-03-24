@@ -21,6 +21,7 @@
 #include "TurboJet.h"
 #include "Shield.h"
 #include "Cloak.h"
+#include "Empty.h"
 
 #include <memory>
 
@@ -94,11 +95,12 @@ std::shared_ptr<Bestiole> BestioleFactory::createRandomBestiole()
 
  //random accesory type generation
     enum_Accessory curr_accessory=MyRandomGen::getRandomType<enum_Accessory>(vector<enum_Accessory>(
-        {enum_Accessory::Turbojet,enum_Accessory::Shield,enum_Accessory::Cloak}),
+        {enum_Accessory::Turbojet,enum_Accessory::Shield,enum_Accessory::Cloak,enum_Accessory::Empty}),
         vector<double>(
             {EnvConfig::accesTurboJetPob,
             EnvConfig::accesShieldPob,
-            EnvConfig::accesCloakPob}));
+            EnvConfig::accesCloakPob,
+            EnvConfig::accesEmptyPob}));
 
     std::shared_ptr<Bestiole> result =createBestiole(curr_behaviour,curr_sensor,curr_accessory);
 
@@ -177,6 +179,7 @@ Accessory* BestioleFactory::createAccessory(enum_Accessory selected_accessory)
     if(selected_accessory==enum_Accessory::Turbojet) acc= (Accessory*)(new TurboJet()) ;
     if(selected_accessory==enum_Accessory::Shield) acc= (Accessory*)(new Shield()) ;
     if(selected_accessory==enum_Accessory::Cloak) acc= (Accessory*)(new Cloak()) ;
+    if(selected_accessory==enum_Accessory::Empty) acc= (Accessory*)(new Empty()) ;
 
     return acc;
 }
