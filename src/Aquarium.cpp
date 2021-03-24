@@ -123,7 +123,7 @@ void Aquarium::run( void )
             int sToDel=0; 
             int lastchar=0;
             //Start getting digits to form id of bestiole to delete
-            while(lastchar>=65456)
+            while(static_cast<unsigned char>( lastchar) !='f')
             {
                //xait for next digit and verify it is valid
                lastchar=waitForKey();

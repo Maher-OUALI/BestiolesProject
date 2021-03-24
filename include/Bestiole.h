@@ -148,6 +148,9 @@ public :                                           // Forme canonique :
          delete behaviour_;
       behaviour_=newBehaviour;
       behaviour_->setOwner(this);
+      couleur[0]=behaviour_->getColor()[0];
+      couleur[1]=behaviour_->getColor()[1];
+      couleur[2]=behaviour_->getColor()[2];
       
    }
 
