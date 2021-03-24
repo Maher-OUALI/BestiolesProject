@@ -33,7 +33,20 @@ void PsychoBehaviour::calculateDir(Milieu & monMilieu)
     {
         cout<<"Changing behaviour"<<endl;
 
-        auto newBehaviour=MyRandomGen::getRandomType<PsycBehvrs>(std::vector<PsycBehvrs>({psychDumb,psychSpinner,psychBraindead,psychKamikaze,psychPeureuse,psychPrevoyante,psychGregaire}),std::vector<double>({0.5,0.5}));
+        auto newBehaviour=MyRandomGen::getRandomType<PsycBehvrs>(std::vector<PsycBehvrs>({psychDumb,
+        psychSpinner,
+        psychBraindead,
+        psychKamikaze,
+        psychPeureuse,
+        psychPrevoyante,
+        psychGregaire}),std::vector<double>({EnvConfig::behaviourDumbProb,
+            EnvConfig::behaviourSpinnerProb,
+            EnvConfig::behaviourBrainDeadProb,
+            EnvConfig::behaviourKamikazeProb,
+            EnvConfig::behaviourLazyProb,
+            EnvConfig::behaviourPrevoyanteProb,
+            EnvConfig::behaviourGregaireProb}));
+        
         if(newBehaviour==psychSpinner)currentBehaviour_=&spinnerBehaviour_;
         if(newBehaviour==psychDumb)currentBehaviour_=&dumbBehaviour_;
         if(newBehaviour==psychBraindead)currentBehaviour_=&braindeadBehaviour_;
