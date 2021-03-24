@@ -33,21 +33,23 @@ std::shared_ptr<Bestiole> BestioleFactory::createBestiole(enum_Behavior selected
 {
     if ((int)(milieu_->getBestiolesList().size())<EnvConfig::sMaxBestioles)
     {
-        //cout<<milieu_->getBestiolesList().size()<<endl;
+
+        //Create components
         Behaviour* behav=createBehaviour( selected_behaviour);
     Sensor* sensor= createSensor(selected_sensor);
     Accessory* accessory= createAccessory(selected_accessory);
+
+    //Final bestiole
     std::shared_ptr<Bestiole> result =std::shared_ptr<Bestiole>( new Bestiole(sensor,behav,accessory ));
 
 
     double init_x=static_cast<double>( rand() )/RAND_MAX*milieu_->getWidth();
     double init_y=static_cast<double>( rand() )/RAND_MAX*milieu_->getHeight();
     (*result).setCoords(init_x,init_y);
+
+    //Register to milieu 
     milieu_->addMember(result);
 
-
-
-    //ilan branch
 
     return result;
     }
@@ -59,7 +61,7 @@ std::shared_ptr<Bestiole> BestioleFactory::createBestiole(enum_Behavior selected
 
 std::shared_ptr<Bestiole> BestioleFactory::createRandomBestiole()
 {
-    
+    //random sensor type generation
     enum_Sensor curr_sensor=MyRandomGen::getRandomType<enum_Sensor>(vector<enum_Sensor>(
         {enum_Sensor::Eyes,
         enum_Sensor::Ears,
@@ -69,7 +71,7 @@ std::shared_ptr<Bestiole> BestioleFactory::createRandomBestiole()
             EnvConfig::sensorEarsProb,
             EnvConfig::sensorEyesEarsProb}
             ));
-
+ //random behaviour type generation
 
     enum_Behavior curr_behaviour=MyRandomGen::getRandomType<enum_Behavior>(vector<enum_Behavior>(
         {enum_Behavior::Dumb,
@@ -78,17 +80,19 @@ std::shared_ptr<Bestiole> BestioleFactory::createRandomBestiole()
         enum_Behavior::Kamikaze,
         enum_Behavior::Peureuse,
         enum_Behavior::Prevoyante,
-        enum_Behavior::Spinner}),vector<double>(
+        enum_Behavior::Spinner,
+        enum_Behavior::Psycho}),vector<double>(
             {EnvConfig::behaviourDumbProb,
             EnvConfig::behaviourBrainDeadProb,
             EnvConfig::behaviourGregaireProb,
             EnvConfig::behaviourKamikazeProb,
             EnvConfig::behaviourLazyProb,
             EnvConfig::behaviourPrevoyanteProb,
-            EnvConfig::behaviourSpinnerProb}
+            EnvConfig::behaviourSpinnerProb,
+            EnvConfig::behaviourPsychoProb}
             ));
 
-
+ //random accesory type generation
     enum_Accessory curr_accessory=MyRandomGen::getRandomType<enum_Accessory>(vector<enum_Accessory>(
         {enum_Accessory::Turbojet,enum_Accessory::Shield,enum_Accessory::Cloak}),
         vector<double>(
@@ -102,7 +106,7 @@ std::shared_ptr<Bestiole> BestioleFactory::createRandomBestiole()
 
     return result;
 }
-
+//Cloning methods
 std::shared_ptr<Bestiole> BestioleFactory::createBestioleClone( Bestiole & b)
 {
 
@@ -112,6 +116,7 @@ std::shared_ptr<Bestiole> BestioleFactory::createBestioleClone( Bestiole & b)
     std::shared_ptr<Bestiole> result =std::shared_ptr<Bestiole>( new Bestiole(b ));
     b.lastCollWith=result->getIdentite();
     milieu_->addMember(result);
+    //Notify events for results generation in csv
     milieu_->clones+=1;
     return result;
     }
@@ -122,6 +127,7 @@ std::shared_ptr<Bestiole> BestioleFactory::createBestioleClone( Bestiole & b)
 
 Behaviour* BestioleFactory::createRandomBehaviour()
 {
+    //Get random type of behaviour
     enum_Behavior curr_behaviour=MyRandomGen::getRandomType<enum_Behavior>(vector<enum_Behavior>(
         {enum_Behavior::Dumb,
         enum_Behavior::Braindead,
@@ -129,20 +135,24 @@ Behaviour* BestioleFactory::createRandomBehaviour()
         enum_Behavior::Kamikaze,
         enum_Behavior::Peureuse,
         enum_Behavior::Prevoyante,
-        enum_Behavior::Spinner}),vector<double>(
+        enum_Behavior::Spinner,
+        enum_Behavior::Psycho}),vector<double>(
             {EnvConfig::behaviourDumbProb,
             EnvConfig::behaviourBrainDeadProb,
             EnvConfig::behaviourGregaireProb,
             EnvConfig::behaviourKamikazeProb,
             EnvConfig::behaviourLazyProb,
             EnvConfig::behaviourPrevoyanteProb,
-            EnvConfig::behaviourSpinnerProb}
+            EnvConfig::behaviourSpinnerProb,
+            EnvConfig::behaviourPsychoProb}
             ));
     Behaviour* behav=createBehaviour( curr_behaviour);
     cout<<"New random behaviour: "<<behav->getName()<<endl;
     return behav;
 
 }
+//////////Creation functions from enum types
+
 
 Behaviour* BestioleFactory::createBehaviour(enum_Behavior selected_behaviour)
 {
@@ -155,6 +165,7 @@ Behaviour* BestioleFactory::createBehaviour(enum_Behavior selected_behaviour)
     if(selected_behaviour==enum_Behavior::Kamikaze) beh= (Behaviour*)(new KamikazeBehaviour()) ;
     if(selected_behaviour==enum_Behavior::Peureuse) beh= (Behaviour*)(new PeureuseBehaviour()) ;
     if(selected_behaviour==enum_Behavior::Prevoyante) beh= (Behaviour*)(new PrevoyanteBehaviour()) ;
+    if(selected_behaviour==enum_Behavior::Psycho) beh= (Behaviour*)(new PsychoBehaviour()) ;
     return beh;
 }
 

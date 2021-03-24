@@ -54,6 +54,7 @@ static int sMaxBestioles;
   
 static int sMaxNeighborsPeureuse;
 static double sRunawayFactorPeureuse;
+static int sNbrStepsPrediction;
 
 
 static double behaviourBrainDeadProb;
@@ -74,6 +75,8 @@ static double accesCloakPob;
 static double accesTurboJetPob;
 
 static int sMaxtime;
+static int stepLogFreq;
+static int sInitBestiolesNB;
 
 
 static size_t ReadConfFile(const char* fname);

@@ -27,6 +27,8 @@ public:
 
     virtual Component* clone(Bestiole* ownr)=0;
 
+
+    //Owner reference for fututre derived objects
     Bestiole* getOwner(){return owner;}
 
     virtual ~Component(){}

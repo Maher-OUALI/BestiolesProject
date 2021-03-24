@@ -87,7 +87,7 @@ Bestiole::Bestiole( const Bestiole & b )
    sensor_=b.sensor_->clone(this);
    behaviour_=b.behaviour_->clone(this);
    accessory_=b.accessory_->clone(this);
-
+   //Set ownership of the new components
    sensor_->setOwner(this);
    behaviour_->setOwner(this);
    accessory_->setOwner(this);
@@ -236,14 +236,15 @@ void Bestiole::bouge( int xLim, int yLim )
 void Bestiole::action( Milieu & monMilieu )
 {
    //checkCollisions(monMilieu);
-
+   //Calculate Death events
    if(MyRandomGen::IsTrueRandom(EnvConfig::sDieProb)){ 
       markedToDie=True;
       monMilieu.naturalDeaths+=1;
       }
+      //Cloning event
    if(MyRandomGen::IsTrueRandom(EnvConfig::sCloneProb)) BestioleFactory::createBestioleClone(*this);
 
-
+   //Get new direction from the behaviour
    behaviour_->calculateDir(monMilieu);
    orientation=behaviour_->angle_rad;
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );
@@ -303,20 +304,24 @@ bool Bestiole::ocurredCollision(const Bestiole & b)
 void Bestiole::checkCollisions(Milieu & monMilieu )
 {
    bool anyNeighbourClose=false;
-
+   //Verify all surrounding neighbours
    for ( std::vector<shared_ptr<Bestiole> >::iterator it = monMilieu.getBestiolesList().begin() ; it != monMilieu.getBestiolesList().end() ; ++it )
       {
          double dist=math::vector2::distance(pos,(**it).getPosition());
+         //Distance comparison
          if(dist<2.5*AFF_SIZE  && (**it).getIdentite() != identite)
         {
            anyNeighbourClose=true;
+           //If we are already on collsion dont count it again
             if ( !stillInCollsion)
             {
             stillInCollsion=true;
             lastCollWith=(*it)->getIdentite();
+            //Bounce back
             orientation+=M_PI;
             if(EnvConfig::sDebugCollsion) std::cout<<"EVENT:"<< *this <<" detected a collision with "<<(**it)<<endl;
             double prob = EnvConfig::sCollisionDieProb/getFinalArmor();
+            //Death by collision
             if(MyRandomGen::IsTrueRandom(prob))
             {
                cout<<"EVENT: "<<*this<<" was marked to die"<<endl;
@@ -332,7 +337,7 @@ void Bestiole::checkCollisions(Milieu & monMilieu )
       
 }
 
-
+//Final stats calculation using component influence
 double Bestiole::getFinalSpeed()
 {
    return base_vitesse*behaviour_->speed*accessory_->getSpeedMod();

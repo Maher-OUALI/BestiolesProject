@@ -21,7 +21,7 @@ private :
 
    int            delay;
 
-   int currentTime;
+   int currentStep;
 
 public :
    Aquarium( int width, int height, int _delay );
@@ -33,7 +33,7 @@ public :
 
    int waitForKey();
 
-   void saveState( stringstream & namef );
+   void saveState( fstream & MyFile );
    void saveBilan();
 
 };

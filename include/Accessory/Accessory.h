@@ -24,7 +24,7 @@ public:
         color_[1]=Colors::black[1];
         color_[2]=Colors::black[2];
 
-
+        //Base stats
         speed_mod_=1.0;
         armor_mod_=1.0;
         stealth_mod_=0.0;

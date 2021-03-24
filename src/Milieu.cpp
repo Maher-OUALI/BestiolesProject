@@ -39,7 +39,7 @@ void Milieu::step( void )
 
    cimg_forXY( *this, x, y ) fillC( x, y, 0, Colors::white[0], Colors::white[1], Colors::white[2] );
    size_t old_size = listeBestioles.size();
-
+   //Colision at separate loop to avoid unbalanced events
    for ( size_t i=0;i<old_size;i++)
    {
 
@@ -98,13 +98,13 @@ void Milieu::applyDeath()
 // }
 
 
-std::ostream& operator<<(std::ostream& os,  Milieu& b) 
-{
-   os<<"ID , Behaviour , Sensor , Accesorie"<<endl;
-    for ( std::vector<shared_ptr<Bestiole>>::iterator it = b.getBestiolesList().begin() ; it != b.getBestiolesList().end() ; ++it )
-      (*it)->printInfo(os);
+// std::ostream& operator<<(std::ostream& os,  Milieu& b) 
+// {
+//    os<<"ID , Behaviour , Sensor , Accesorie"<<endl;
+//     for ( std::vector<shared_ptr<Bestiole>>::iterator it = b.getBestiolesList().begin() ; it != b.getBestiolesList().end() ; ++it )
+//       (*it)->printInfo(os);
 
 
-    return os;
-}
+//     return os;
+// }
 

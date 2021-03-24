@@ -13,7 +13,7 @@ Aquarium::Aquarium( int width, int height, int _delay ) : CImgDisplay(), delay( 
    int         screenWidth = 1280; //screen_width();
    int         screenHeight = 1024; //screen_height();
 
-   currentTime=0;
+   currentStep=0;
 
 
    cout << "const Aquarium" << endl;
@@ -40,13 +40,26 @@ void Aquarium::run( void )
 {
    bool stillPressing=false;
    std::stringstream namef; 
+
+   bool found;//Applying operation to single bestiole
+
+   //Clear results directory
    system("rm ./results/* ");
+   system("mkdir ./results/ ");
    cout << "running Aquarium" << endl;
+
+   //Create logging csv file
+   namef.str("");
+   namef<<"./results/"<<"state"<<".csv"; 
+   cout<<"Writting to :"<<namef.str()<<endl;
+   fstream MyFile;
+   MyFile.open(namef.str(),std::ios::out);
+   MyFile<<"Step, ID , Behaviour , Sensor , Accesorie"<<endl;
 
    
 
 
-   while ( ! is_closed() && (currentTime<EnvConfig::sMaxtime ||EnvConfig::sMaxtime==0))
+   while ( ! is_closed() && (currentStep*delay<EnvConfig::sMaxtime ||EnvConfig::sMaxtime==0))
    {
       //cout<<(int)is_key()<<endl;
       // cout << "iteration de la simulation" << endl;
@@ -71,43 +84,74 @@ void Aquarium::run( void )
 
             int sToDel=0; 
             int lastchar=0;
+            //Start getting digits from the keyboard to form id of bestiole to delete
             while(static_cast<unsigned char>( lastchar) !='f')
             {
+               //xait for next digit and verify it is valid
                lastchar=waitForKey();
                if(static_cast<unsigned char>( lastchar) !='f' && lastchar>=65456)
-                  sToDel=sToDel*10+(lastchar-65456);
-                  cout<<"Input: "<<sToDel<<endl;
+               //Add new digit
+                  {sToDel=sToDel*10+(lastchar-65456);
+                  cout<<"Input: "<<sToDel<<endl;}
             }
-            
-            
-            cout<<sToDel<<endl;
 
+            found=false;//Has the bestiole been found
 
-            
+            //Search the bestiole with the inputted ID and delete it
             for ( std::vector<shared_ptr<Bestiole> >::iterator it = flotte->getBestiolesList().begin() ; it != flotte->getBestiolesList().end() ; ++it )
             {
                if((*it)->getIdentite()==sToDel)
-                  (*it)->markedToDie=True;
+                  {(*it)->markedToDie=True;
+                  found=true;
+                  break;}
             }
+            if(!found)
+            cout<<"Bestiole not found"<<endl;
          }
          if(is_keyV())
          {
             cout<<"Pressed V..."<<endl;
+            //Draw sensors
             EnvConfig::sDrawSensors=!EnvConfig::sDrawSensors;
          }
          if(is_keyS())
          {
             cout<<"Pressed S..."<<endl;
-            flotte->getBestiolesList()[0]->changeBehaviour(BestioleFactory::createRandomBehaviour());
+            stillPressing=false;
+
+            int sToDel=0; 
+            int lastchar=0;
+            //Start getting digits to form id of bestiole to delete
+            while(static_cast<unsigned char>( lastchar) !='f')
+            {
+               //xait for next digit and verify it is valid
+               lastchar=waitForKey();
+               if(static_cast<unsigned char>( lastchar) !='f' && lastchar>=65456)
+               //Add new digit
+                 { sToDel=sToDel*10+(lastchar-65456);
+                  cout<<"Input: "<<sToDel<<endl;}
+            }
+            
+
+             found=false;//Has the bestiole been found
+            //Search the bestiole with the inputted ID and change behaviour
+            for ( std::vector<shared_ptr<Bestiole> >::iterator it = flotte->getBestiolesList().begin() ; it != flotte->getBestiolesList().end() ; ++it )
+            {
+               if((*it)->getIdentite()==sToDel)
+                  {(*it)->changeBehaviour(BestioleFactory::createRandomBehaviour());
+                  found=true;
+                  break;}
+            }
+            if(!found)
+            {
+               cout<<"Bestiole not found"<<endl;
+            }
+            //flotte->getBestiolesList()[0]->changeBehaviour(BestioleFactory::createRandomBehaviour());
          }
          if(is_keyP())
          {
             cout<<"Pressed P..."<<endl;
-            cout<<"Current time: "<<currentTime<<endl;
-            cout<<getMilieu();
-
-            saveState(namef);
-     
+            
          }
       }
       else if(!is_key() )
@@ -120,11 +164,18 @@ void Aquarium::run( void )
 
       wait( delay );
 
-      currentTime+=delay;
+      if(EnvConfig::stepLogFreq>0 && currentStep%EnvConfig::stepLogFreq==0)
+         {
+            saveState(MyFile);
+            }
+
+      currentStep+=1;
 
    } // while
 
-   saveState(namef);
+   //saveState(namef);
+
+   MyFile.close();
 
    saveBilan();
 
@@ -132,7 +183,7 @@ void Aquarium::run( void )
 
 }
 
-
+// Function to get a key from keyboard and return it. Warning: it freezes the simulation
 int Aquarium::waitForKey()
 {
    //cout<<static_cast<unsigned char>( key() )<<endl;
@@ -140,38 +191,30 @@ int Aquarium::waitForKey()
             while(!(bool)is_key())
             {
                //cout<<" Waiting..."<<endl;
-
             }
             while((bool)is_key())
             {
                //cout<<" Waiting..."<<endl;
                lastkey=key() ;
-               
-
-            }
-            
+            }           
             //cout<<"Entered character: "<<lastkey<<endl;
             return lastkey;
 }
+//Save state to file as csv
 
-
-void Aquarium::saveState( stringstream & namef )
+void Aquarium::saveState( fstream & MyFile )
 {
-   namef.str("");
-   namef<<"./results/"<<currentTime<<".csv"; 
-   cout<<"Writting to :"<<namef.str()<<endl;
-   fstream MyFile;
-   MyFile.open(namef.str(),std::ios::out);
-   MyFile << fflush;
-   MyFile<<getMilieu();
-   MyFile.close();
+   
+   for ( auto it = flotte->getBestiolesList().begin() ; it != flotte->getBestiolesList().end() ; ++it )
+      MyFile<<currentStep<<(*it)->getIdentite()<<" , "<<(*it)->getBehaviour()->getName()<<" , "<<(*it)->getSensor()->getName()<<" , "<<(*it)->getAccessory()->getName()<<endl;
+   
 }
 
-
+//Do a final counting of all the elements of the simulation 
 void Aquarium::saveBilan( )
 {
    std::stringstream namef; 
-   map<string,int> sums;
+   map<string,int> sums; //std::Map to keep counting of elements
    sums["Eyes"]=0;
    sums["EyesEars"]=0;
    sums["Ears"]=0;
@@ -188,7 +231,7 @@ void Aquarium::saveBilan( )
    sums["Greagaire"]=0;
    sums["Psycho"]=0;
 
-
+      //Count each element from each bestiole
      for ( std::vector<shared_ptr<Bestiole> >::iterator it = flotte->getBestiolesList().begin() ; it != flotte->getBestiolesList().end() ; ++it )
             {
                sums[(*it)->getSensor()->getName()]+=1;
@@ -196,7 +239,7 @@ void Aquarium::saveBilan( )
                sums[(*it)->getAccessory()->getName()]+=1;
             }
             namef.str("");
-            namef<<"./results/"<<currentTime<<"_bilan.csv"; 
+            namef<<"./results/bilan.csv"; 
             cout<<"Writting to :"<<namef.str()<<endl;
             fstream MyFile;
             MyFile.open(namef.str(),std::ios::out);
@@ -206,11 +249,11 @@ void Aquarium::saveBilan( )
             MyFile<<"Collision deaths: "<<flotte->deathByCollisions<<endl;
             MyFile<<"Births: "<<flotte->births<<endl;
             MyFile<<"Clones: "<<flotte->clones<<endl;
-
+            //Write down to bilan file
             for( auto iter = sums.begin(); iter != sums.end(); iter++ ) {
                MyFile << "component: " << iter->first << ", quantity: " << iter->second << endl;
             }
-            //MyFile<<"Hi";
+
             MyFile.close();
 }
 

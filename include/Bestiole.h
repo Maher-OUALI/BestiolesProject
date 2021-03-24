@@ -117,6 +117,7 @@ public :                                           // Forme canonique :
 
    void setOrientationDeg(double angle);
    double getOrientationRad(){return orientation;}
+   double getAFF_SIZE(){return AFF_SIZE;}
 
    math::vector2 getPosition()const {return pos;}
    double getAngleDeg(){return orientation/M_PI*180;}
@@ -153,10 +154,10 @@ public :                                           // Forme canonique :
    //Temporary
    void DrawVisionCone(UImg & support,const Bestiole & b,double orientation, math::vector2 relativePos);
 
-   std::ostream&  printInfo(std::ostream& os){
-      os<<identite<<" , "<<behaviour_->getName()<<" , "<<sensor_->getName()<<" , "<<accessory_->getName()<<endl;
-      return os;
-   }
+   // std::ostream&  printInfo(std::ostream& os){
+   //    os<<identite<<" , "<<behaviour_->getName()<<" , "<<sensor_->getName()<<" , "<<accessory_->getName()<<endl;
+   //    return os;
+   // }
 
 };
 

@@ -14,7 +14,7 @@
 //     }
 
 
-
+//Random boolean generator
 bool MyRandomGen::IsTrueRandom(double prob_true)
 {
    std::random_device rd;

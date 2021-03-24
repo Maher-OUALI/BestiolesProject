@@ -7,7 +7,7 @@ double EnvConfig::vjorge=0;
 double EnvConfig::sCollisionDieProb=0;
 bool EnvConfig::sDebugVision=false;
 bool EnvConfig::sDebugCollsion=false;
-bool EnvConfig::sDrawSensors=false;
+bool EnvConfig::sDrawSensors=true;
 
 double EnvConfig::sBirthProb=0;
 double EnvConfig::sCloneProb=0;
@@ -38,6 +38,7 @@ int EnvConfig::sMaxBestioles=0;
 
 int EnvConfig::sMaxNeighborsPeureuse=3;
 double EnvConfig::sRunawayFactorPeureuse=3.0;
+int EnvConfig::sNbrStepsPrediction=10;
 
 
 double EnvConfig::behaviourBrainDeadProb=0;
@@ -58,6 +59,8 @@ double EnvConfig::accesCloakPob=0;
 double EnvConfig::accesTurboJetPob=0;
 
 int EnvConfig::sMaxtime=0;
+int EnvConfig::stepLogFreq=0;
+int EnvConfig::sInitBestiolesNB=0;
 
 
 
@@ -102,6 +105,20 @@ void EnvConfig::assignVar(const std::string name,const double value)
    if (!strcmp(name.c_str(),"MAX_TIME"))
    {
       sMaxtime=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
+   if (!strcmp(name.c_str(),"STEP_LOG_FREQ"))
+   {
+      stepLogFreq=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+
+   if (!strcmp(name.c_str(),"INIT_BESTIOLES_NB"))
+   {
+      sInitBestiolesNB=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
       return;
    }
@@ -375,6 +392,12 @@ if (!strcmp(name.c_str(),"MAX_HEARING_INTENSITY"))
    if (!strcmp(name.c_str(),"ACCES_TURBOJET_PROB"))
    {
       accesTurboJetPob=value;
+      printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
+      return;
+   }
+   if (!strcmp(name.c_str(),"NBR_STEPS_PREDICTION"))
+   {
+      sNbrStepsPrediction=value;
       printf("The global variable %s has value: %0.2f\n", name.c_str(),value); 
       return;
    }
