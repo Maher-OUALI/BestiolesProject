@@ -122,6 +122,9 @@ int main(int argc, char** argv)
    case 11:
     TestCases::turboJetAccessoryUnitTest(ecosysteme);
     break;
+   case 12:
+    TestCases::Debugtest(ecosysteme);
+    break;
 }
    
    /*
