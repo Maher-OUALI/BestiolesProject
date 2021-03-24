@@ -24,7 +24,10 @@ void PeureuseBehaviour::calculateDir(Milieu & monMilieu)
                 if(owner->jeTeVois(**it)){
                     if(EnvConfig::sDebugVision)  cout<<*owner<<" can sense "<<**it<<std::endl;
                     //sum all orientation
-                    orientation_moyenne += (**it).getOrientationRad();
+                    math::vector2 relativePos=((**it).getPosition())-(owner->getPosition());
+                    double relativeAngle =math::deg2Rad(relativePos.angleDeg());
+                    //orientation_moyenne += (**it).getOrientationRad();
+                    orientation_moyenne += relativeAngle;
                     size += 1;
                 }
                 else
@@ -35,7 +38,8 @@ void PeureuseBehaviour::calculateDir(Milieu & monMilieu)
         }
 
         //return the opposite of average orientation
-        angle_rad=-orientation_moyenne/size;
+        angle_rad=M_PI+(orientation_moyenne/size);
+        //angle_rad=M_PI+owner->getOrientationRad();
         speed=PeureuseBehaviour::speed_factor;
         isEscaping=true;
 
