@@ -14,19 +14,19 @@ DEBUG_VISION. :  Print in terminal if a bestiole can see another one
 
 DEBUG_COLLISION  : Print in terminal if a bestiole collided another one
 
-CLONE_PROB. : probability that a bestiole gets cloned
+CLONE_PROB. : Probability that a bestiole gets cloned
 
 DIE_PROB  : Probability of sudden death of a bestiole
 
-PSYCH_CHANGEB_PROB  :  probability that the psycho behaviour changes behaviour
+PSYCH_CHANGEB_PROB  :  Probability that the psycho behaviour changes behaviour
 
-TURBO_JET_MOD : How much the the accesorie changes speed
+TURBO_JET_MOD : How much the the accessory changes speed
 
-SHIELD_ARMOR_MOD  : How much the the accesorie changes armor
+SHIELD_ARMOR_MOD  : How much the the accessory changes armor
 
-MIN_CLOAK_STEALTH_MOD  : How much the the accesorie changes stealth
+MIN_CLOAK_STEALTH_MOD  : How much the the accessory changes stealth
 
-MAX_CLOAK_STEALTH_MOD  : How much the the accesorie changes stealth
+MAX_CLOAK_STEALTH_MOD  : How much the the accessory changes stealth
 
 #sensor parameters
 
@@ -96,8 +96,8 @@ Usage:
 
 Keyboard keys can be used as followed
 
--Key P: save a snapshot of the state in csv format at the folder /results
+-Key P: Save a snapshot of the state in csv format at the folder /results
 
--Key Space: spawn a clone of the first bestiole
+-Key Space: Spawn a clone of the first bestiole
 
--Key V: visualize sensors detection region for each bestiole
+-Key V: Visualize sensors detection region for each bestiole
