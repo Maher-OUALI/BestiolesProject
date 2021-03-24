@@ -18,6 +18,13 @@ public:
         ear =  new Ears() ;
         eye =  new Eyes();
     }
+    
+    CompositeSensor(const CompositeSensor &csensor):Sensor("EyesEars")
+    {
+        ear = new Ears(*(csensor.ear))  ;
+        eye = new Eyes(*(csensor.eye) )   ;
+    }
+    
     bool canSense(const Bestiole &b2) override;
 
     CompositeSensor* clone(Bestiole* ownr) ;
