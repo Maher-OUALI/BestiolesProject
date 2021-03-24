@@ -28,6 +28,8 @@ Can be seen by pressing the key "V"
 Configuration:
 The config file config.txt probides parameters to tweak before starting the simulation.
 
+NAME is the name of the experiment, this allows to save csv with specific names
+
 MAX_TIME Maximum time of simulation (0 for unlimited)
 STEP_LOG_FREQ Fraquency of state logging (0 for dissabled)
 INIT_BESTIOLES_NB Initial number of bestioles

@@ -63,6 +63,8 @@ int EnvConfig::stepLogFreq=0;
 int EnvConfig::sInitBestiolesNB=0;
 
 
+std::string EnvConfig::experimentName="";
+
 
 size_t EnvConfig::ReadConfFile(const char* fname)
 {
@@ -89,6 +91,16 @@ size_t EnvConfig::ReadVar(FILE* file,std::string &name,double &retval)
    {
       char var_name[100]; 
       char var_vstring[100]; 
+      if (fscanf(file,"NAME = %s\n",var_vstring)==1) 
+      { 
+         
+         std::string tempstr( var_vstring);
+         experimentName=tempstr;
+         std::cout<<"Name of experiment: "<<var_vstring<<std::endl;
+      }
+
+      //Get values to write to global configuration variables
+
       if (fscanf(file,"%s = %s\n",var_name,var_vstring)==2) 
       { 
          retval = std::stod (std::string(var_vstring));
@@ -99,6 +111,8 @@ size_t EnvConfig::ReadVar(FILE* file,std::string &name,double &retval)
       return -1;
    }
 
+
+//assign variables based on the read lines
 void EnvConfig::assignVar(const std::string name,const double value)
 {
 

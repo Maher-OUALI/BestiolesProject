@@ -44,13 +44,14 @@ void Aquarium::run( void )
    bool found;//Applying operation to single bestiole
 
    //Clear results directory
-   system("rm ./results/* ");
+   //system("rm ./results/* ");
+   //Create directory for storing results
    system("mkdir ./results/ ");
    cout << "running Aquarium" << endl;
 
    //Create logging csv file
    namef.str("");
-   namef<<"./results/"<<"state"<<".csv"; 
+   namef<<"./results/"<<EnvConfig::experimentName<<"_state"<<".csv"; 
    cout<<"Writting to :"<<namef.str()<<endl;
    fstream MyFile;
    MyFile.open(namef.str(),std::ios::out);
@@ -249,7 +250,7 @@ void Aquarium::saveBilan( )
                sums[(*it)->getAccessory()->getName()]+=1;
             }
             namef.str("");
-            namef<<"./results/bilan.csv"; 
+            namef<<"./results/"<<EnvConfig::experimentName<<"_bilan.csv"; 
             cout<<"Writting to :"<<namef.str()<<endl;
             fstream MyFile;
             MyFile.open(namef.str(),std::ios::out);

@@ -15,6 +15,9 @@ class EnvConfig
 
 
 public:
+
+static std::string experimentName;
+
 static double vcarlos;
 static double vjorge;
 
