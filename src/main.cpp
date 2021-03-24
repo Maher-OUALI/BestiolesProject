@@ -62,6 +62,7 @@ int main(int argc, char** argv)
 
 
    cout<< "=============================="<<endl;
+   cout<< "0 : Normal0UnitTest"<<endl;
    cout<< "1 : kamikazeBehaviourUnitTest"<<endl;
    cout<< "2 : gregaireBehaviourUnitTest"<<endl;
    cout<< "3 : peureuseBehaviourUnitTest"<<endl;
@@ -85,6 +86,9 @@ int main(int argc, char** argv)
    BestioleFactory::milieu_=&ecosysteme.getMilieu();
 
    switch (choice) {
+  case 0:
+    TestCases::NormalUnitTest(ecosysteme);
+    break;
   case 1:
     TestCases::kamikazeBehaviourUnitTest(ecosysteme);
     break;

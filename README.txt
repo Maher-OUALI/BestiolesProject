@@ -1,9 +1,36 @@
 Launching:
 1) Open a terminal
-2) run .\/build/main
+2) Build using command make (make clean for starting again)
+2) run .\/build/main or .\/build/main [Directory to custom config file]
+Note: If not config file is selected, the default one at the rrot Directory will
+be used
 
+///////////////////////////////////////////////////////////////////////////////////////
+Color Guidelines
+
+Behaviours
+
+Gregaire: Green
+Kamikaze: Red
+Peureseuse: Yellow
+Prevoyante: Orange
+Psycho: Color of current active behaviour
+
+accesorie
+Cloak:pink
+Shield:brown
+TurboJet:cyan
+
+sensors
+Can be seen by pressing the key "V"
+
+///////////////////////////////////////////////////////////////////////////////////////
 Configuration:
 The config file config.txt probides parameters to tweak before starting the simulation.
+
+MAX_TIME Maximum time of simulation (0 for unlimited)
+STEP_LOG_FREQ Fraquency of state logging (0 for dissabled)
+INIT_BESTIOLES_NB Initial number of bestioles
 
 COLLISION_DIE_PROB The probability to die from a collsion
 DEBUG_VISION Print in terminal if a bestiole can see another one
@@ -47,9 +74,16 @@ SENSOR_EYESEARS_PROB = 0.0
 ACCES_CLOAK_PROB = 0.1
 ACCES_TURBOJET_PROB = 0.1
 ACCES_SHIELD_PROB = 0.1
-
+///////////////////////////////////////////////////////////////////////////////////////
 Usage:
 Keyboard keys can be used as followed
--Key P: save a snapshot of the state in csv format at the folder /results
+
 -Key Space: spawn a clone of the first bestiole
+
 -Key V: visualize sensors detection region for each bestiole
+
+-Key D: Used for deletion. use a keypad (only keypad) to write the id of bestiole to delete. 
+Then press the key "f". Simulation will pause during inputting.
+
+-Key S: Used for switching behaviour. use a keypad (only keypad) to write the id of bestiole to switch behaviour. 
+Then press the key "f". Simulation will pause during inputting.

@@ -1,6 +1,12 @@
 
 #include "TestCases.h"
 
+void TestCases::NormalUnitTest(Aquarium & ecosysteme){
+   //simple start 
+   for ( int i = 1; i <= EnvConfig::sInitBestiolesNB; ++i )
+       BestioleFactory::createRandomBestiole(); 
+}
+
 void TestCases::kamikazeBehaviourUnitTest(Aquarium & ecosysteme){
     //create a kamikaze bestiole
     Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Kamikaze,enum_Sensor::CompositeSensor,enum_Accessory::Cloak).get();

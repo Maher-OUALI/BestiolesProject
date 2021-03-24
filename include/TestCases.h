@@ -9,7 +9,7 @@
 
 namespace TestCases
 {
-
+void NormalUnitTest(Aquarium & ecosystem);
 void kamikazeBehaviourUnitTest(Aquarium & ecosystem);
 void gregaireBehaviourUnitTest(Aquarium & ecosystem);
 void prevoyanteBehaviourUnitTest(Aquarium & ecosystem);

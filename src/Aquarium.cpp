@@ -122,10 +122,11 @@ void Aquarium::run( void )
             int sToDel=0; 
             int lastchar=0;
             //Start getting digits to form id of bestiole to delete
-            while(static_cast<unsigned char>( lastchar) !='f')
+            while(lastchar>=65456)
             {
                //xait for next digit and verify it is valid
                lastchar=waitForKey();
+               cout<<lastchar<<endl;
                if(static_cast<unsigned char>( lastchar) !='f' && lastchar>=65456)
                //Add new digit
                  { sToDel=sToDel*10+(lastchar-65456);
@@ -187,17 +188,26 @@ void Aquarium::run( void )
 int Aquarium::waitForKey()
 {
    //cout<<static_cast<unsigned char>( key() )<<endl;
+   bool stillpressing=false;
             int lastkey=0;
             while(!(bool)is_key())
             {
-               //cout<<" Waiting..."<<endl;
+            //   cout<<" Waiting..."<<endl;
+               wait( delay );
             }
+            stillpressing=true;
+  
+            //   cout<<" Waiting 2..."<<endl;
+            wait( delay );
+            lastkey=key() ;
             while((bool)is_key())
             {
-               //cout<<" Waiting..."<<endl;
-               lastkey=key() ;
-            }           
-            //cout<<"Entered character: "<<lastkey<<endl;
+            //   cout<<" Waiting..."<<endl;
+               wait( delay );
+            }
+               
+    
+            cout<<"Entered character: "<<lastkey<<endl;
             return lastkey;
 }
 //Save state to file as csv
@@ -206,7 +216,7 @@ void Aquarium::saveState( fstream & MyFile )
 {
    
    for ( auto it = flotte->getBestiolesList().begin() ; it != flotte->getBestiolesList().end() ; ++it )
-      MyFile<<currentStep<<(*it)->getIdentite()<<" , "<<(*it)->getBehaviour()->getName()<<" , "<<(*it)->getSensor()->getName()<<" , "<<(*it)->getAccessory()->getName()<<endl;
+      MyFile<<currentStep<<" , "<<(*it)->getIdentite()<<" , "<<(*it)->getBehaviour()->getName()<<" , "<<(*it)->getSensor()->getName()<<" , "<<(*it)->getAccessory()->getName()<<endl;
    
 }
 
@@ -250,6 +260,8 @@ void Aquarium::saveBilan( )
             MyFile<<"Births: "<<flotte->births<<endl;
             MyFile<<"Clones: "<<flotte->clones<<endl;
             //Write down to bilan file
+            MyFile<<endl<<endl;
+            MyFile<<"Count of remaining bestioles "<<flotte->clones<<endl;
             for( auto iter = sums.begin(); iter != sums.end(); iter++ ) {
                MyFile << "component: " << iter->first << ", quantity: " << iter->second << endl;
             }
