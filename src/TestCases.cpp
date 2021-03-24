@@ -174,6 +174,7 @@ void TestCases::shieldAccessoryUnitTest(Aquarium & ecosysteme){
    //force specific configuration
    EnvConfig::sCollisionDieProb=1.;
    EnvConfig::sShieldArmorMod=4.;
+   EnvConfig::sShieldSpeedMod=0.2;
    EnvConfig::sDebugVision=true;
 
    Bestiole* b1=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::CompositeSensor,enum_Accessory::Empty).get();
@@ -181,7 +182,7 @@ void TestCases::shieldAccessoryUnitTest(Aquarium & ecosysteme){
    b1->setOrientationDeg(0.0);
 
 
-   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Braindead,enum_Sensor::Ears,enum_Accessory::Shield).get();
+   Bestiole* b2=BestioleFactory::createBestiole(enum_Behavior::Dumb,enum_Sensor::Ears,enum_Accessory::Shield).get();
    b2->setCoords(ecosysteme.getMilieu().getWidth()/2.0+200,ecosysteme.getMilieu().getHeight()/2.0);
    b2->setOrientationDeg(180.0);
 }
